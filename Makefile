@@ -1,7 +1,7 @@
-SRC=$(wildcard src/*.c)
+SRC=$(wildcard src/*/*.c)
 OBJ=$(patsubst src/%.c,obj/%.o,$(SRC))
 NAME=minishell
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -lreadline
 
 all: $(NAME)
 
