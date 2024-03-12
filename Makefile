@@ -1,15 +1,16 @@
-SRC=$(wildcard src/*/*.c)
+SRC=$(wildcard src/*.c)
 OBJ=$(patsubst src/%.c,obj/%.o,$(SRC))
 NAME=minishell
-FLAGS=-Wall -Werror -Wextra -lreadline
+FLAGS=-Wall -Werror -Wextra
+LIBS=-lreadline -lhistory
 
 all: $(NAME)
 
 obj/%.o: src/%.c
-	cc -c $(FLAGS) -g $< -o $@
+	cc -c $(FLAGS) $(LIBS) -g $< -o $@
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) $(OBJ) -g -o $(NAME)
+	cc $(FLAGS) $(OBJ) $(LIBS) -g -o $(NAME) 
 
 clean:
 	rm -rf *.o
