@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:39:09 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/18 17:35:36 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,10 @@
 /* Tokens */
 
 t_tokens	tokenize(char *to_tokenize, const char *delimiter);
+
+/* Binary Tree */
+
+t_btree	*new_leaf(void *val);
+void	clear_tree(t_btree *tree);
 
 #endif

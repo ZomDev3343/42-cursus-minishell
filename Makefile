@@ -1,4 +1,4 @@
-SRC=$(wildcard src/*/*.c)
+SRC=$(wildcard src/*.c)
 OBJ=$(patsubst src/%.c,obj/%.o,$(SRC))
 NAME=minishell
 FLAGS=-Wall -Werror -Wextra
@@ -9,10 +9,10 @@ all:
 	make $(NAME)
 
 obj/%.o: src/%.c
-	cc -c $(FLAGS) $(LIBS) -g $< -o $@
+	cc $(FLAGS) -c -g -o $@ $<
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) $(OBJ) $(LIBS) -g -o $(NAME) 
+	cc $(FLAGS) $(LIBS) $(OBJ) -g -o $(NAME)
 
 clean:
 	make clean -C libft
