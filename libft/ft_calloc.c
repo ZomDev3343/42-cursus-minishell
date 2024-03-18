@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2023/10/03 13:13:51 by truello           #+#    #+#             */
+/*   Updated: 2024/03/13 18:09:54 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char *line = readline("minishell > ");
+	void	*r;
+	size_t	i;
 
-	printf("%s", line);
+	r = malloc(count * size);
+	if (!r)
+		return (0);
+	i = 0;
+	while (i < count * size)
+	{
+		((unsigned char *) r)[i] = 0;
+		i++;
+	}
+	return (r);
+}
+
+int	ft_free(void *ptr)
+{
+	if (ptr)
+		return (free(ptr), 1);
 	return (0);
 }

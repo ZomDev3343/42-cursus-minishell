@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_split_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/02/13 13:35:48 by tohma             #+#    #+#             */
+/*   Updated: 2024/02/19 13:55:28 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+int	get_parts_size(char **parts)
 {
-	char *line = readline("minishell > ");
+	int	i;
 
-	printf("%s", line);
-	return (0);
+	if (!parts || !*parts)
+		return (0);
+	i = 0;
+	while (parts[i])
+		i++;
+	return (i);
 }

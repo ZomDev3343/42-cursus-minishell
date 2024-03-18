@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
+/*   Updated: 2024/03/15 18:00:40 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+int	ft_strchr_i(char *str, char c)
 {
-	char *line = readline("minishell > ");
+	int	i;
 
-	printf("%s", line);
-	return (0);
+	i = -1;
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (-1);
 }

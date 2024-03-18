@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/12 19:16:02 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/13 18:39:09 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "minishell_struct.h"
+
+/* Tokens */
+
+t_tokens	tokenize(char *to_tokenize, const char *delimiter);
 
 #endif

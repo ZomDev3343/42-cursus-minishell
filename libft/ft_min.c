@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/02/21 16:01:19 by tohma             #+#    #+#             */
+/*   Updated: 2024/02/21 16:06:01 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+int	ft_min(int x, int y)
 {
-	char *line = readline("minishell > ");
+	if (x < y)
+		return (x);
+	else
+		return (y);
+}
 
-	printf("%s", line);
-	return (0);
+double	ft_dmin(double x, double y)
+{
+	if (x < y)
+		return (x);
+	else
+		return (y);
 }

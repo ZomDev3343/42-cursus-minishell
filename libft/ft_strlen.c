@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2023/11/10 15:19:41 by truello           #+#    #+#             */
+/*   Updated: 2024/03/13 18:08:50 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+int	ft_strlen(const char *str)
 {
-	char *line = readline("minishell > ");
+	int	i;
 
-	printf("%s", line);
-	return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

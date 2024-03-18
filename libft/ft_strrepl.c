@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrepl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/01/17 19:49:30 by truello           #+#    #+#             */
+/*   Updated: 2024/01/17 19:52:21 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+void	ft_strrepl(char *str, char bef, char aft)
 {
-	char *line = readline("minishell > ");
+	int	i;
 
-	printf("%s", line);
-	return (0);
+	i = -1;
+	while (str[++i])
+		if (str[i] == bef)
+			str[i] = aft;
 }

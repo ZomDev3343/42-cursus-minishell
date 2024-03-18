@@ -1,21 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/03/13 18:13:42 by tohma             #+#    #+#             */
+/*   Updated: 2024/03/15 18:13:43 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "../../include/minishell.h"
 
-int	main(void)
+int	count_tokens(char *to_tokenize)
 {
-	char *line = readline("minishell > ");
+	int	i;
 
-	printf("%s", line);
-	return (0);
+	i = -1;
+	if (!to_tokenize)
+		return (0);
+	while(to_tokenize[++i] == ' ');
+	while (to_tokenize[i])
+	{
+		if (i > 0 && to_tokenize[i] == ' ')
+		{
+			
+		}
+		i++;
+	}
+}
+
+t_tokens	tokenize(char *to_tokenize, const char *delimiter)
+{
+	t_tokens	res;
+
 }

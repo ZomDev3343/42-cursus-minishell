@@ -6,11 +6,34 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/12 18:52:29 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/15 18:06:22 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_STRUCT_H
 # define MINISHELL_STRUCT_H
+
+typedef enum e_token_flag
+{
+	E_CMDNAME = 0b1,
+	E_CMDARGS = 0b10,
+	E_DBLE_QUOTE = 0b100,
+	E_SMPL_QUOTE = 0b1000,
+	E_PIPE = 0b10000,
+	E_SPCHAR = 0b100000,
+	E_REDIRECT = 0b1000000
+}	t_tknflag;
+
+typedef struct s_token
+{
+	char	*data;
+	char	flag;
+}	t_token;
+
+typedef struct s_tokens
+{
+	t_token	*tokens;
+	int		size;
+}	t_tokens;
 
 #endif

@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2023/10/02 12:05:13 by truello           #+#    #+#             */
+/*   Updated: 2024/03/13 18:09:43 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+int ft_isdigit(int c)
 {
-	char *line = readline("minishell > ");
+	return (c >= '0' && c <= '9');
+}
 
-	printf("%s", line);
-	return (0);
+int ft_isnum(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str[0])
+		return (FALSE);
+	if (str[0] == '-')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (TRUE);
+		i++;
+	}
+	return (TRUE);
 }

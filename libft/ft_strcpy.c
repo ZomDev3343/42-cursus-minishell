@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/13 18:02:13 by tohma            ###   ########.fr       */
+/*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
+/*   Updated: 2024/01/11 10:50:59 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minishell.h"
+#include "ft.h"
 
-int	main(void)
+char	*ft_strncpy(char *to_copy, size_t n)
 {
-	char *line = readline("minishell > ");
+	size_t	i;
+	char	*res;
 
-	printf("%s", line);
-	return (0);
+	i = 0;
+	res = ft_calloc(n + 1, 1);
+	while (i < n && to_copy[i])
+	{
+		res[i] = to_copy[i];
+		i++;
+	}
+	return (res);
 }
