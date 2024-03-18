@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_struct.h                                 :+:      :+:    :+:   */
+/*   btree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/18 14:34:02 by truello          ###   ########.fr       */
+/*   Created: 2024/03/18 13:35:16 by truello           #+#    #+#             */
+/*   Updated: 2024/03/18 16:02:18 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_STRUCT_H
-# define MINISHELL_STRUCT_H
+#include "../../include/minishell.h"
 
-typedef struct s_token
+t_btree	*new_leaf(void *val)
 {
-	char	**tokens;
-	int		count;
-}	t_tokens;
+	t_btree	*res;
 
-typedef struct s_btree
+	res->val = val;
+	res->left = NULL;
+	res->right = NULL;
+	return (res);
+}
+
+void	clear_tree(t_btree *tree)
 {
-	void			*val;
-	struct s_btree	*left;
-	struct s_btree	*right;
-}	t_btree;
-
-#endif
+	free(tree->val);
+	if (tree->left != NULL)
+		clear_tree(tree->left);
+	if (tree->right != NULL)
+		clear_tree(tree->right);
+	if (tree->left == NULL && tree->right == NULL)
+		free(tree);
+}

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell_struct.h                                 :+:      :+:    :+:   */
+/*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/18 14:34:02 by truello          ###   ########.fr       */
+/*   Created: 2024/03/14 13:56:28 by truello           #+#    #+#             */
+/*   Updated: 2024/03/18 13:17:58 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_STRUCT_H
-# define MINISHELL_STRUCT_H
+#include "../../include/minishell.h"
 
-typedef struct s_token
+static int	is_del(char *delimiter, char c)
 {
-	char	**tokens;
-	int		count;
-}	t_tokens;
+	while (*delimiter)
+	{
+		if (c == *delimiter)
+			return (1);
+		delimiter++;
+	}
+	return (0);
+}
 
-typedef struct s_btree
+int	count_tokens(char *str, const char *delimiter)
 {
-	void			*val;
-	struct s_btree	*left;
-	struct s_btree	*right;
-}	t_btree;
+	int	i;
 
-#endif
+	i = -1;
+	if (!str || !delimiter || delimiter[0] == '\0')
+		return (0);
+	while (i++)
+	{
+	}
+}
+
