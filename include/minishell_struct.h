@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/18 17:35:40 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/19 14:30:30 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ typedef struct s_token
 	char	*data;
 	char	flag;
 }	t_token;
-
-typedef struct s_tokens
-{
-	t_token	*tokens;
-	int		size;
-}	t_tokens;
 
 typedef struct s_btree
 {
