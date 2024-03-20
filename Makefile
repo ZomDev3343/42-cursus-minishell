@@ -13,7 +13,7 @@ obj/%.o: src/%.c
 	cc $(FLAGS) -c -g -o $@ $<
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) $(LIBS) $(OBJ) -g -o $@
+	cc $(FLAGS) $(OBJ) $(LIBS)  -g -o $@
 
 clean:
 	make clean -C libft
