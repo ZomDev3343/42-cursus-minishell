@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/19 16:53:29 by truello          ###   ########.fr       */
+/*   Updated: 2024/03/20 16:58:04 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,22 @@
 # include "minishell_struct.h"
 # include "../libft/ft.h"
 
-# define TRUE 1
 # define FALSE 0
-
-/* Tokens */
+# define TRUE 1
 
 /* Binary Tree */
 
-t_btree		*new_leaf(void *val);
+t_btree		*new_leaf(t_token *token);
 void		clear_tree(t_btree *tree);
+int			put_after(t_btree *tree, t_btree *leaf);
+int			put_before(t_btree *tree, t_btree *leaf);
+
+/* Tokens */
+
+
+
+/* Commands */
+
+int			free_command(t_command *cmd);
 
 #endif

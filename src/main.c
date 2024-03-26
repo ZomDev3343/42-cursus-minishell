@@ -6,16 +6,17 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/20 16:01:16 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/20 16:57:55 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-int	main(void)
+int	main(int ac, char **av, char **env)
 {
+	char	*line;
 
+	line = readline("minishell > ");
 	
-
 	return (0);
 }
