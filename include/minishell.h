@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/26 12:50:37 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/26 18:20:52 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,20 @@ int			put_before(t_btree *tree, t_btree *leaf);
 
 /* Tokens */
 
+t_token		*newtoken(char *data, int flag);
 
+/* Token List */
+
+t_token_lst	*newtoklst(char *data);
+int			push_lst(t_token_lst **lst, char *data);
+
+/* Parsing */
+
+t_btree		*parse_exec_tree(char *line);
 
 /* Commands */
 
 int			free_command(t_command *cmd);
+t_command	*tkn_to_cmd(t_token *token);
 
 #endif

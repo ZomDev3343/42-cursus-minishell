@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/20 16:17:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/26 18:07:55 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,27 @@ typedef enum e_token_flag
 typedef struct s_token
 {
 	char	*data;
-	char	flag;
+	int		flag;
 }	t_token;
+
+typedef struct s_token_list
+{
+	char				*data;
+	struct s_token_list	*next;
+}	t_token_lst;
 
 typedef struct s_command
 {
 	char	*cmd_name;
 	char	**cmd_args;
 }	t_command;
+
+typedef struct s_minishell
+{
+	char	*input_file;
+	char	*output_file;
+	char	**env;
+}	t_minishell;
 
 typedef struct s_btree
 {
