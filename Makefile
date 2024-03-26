@@ -2,7 +2,7 @@ SRC=$(shell find ./src -name \*.c -type f -print)
 OBJ=$(patsubst ./src/%.c,./obj/%.o,$(SRC))
 NAME=minishell
 FLAGS=-Wall -Werror -Wextra
-LIBS=-I./libft ./libft/libft.a -lreadline
+LIBS=./libft/libft.a -I./libft -lreadline
 
 all:
 	make -C libft
@@ -10,10 +10,10 @@ all:
 	make $(NAME)
 
 obj/%.o: src/%.c
-	cc $(FLAGS) -c -g -o $@ $<
+	cc -c $(FLAGS) -g -o $@ $<
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) $(OBJ) $(LIBS)  -g -o $@
+	cc $(FLAGS) $(LIBS) $(OBJ) -g -o $@
 
 clean:
 	make clean -C libft

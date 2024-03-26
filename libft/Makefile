@@ -29,7 +29,7 @@ $(NAME): $(OBJ)
 	ar -rc $(NAME) $(OBJ)
 
 %.o: %.c
-	gcc -c -Wall -Werror -Wextra -Iprintf -Ignl -g $< -o $@
+	cc -c -Wall -Werror -Wextra -Iprintf -Ignl -g $< -o $@
 
 clean:
 	rm -rf *.o
