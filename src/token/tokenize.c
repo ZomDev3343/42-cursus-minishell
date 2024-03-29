@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 16:27:33 by tohma             #+#    #+#             */
-/*   Updated: 2024/03/29 18:47:35 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 18:49:26 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_token_lst	*tokenize(char *line)
 			|| line[i + 1] == '\0')
 		{
 			push_lst(&tok_lst, ft_strncpy(line + start_idx,
-				ft_max(1, i - start_idx + (line[i + 1] == '\0'))));
+					ft_max(1, i - start_idx + (line[i + 1] == '\0'))));
 			while (line[i + 1] == ' ')
 				i++;
 			start_idx = i + 1;

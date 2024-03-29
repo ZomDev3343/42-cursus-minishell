@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:06:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/03/29 18:27:10 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 18:49:35 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_token_lst(t_token_lst **tlst)
 void	print_token_list(t_token_lst *tlst)
 {
 	printf("--- PRINTING TOKEN LIST ---\n");
-	while(tlst)
+	while (tlst)
 	{
 		printf("%s\n", tlst->data);
 		tlst = tlst->next;
