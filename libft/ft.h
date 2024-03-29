@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/03/15 18:00:53 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 17:38:56 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strncpy(char *to_copy, size_t n);
 void	ft_strrepl(char *str, char bef, char aft);
 int		ft_strchr_i(char *str, char c);
+int		ft_nstrchr_i(char *str, char c);
 
 int		ft_atoi(const char *str);
 long	ft_atol(const char *str);

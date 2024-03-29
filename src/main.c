@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/03/26 13:50:20 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 18:23:39 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 int	main(void)
 {
-	char	*prompt;
+	char		*prompt;
+	t_token_lst	*tlst;
 
 	prompt = readline("minishell > ");
 	while (prompt[0] != '\0')
 	{
-		parse_exec_tree(prompt);
+		tlst = tokenize(prompt);
+		print_token_list(tlst);
+		free_token_lst(&tlst);
+		//parse_exec_tree(prompt);
 		free(prompt);
 		prompt = readline("minishell > ");
 	}

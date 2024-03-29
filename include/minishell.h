@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/26 18:20:52 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 18:23:19 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ t_token		*newtoken(char *data, int flag);
 /* Token List */
 
 t_token_lst	*newtoklst(char *data);
+t_token_lst	*tokenize(char *line);
 int			push_lst(t_token_lst **lst, char *data);
+void		print_token_list(t_token_lst *tlst);
+void		free_token_lst(t_token_lst **tlst);
 
 /* Parsing */
 

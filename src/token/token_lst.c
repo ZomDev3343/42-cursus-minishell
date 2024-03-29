@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 16:06:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/03/26 18:21:04 by tohma            ###   ########.fr       */
+/*   Updated: 2024/03/29 18:27:10 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,28 @@ int	push_lst(t_token_lst **lst, char *data)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = newtoklst(data);
-		if (!tmp)
+		if (!tmp->next)
 			return (FALSE);
 	}
 	return (TRUE);
+}
+
+void	free_token_lst(t_token_lst **tlst)
+{
+	if ((*tlst)->next)
+		free_token_lst(&((*tlst)->next));
+	free((*tlst)->data);
+	free(*tlst);
+	tlst = NULL;
+}
+
+void	print_token_list(t_token_lst *tlst)
+{
+	printf("--- PRINTING TOKEN LIST ---\n");
+	while(tlst)
+	{
+		printf("%s\n", tlst->data);
+		tlst = tlst->next;
+	}
+	printf("--- PRINTING TOKEN LIST ---\n");
 }
