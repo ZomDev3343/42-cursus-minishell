@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/03/29 18:23:19 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/01 15:23:07 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,38 @@
 
 /* Binary Tree */
 
-t_btree		*new_leaf(t_token *token);
-void		clear_tree(t_btree *tree);
-int			put_after(t_btree *tree, t_btree *leaf);
-int			put_before(t_btree *tree, t_btree *leaf);
+t_btree			*new_leaf(t_token *token);
+void			clear_tree(t_btree *tree);
+int				put_after(t_btree *tree, t_btree *leaf);
+int				put_before(t_btree *tree, t_btree *leaf);
+
+/* Redirections files */
+
+t_redir_files	*newrf(char *file_path);
+void			push_redir_file(t_redir_files **rf_struct, char *file_path);
+/* Minishell Infos */
+
+t_minishell		*init_minishell(void);
 
 /* Tokens */
 
-t_token		*newtoken(char *data, int flag);
+t_token			*newtoken(char *data, int flag);
 
 /* Token List */
 
-t_token_lst	*newtoklst(char *data);
-t_token_lst	*tokenize(char *line);
-int			push_lst(t_token_lst **lst, char *data);
-void		print_token_list(t_token_lst *tlst);
-void		free_token_lst(t_token_lst **tlst);
+t_token_lst		*newtoklst(char *data);
+t_token_lst		*tokenize(char *line);
+int				push_lst(t_token_lst **lst, char *data);
+void			print_token_list(t_token_lst *tlst);
+void			free_token_lst(t_token_lst **tlst);
 
 /* Parsing */
 
-t_btree		*parse_exec_tree(char *line);
-
+t_btree			*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst);
+int				parse_minfos(t_minishell *minfos, t_token_lst *tlst);
 /* Commands */
 
-int			free_command(t_command *cmd);
-t_command	*tkn_to_cmd(t_token *token);
+int				free_command(t_command *cmd);
+t_command		*tkn_to_cmd(t_token *token);
 
 #endif

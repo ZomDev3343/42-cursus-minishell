@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/03/26 18:07:55 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/01 15:04:47 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,17 @@ typedef struct s_command
 	char	**cmd_args;
 }	t_command;
 
+typedef struct s_redir_files
+{
+	char					*file_path;
+	struct s_redir_files	*next;
+}	t_redir_files;
+
 typedef struct s_minishell
 {
-	char	*input_file;
-	char	*output_file;
-	char	**env;
+	t_redir_files	*input_files;
+	t_redir_files	*output_files;
+	char			**env;
 }	t_minishell;
 
 typedef struct s_btree

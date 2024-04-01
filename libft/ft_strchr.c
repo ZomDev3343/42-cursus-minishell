@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
-/*   Updated: 2024/03/29 17:10:16 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/01 15:10:02 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,24 @@ int	ft_nstrchr_i(char *str, char c)
 	while (str[++i])
 		if (str[i] != c)
 			return (i);
+	return (-1);
+}
+
+int	ft_strchr_i_nquotes(char *str, char c)
+{
+	int	i;
+	int	quotes;
+
+	i = -1;
+	quotes = 0;
+	while (str[++i])
+	{
+		if (str[i] == '\'')
+			quotes ^= 0b1;
+		else if (str[i] == '\"')
+			quotes ^= 0b10;
+		if (str[i] == c && !(quotes & 0b1 || quotes & 0b10))
+			return (i);
+	}
 	return (-1);
 }
