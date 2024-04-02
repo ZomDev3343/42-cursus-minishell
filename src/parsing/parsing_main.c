@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 11:11:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/01 16:03:38 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/02 16:35:27 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@
 
 // }
 
-// t_btree	*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst)
-// {
-// 	t_btree	*tree;
+t_btree	*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst)
+{
+	t_btree	*tree;
 
-// 	tree = (t_btree *) ft_calloc(1, sizeof(t_btree));
-// 	if (!tree)
-// 		return (NULL);
-// 	if (parse_minfos(minfos, tlst))
-// 		if (parse_pipes(minfos, tlst))
-// 			printf("orhgihrhge\n");
-// 	return (tree);
-// }
+	tree = (t_btree *) ft_calloc(1, sizeof(t_btree));
+	if (!tree)
+		return (NULL);
+	if (parse_minfos(minfos, tlst))
+		printf("orhgihrhge\n");
+	return (tree);
+}

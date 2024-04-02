@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/04/01 15:04:47 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/02 14:59:38 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ typedef enum e_token_flag
 	E_SPCHAR = 0b100000,
 	E_REDIRECT = 0b1000000
 }	t_tknflag;
+
+typedef enum e_redirect_mode
+{
+	E_OUTPUT,
+	E_INPUT,
+	E_HERE_DOC,
+	E_APPEND
+}	t_redirect_mode;
 
 typedef struct s_token
 {
@@ -45,6 +53,7 @@ typedef struct s_command
 typedef struct s_redir_files
 {
 	char					*file_path;
+	int						mode;
 	struct s_redir_files	*next;
 }	t_redir_files;
 
