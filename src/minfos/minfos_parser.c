@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:21:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/02 16:32:46 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/03 14:29:01 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	handle_double_modes(t_redir_files **rf, char *cur_str)
 		return (FALSE);
 	if (cur_str[2] == '>' || cur_str[2] == '<')
 		return (FALSE);
-	fd_start_str = ft_nstrchr_i(cur_str + 3, ' ') + 3;
+	fd_start_str = ft_nstrchr_i(cur_str + 2, ' ') + 2;
 	if (cur_str[0] == '<')
 		push_redir_file(rf, ft_strcpy(cur_str + fd_start_str), E_HERE_DOC);
 	else if (cur_str[0] == '>')
@@ -34,7 +34,7 @@ static int	handle_simple_modes(t_redir_files **rf, char *cur_str)
 
 	if (cur_str[1] == '>' || cur_str[1] == '<')
 		return (FALSE);
-	fd_start_str = ft_nstrchr_i(cur_str + 1, ' ');
+	fd_start_str = ft_nstrchr_i(cur_str + 1, ' ') + 1;
 	if (cur_str[0] == '>')
 		push_redir_file(rf, ft_strcpy(cur_str + fd_start_str), E_OUTPUT);
 	else if (cur_str[0] == '<')
@@ -61,8 +61,12 @@ static int	parse_minfos_redirs(t_redir_files **side, char symbol,
 
 int	parse_minfos(t_minishell *minfos, t_token_lst *tlst)
 {
+	printf("fjeowhgoeiwhgoiehwohewoh\n");
 	if (!parse_minfos_redirs(&(minfos->input_files), '<', tlst)
 		|| !parse_minfos_redirs(&(minfos->output_files), '>', tlst))
 		return (FALSE);
+	printf("fjeowhgoeiwhgoiehwohewoh\n");
+	print_redir_files(minfos->input_files);
+	print_redir_files(minfos->output_files);
 	return (TRUE);
 }

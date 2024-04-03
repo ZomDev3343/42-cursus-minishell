@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 14:37:20 by truello           #+#    #+#             */
-/*   Updated: 2024/04/02 16:34:25 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/03 13:46:25 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,27 @@ void	push_redir_file(t_redir_files **rf_struct, char *file_path,
 	}
 }
 
-void	free_redir_files(t_redir_files *files)
+void	free_redir_files(t_redir_files **files)
 {
-	if (files->next)
-		free_redir_files(files->next);
-	ft_free(files->file_path);
-	ft_free(files);
+	if ((*files)->next)
+		free_redir_files(&((*files)->next));
+	ft_free((*files)->file_path);
+	ft_free(*files);
+	files = NULL;
+}
+
+void	print_redir_files(t_redir_files *files)
+{
+	t_redir_files	*tmp;
+
+	if (!files)
+		return ;
+	tmp = files;
+	printf("--- PRINT REDIR FILES ---\n");
+	while (tmp)
+	{
+		printf("FP: %s, Mode: %d\n", files->file_path, files->mode);
+		tmp = tmp->next;
+	}
+	printf("--- PRINT REDIR FILES ---\n");
 }
