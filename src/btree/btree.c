@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   btree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:35:16 by truello           #+#    #+#             */
-/*   Updated: 2024/03/26 16:12:55 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/03 15:41:29 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ t_btree	*new_leaf(t_token *token)
 	return (res);
 }
 
-void	clear_tree(t_btree *tree)
+void	free_tree(t_btree *tree)
 {
 	free(tree->token);
 	if (tree->left)
-		clear_tree(tree->left);
+		free_tree(tree->left);
 	if (tree->right)
-		clear_tree(tree->right);
+		free_tree(tree->right);
 	if (!tree->left && !tree->right)
 		free(tree);
 }

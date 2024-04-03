@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 14:09:35 by truello           #+#    #+#             */
-/*   Updated: 2024/04/02 16:06:44 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/03 16:04:12 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,21 @@ t_minishell	*init_minishell(void)
 	minfos->output_files = NULL;
 	minfos->env = NULL;
 	return (minfos);
+}
+
+void	clear_minfos_rfiles(t_minishell *minfos)
+{
+	free_redir_files(minfos->input_files);
+	free_redir_files(minfos->output_files);
+	minfos->input_files = NULL;
+	minfos->output_files = NULL;
+}
+
+void	free_minfos(t_minishell *minfos)
+{
+	clear_minfos_rfiles(minfos);
+	if (!minfos->env)
+		free_parts(minfos->env);
+	if (!minfos)
+		free(minfos);
 }
