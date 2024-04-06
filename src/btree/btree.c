@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   btree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:35:16 by truello           #+#    #+#             */
-/*   Updated: 2024/04/03 15:41:29 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/06 18:19:46 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_btree	*new_leaf(t_token *token)
+t_btree	*newleaf(t_token *token)
 {
 	t_btree	*res;
 
 	res = (t_btree *) ft_calloc(1, sizeof(t_btree));
+	if (!res)
+		return (NULL);
 	res->token = token;
 	res->left = NULL;
 	res->right = NULL;
@@ -25,13 +27,14 @@ t_btree	*new_leaf(t_token *token)
 
 void	free_tree(t_btree *tree)
 {
-	free(tree->token);
+	if (!tree)
+		return ;
+	free_token(tree->token);
 	if (tree->left)
 		free_tree(tree->left);
 	if (tree->right)
 		free_tree(tree->right);
-	if (!tree->left && !tree->right)
-		free(tree);
+	free(tree);
 }
 
 int	put_after(t_btree *tree, t_btree *leaf)
@@ -40,9 +43,7 @@ int	put_after(t_btree *tree, t_btree *leaf)
 
 	if (!tree)
 		return (FALSE);
-	last_leaf = tree->right;
-	while (last_leaf->right)
-		last_leaf = last_leaf->right;
+	last_leaf = get_last_leaf(tree);
 	last_leaf->right = leaf;
 	return (TRUE);
 }
@@ -53,9 +54,7 @@ int	put_before(t_btree *tree, t_btree *leaf)
 
 	if (!tree)
 		return (FALSE);
-	first_leaf = tree->left;
-	while (first_leaf->left)
-		first_leaf = first_leaf->left;
+	first_leaf = get_first_leaf(tree);
 	first_leaf->left = leaf;
 	return (TRUE);
 }

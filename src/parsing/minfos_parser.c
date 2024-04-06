@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minfos_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:21:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/03 14:57:02 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/05 16:25:02 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,16 @@ static int	parse_minfos_redirs(t_redir_files **side, char symbol,
 
 int	parse_minfos(t_minishell *minfos, t_token_lst *tlst)
 {
-	printf("fjeowhgoeiwhgoiehwohewoh\n");
+	char	*env_path;
+
 	if (!parse_minfos_redirs(&(minfos->input_files), '<', tlst)
 		|| !parse_minfos_redirs(&(minfos->output_files), '>', tlst))
 		return (FALSE);
-	printf("fjeowhgoeiwhgoiehwohewoh\n");
-	print_redir_files(minfos->input_files);
-	print_redir_files(minfos->output_files);
+	env_path = getenv("PATH");
+	if (!env_path)
+		return (FALSE);
+	minfos->env = ft_split(env_path, ':');
+	if (!minfos->env)
+		return (FALSE);
 	return (TRUE);
 }

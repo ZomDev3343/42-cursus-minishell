@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/04/03 15:41:27 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/06 18:08:49 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@
 
 /* Binary Tree */
 
-t_btree			*new_leaf(t_token *token);
+t_btree			*newleaf(t_token *token);
 void			free_tree(t_btree *tree);
 int				put_after(t_btree *tree, t_btree *leaf);
 int				put_before(t_btree *tree, t_btree *leaf);
+t_btree			*get_first_leaf(t_btree *tree);
+t_btree			*get_last_leaf(t_btree *tree);
+void			print_tree(t_btree *tree, int floor);
 
 /* Redirections files */
 
@@ -41,6 +44,11 @@ void			free_redir_files(t_redir_files *files);
 void			print_redir_files(t_redir_files *files);
 void			clear_minfos_rfiles(t_minishell *minfos);
 void			free_minfos(t_minishell *minfos);
+
+/* Pipes */
+
+void			put_pipes_in_tree(t_btree **tree, t_token_lst *tlst);
+
 /* Minishell Infos */
 
 t_minishell		*init_minishell(void);
@@ -48,6 +56,7 @@ t_minishell		*init_minishell(void);
 /* Tokens */
 
 t_token			*newtoken(char *data, int flag);
+void			free_token(t_token *token);
 
 /* Token List */
 
@@ -61,6 +70,7 @@ void			free_token_lst(t_token_lst **tlst);
 
 t_btree			*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst);
 int				parse_minfos(t_minishell *minfos, t_token_lst *tlst);
+
 /* Commands */
 
 int				free_command(t_command *cmd);

@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:56:28 by truello           #+#    #+#             */
-/*   Updated: 2024/03/29 16:27:47 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/06 18:04:40 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ t_token	*newtoken(char *data, int flag)
 	res->data = data;
 	res->flag = flag;
 	return (res);
+}
+
+void	free_token(t_token *token)
+{
+	if (!token)
+		return ;
+	free(token->data);
+	free(token);
 }
