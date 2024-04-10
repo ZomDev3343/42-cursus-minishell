@@ -10,10 +10,10 @@ all:
 	make $(NAME)
 
 obj/%.o: src/%.c
-	cc -c $(FLAGS) -g -o $@ $<
+	gcc -c $(FLAGS) -g -o $@ $<
 
 $(NAME): $(OBJ)
-	cc $(FLAGS) $(OBJ) $(LIBS) -g -o $@
+	gcc $(FLAGS) $(OBJ) $(LIBS) -g -fsanitize=address -o $@
 
 clean:
 	make clean -C libft

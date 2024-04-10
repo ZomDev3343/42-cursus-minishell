@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:30:22 by tohma             #+#    #+#             */
-/*   Updated: 2024/03/26 12:53:16 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/09 16:08:20 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 
 int	free_command(t_command *cmd)
 {
-	int	i;
-
-	i = -1;
 	if (!cmd)
 		return (FALSE);
-	while (++i)
-		ft_free(cmd->cmd_args[i]);
+	free_parts(cmd->cmd_args);
 	ft_free(cmd);
 	return (TRUE);
+}
+
+t_command	*newcmd(char **cmd_parts)
+{
+	t_command	*cmd;
+
+	cmd = (t_command *) ft_calloc(1, sizeof(t_command));
+	if (!cmd || !cmd_parts)
+		return (NULL);
+	cmd->cmd_name = cmd_parts[0];
+	cmd->cmd_args = cmd_parts;
+	return (cmd);
 }

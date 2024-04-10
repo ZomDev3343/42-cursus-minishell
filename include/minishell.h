@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:49:09 by truello           #+#    #+#             */
-/*   Updated: 2024/04/06 18:08:49 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/09 16:22:32 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int				put_before(t_btree *tree, t_btree *leaf);
 t_btree			*get_first_leaf(t_btree *tree);
 t_btree			*get_last_leaf(t_btree *tree);
 void			print_tree(t_btree *tree, int floor);
+int				is_tree_correct(t_btree *tree);
+void			put_command(t_btree *tree, char *cmd);
 
 /* Redirections files */
 
@@ -70,10 +72,12 @@ void			free_token_lst(t_token_lst **tlst);
 
 t_btree			*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst);
 int				parse_minfos(t_minishell *minfos, t_token_lst *tlst);
+void			parse_commands(t_minishell *minfos, t_btree *tree,
+					t_token_lst *tlst);
 
 /* Commands */
 
 int				free_command(t_command *cmd);
-t_command		*tkn_to_cmd(t_token *token);
+t_command		*newcmd(char **cmd_parts);
 
 #endif

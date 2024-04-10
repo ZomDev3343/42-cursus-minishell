@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 11:11:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/06 18:17:46 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/09 16:22:22 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@ t_btree	*parse_exec_tree(t_minishell *minfos, t_token_lst *tlst)
 	if (parse_minfos(minfos, tlst))
 	{
 		put_pipes_in_tree(&tree, tlst);
+		parse_commands(minfos, tree, tlst);
+		printf("Commands Parsed!\n");
 		print_tree(tree, 0);
-		printf("orhgihrhge\n");
+		/*if (is_tree_correct(tree))
+			exec_tree(tree);*/
 	}
 	return (tree);
 }
