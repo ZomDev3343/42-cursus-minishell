@@ -5,66 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/04/08 12:30:45 by truello          ###   ########.fr       */
+/*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
+/*   Updated: 2024/04/15 11:55:15 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_STRUCT_H
 # define MINISHELL_STRUCT_H
 
-typedef enum e_token_flag
-{
-	E_CMD = 0b1,
-	E_PIPE = 0b10,
-	E_REDIRECT = 0b100
-}	t_tknflag;
-
-typedef enum e_redirect_mode
-{
-	E_OUTPUT,
-	E_INPUT,
-	E_HERE_DOC,
-	E_APPEND
-}	t_redirect_mode;
+enum e_token_type {
+	REDIRECT,
+	PIPE,
+	COMMAND
+};
 
 typedef struct s_token
 {
-	char	*data;
-	int		flag;
-}	t_token;
-
-typedef struct s_token_list
-{
 	char				*data;
-	struct s_token_list	*next;
-}	t_token_lst;
-
-typedef struct s_command
-{
-	char	*cmd_name;
-	char	**cmd_args;
-}	t_command;
-
-typedef struct s_redir_files
-{
-	char					*file_path;
-	int						mode;
-	struct s_redir_files	*next;
-}	t_redir_files;
-
-typedef struct s_minishell
-{
-	t_redir_files	*input_files;
-	t_redir_files	*output_files;
-	char			**env;
-}	t_minishell;
-
-typedef struct s_btree
-{
-	t_token			*token;
-	struct s_btree	*left;
-	struct s_btree	*right;
-}	t_btree;
+	enum e_token_type	type;
+	struct s_token		*next;
+}	t_token;
 
 #endif

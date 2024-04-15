@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/04/02 15:24:42 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/15 12:33:10 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,28 @@ char	*ft_strncpy(char *to_copy, size_t n)
 		i++;
 	}
 	return (res);
+}
+
+/**
+ * @brief Copy the next word in the string (delimited by a space)
+ *
+ * @return char*
+ */
+char	*ft_strcpy_wsp(char *line, int *index)
+{
+	int	quotes;
+	int	i;
+
+	quotes = 0;
+	i = -1;
+	while (line[++i])
+	{
+		if (line[i] == '\"')
+			quotes ^= 0b1;
+		else if (line[i] == '\'')
+			quotes ^= 0b10;
+		else if (line[i] == ' ' && quotes == 0)
+			return (*index = i, ft_strncpy(line, i + 1));
+	}
+	return (*index = i, ft_strcpy(line));
 }

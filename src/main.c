@@ -5,34 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 16:48:48 by truello           #+#    #+#             */
-/*   Updated: 2024/04/03 15:42:10 by truello          ###   ########.fr       */
+/*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
+/*   Updated: 2024/04/15 12:01:54 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
+static void	parse_line(char *line)
+{
+
+}
+
 int	main(void)
 {
-	char		*prompt;
-	t_token_lst	*tlst;
-	t_minishell	*minfos;
-	t_btree		*tree;
+	char	*line;
 
-	minfos = init_minishell();
-	prompt = readline("minishell > ");
-	while (prompt[0] != '\0')
+	line = readline("minishell > ");
+	while (line)
 	{
-		tlst = tokenize(prompt);
-		print_token_list(tlst);
-		tree = parse_exec_tree(minfos, tlst);
-		free_token_lst(&tlst);
-		clear_minfos_rfiles(minfos);
-		free_tree(tree);
-		free(prompt);
-		prompt = readline("minishell > ");
+		parse_line(line);
+		free(line);
+		line = readline("minishell > ");
 	}
-	free_minfos(minfos);
-	free(prompt);
 	return (0);
 }
