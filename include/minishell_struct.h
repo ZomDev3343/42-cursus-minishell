@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 17:40:55 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/16 20:27:46 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ enum e_redirection_type
 	REDIR_OUT,
 	REDIR_APP,
 	REDIR_HD,
-	REDIR_ERROR
+	NO_REDIR
 };
 
 typedef struct s_token

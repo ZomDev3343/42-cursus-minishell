@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 17:43:53 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/16 19:53:37 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,24 @@
 
 /* Token */
 
-t_token			*newtoken(char *data, int type, int cmd_id);
+t_token			*newtoken(char *data, int cmd_id);
 void			print_token_list(t_token *toklist);
 t_token			*tokenize(char *line);
 void			free_token(t_token *token);
 
 /* Redirections */
 
+t_redirections	*newredirection(char *path, int mode);
+void			push_redirections(t_redirections **redirections,
+					t_redirections *newredir);
+void			parse_redirection(t_redirections **redirections,
+					t_token *token);
+void			print_redirections(t_redirections *redirections);
 char			get_redirection_char(int mode);
 
 /* Commands */
 
-t_redirections	*newredirection(char *path, int mode);
-void			push_redirections(t_redirections **redirections,
-					t_redirections *newredir);
+t_command		*parse_commands(t_token *tlist);
 
 /* --- Parsing --- */
 

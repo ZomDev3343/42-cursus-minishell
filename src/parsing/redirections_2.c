@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:42:07 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 17:43:38 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/16 19:55:23 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,15 @@ char	get_redirection_char(int mode)
 		return ('<');
 	else
 		return ('>');
+}
+
+void	print_redirections(t_redirections *redirections)
+{
+	printf("--- Redirections ---\n");
+	while (redirections)
+	{
+		printf("%s -> %d\n", redirections->path, redirections->mode);
+		redirections = redirections->next;
+	}
+	printf("--- Redirections ---\n");
 }
