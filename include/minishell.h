@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/15 12:05:34 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:40:30 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 # include <stdio.h>
 
 # include "minishell_struct.h"
-# include "libft/ft.h"
+# include "../libft/ft.h"
+
+/* Token */
+
+t_token	*newtoken(char *data, int type, int cmd_id);
+void	print_token_list(t_token *toklist);
+t_token	*tokenize(char *line);
+void	free_token(t_token *token);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/15 11:55:15 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/15 15:31:17 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_token
 {
 	char				*data;
 	enum e_token_type	type;
+	int					cmd_id;
 	struct s_token		*next;
 }	t_token;
 
