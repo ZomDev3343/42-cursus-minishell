@@ -6,13 +6,13 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 14:44:07 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/16 17:41:01 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_token	*newtoken(char *data, int type, int cmd_id)
+t_token	*newtoken(char *data, int cmd_id)
 {
 	t_token	*token;
 
@@ -20,7 +20,6 @@ t_token	*newtoken(char *data, int type, int cmd_id)
 	if (!token)
 		return (NULL);
 	token->data = data;
-	token->type = type;
 	token->cmd_id = cmd_id;
 	return (token);
 }
@@ -46,8 +45,7 @@ void	print_token_list(t_token *toklist)
 {
 	while (toklist)
 	{
-		printf("%s M:%d CMD:%d\n", toklist->data, toklist->type,
-			toklist->cmd_id);
+		printf("%s CMD:%d\n", toklist->data, toklist->cmd_id);
 		toklist = toklist->next;
 	}
 }
@@ -79,7 +77,7 @@ t_token	*tokenize(char *line)
 		while (i < ft_strlen(cmds_part[parts_index]))
 		{
 			token_part = ft_strcpy_wsp(cmds_part[parts_index] + i, &i);
-			push_token(&token, newtoken(token_part, 0, parts_index));
+			push_token(&token, newtoken(token_part, parts_index));
 		}
 	}
 	return (free_parts(cmds_part), token);
