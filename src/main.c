@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/15 14:53:05 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:44:24 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(void)
 	char	*line;
 
 	line = readline("minishell > ");
-	while (line)
+	while (line && line[0] != '\0')
 	{
 		parse_line(line);
 		free(line);
