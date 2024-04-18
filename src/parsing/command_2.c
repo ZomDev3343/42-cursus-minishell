@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:47:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/18 12:33:09 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:27:43 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,13 @@ char	**build_parts(t_command_part *cmd_parts)
 		tmp = tmp->next;
 	}
 	return (free_cmd_parts(cmd_parts), res);
+}
+
+void	free_command(t_command *cmd)
+{
+	if (cmd->next)
+		free_command(cmd->next);
+	free_parts(cmd->parts);
+	free_redirections(cmd->redirections);
+	free(cmd);
 }

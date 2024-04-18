@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/18 13:19:30 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:25:16 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				parse_redirection(t_redirections **redirections,
 					t_token *token);
 void			print_redirections(t_redirections *redirections);
 char			get_redirection_char(int mode);
+void			free_redirections(t_redirections *redirections);
 
 /* Commands */
 
@@ -48,6 +49,7 @@ void			free_cmd_parts(t_command_part *parts);
 void			push_command_part(t_command_part **cmd_parts, char *part);
 char			**build_parts(t_command_part *cmd_parts);
 void			print_commands(t_command *cmds);
+void			free_command(t_command *cmd);
 
 /* --- Parsing --- */
 
