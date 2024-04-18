@@ -13,7 +13,7 @@ obj/%.o: src/%.c
 	gcc -c $(FLAGS) -g -o $@ $<
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) $(OBJ) $(LIBS) -g -fsanitize=address -o $@
+	gcc $(FLAGS) $(OBJ) $(LIBS) -g -o $@
 
 clean:
 	make clean -C libft

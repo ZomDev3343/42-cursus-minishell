@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/04/02 15:24:56 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:48:35 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_free(void *ptr);
 
 char	**ft_split(char const *str, char c);
 char	**free_parts(char **parts);
+void	print_parts(char **parts);
 int		get_parts_size(char **parts);
 
 int		ft_isdigit(int c);
@@ -38,6 +39,7 @@ char	*ft_strnewjoin(char *s1, char *s2);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strncpy(char *to_copy, size_t n);
 char	*ft_strcpy(char *to_copy);
+char	*ft_strcpy_wsp(char *line, int *index);
 void	ft_strrepl(char *str, char bef, char aft);
 int		ft_strchr_i(char *str, char c);
 int		ft_nstrchr_i(char *str, char c);

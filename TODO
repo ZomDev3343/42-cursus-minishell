@@ -1,6 +1,4 @@
---- Parsing
--- Redirections OK
--- Pipes OK
--- Commands
-- Arguments
--- Arbre d'execution
+* Liste des tests apres Parsing *
+
+- Si une redirection contient un chevron, error syntax
+

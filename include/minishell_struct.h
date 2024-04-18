@@ -3,68 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/12 12:51:41 by truello           #+#    #+#             */
-/*   Updated: 2024/04/08 12:30:45 by truello          ###   ########.fr       */
+/*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
+/*   Updated: 2024/04/17 12:25:18 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_STRUCT_H
 # define MINISHELL_STRUCT_H
 
-typedef enum e_token_flag
+enum e_redirection_type
 {
-	E_CMD = 0b1,
-	E_PIPE = 0b10,
-	E_REDIRECT = 0b100
-}	t_tknflag;
-
-typedef enum e_redirect_mode
-{
-	E_OUTPUT,
-	E_INPUT,
-	E_HERE_DOC,
-	E_APPEND
-}	t_redirect_mode;
+	REDIR_IN,
+	REDIR_OUT,
+	REDIR_APP,
+	REDIR_HD,
+	NO_REDIR
+};
 
 typedef struct s_token
 {
-	char	*data;
-	int		flag;
+	char				*data;
+	int					cmd_id;
+	int					used;
+	struct s_token		*next;
 }	t_token;
 
-typedef struct s_token_list
+typedef struct s_redirections
 {
-	char				*data;
-	struct s_token_list	*next;
-}	t_token_lst;
+	char					*path;
+	int						mode;
+	struct s_redirections	*next;
+}	t_redirections;
+
+typedef struct s_command_part
+{
+	char					*part;
+	struct s_command_part	*next;
+}	t_command_part;
 
 typedef struct s_command
 {
-	char	*cmd_name;
-	char	**cmd_args;
+	char				**parts;
+	t_redirections		*redirections;
+	struct s_command	*next;
 }	t_command;
-
-typedef struct s_redir_files
-{
-	char					*file_path;
-	int						mode;
-	struct s_redir_files	*next;
-}	t_redir_files;
-
-typedef struct s_minishell
-{
-	t_redir_files	*input_files;
-	t_redir_files	*output_files;
-	char			**env;
-}	t_minishell;
-
-typedef struct s_btree
-{
-	t_token			*token;
-	struct s_btree	*left;
-	struct s_btree	*right;
-}	t_btree;
 
 #endif
