@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:43:06 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 20:27:24 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/17 12:58:12 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_redirections	*get_redirection(t_token *token, int mode)
 	if (!res)
 		return (NULL);
 	path_index = ft_nstrchr_i(token->data, get_redirection_char(mode));
-	if (path_index < ft_strlen(token->data))
+	if (token->data[path_index] != '\0')
 	{
 		token->used = 1;
 		res->path = ft_strcpy(token->data + path_index);
@@ -69,16 +69,21 @@ t_redirections	*get_redirection(t_token *token, int mode)
 	return (res);
 }
 
-void	parse_redirection(t_redirections **redirections, t_token *token)
+int	parse_redirection(t_redirections **redirections, t_token *token)
 {
 	int				redir_mode;
+	t_redirections	*newredir;
 
 	if (!redirections)
-		return ;
+		return (FALSE);
 	redir_mode = get_redirection_mode(token->data);
 	if (redir_mode == NO_REDIR || token->used)
-		return ;
-	push_redirections(redirections, get_redirection(token, redir_mode));
+		return (FALSE);
+	newredir = get_redirection(token, redir_mode);
+	if (!newredir)
+		return (FALSE);
+	push_redirections(redirections, newredir);
+	return (TRUE);
 }
 
 void	push_redirections(t_redirections **redirections,

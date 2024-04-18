@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:16:31 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 19:58:59 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:07:53 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,59 @@ t_command	*newcmd(char **cmd_parts, t_redirections *redirections)
 	return (cmd);
 }
 
-t_command	*parse_commands(t_token *tlist)
+static void	push_command(t_command **cmds, t_command *cmd)
 {
+	t_command	*tmp;
+
+	if (!cmds)
+		return ;
+	if (!*cmds)
+		*cmds = cmd;
+	else
+	{
+		tmp = *cmds;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = cmd;
+	}
+}
+
+void	parse_commands(t_token *tlist, t_command **cmds)
+{
+	t_command_part	*cmd_parts;
 	t_redirections	*redirections;
 	int				cur_id;
 
 	cur_id = 0;
+	cmd_parts = NULL;
 	redirections = NULL;
 	while (tlist)
 	{
-		if (tlist->used)
-			continue ;
-		if (tlist->cmd_id == cur_id)
+		if (!tlist->used && tlist->cmd_id == cur_id)
+			if (!parse_redirection(&redirections, tlist))
+				push_command_part(&cmd_parts, ft_strcpy(tlist->data));
+		if ((!tlist->used && tlist->cmd_id != cur_id) || !tlist->next)
 		{
-			parse_redirection(&redirections, tlist);
+			push_command(cmds, newcmd(build_parts(cmd_parts), redirections));
+			redirections = NULL;
+			cmd_parts = NULL;
+			cur_id++;
+			if (!tlist->next)
+				tlist = tlist->next;
+			continue ;
 		}
-		else
-			break ;
 		tlist = tlist->next;
 	}
-	print_redirections(redirections);
-	return (NULL);
+}
+
+void	print_commands(t_command *cmds)
+{
+	while (cmds)
+	{
+		printf("--- Command ---\n");
+		print_parts(cmds->parts);
+		print_redirections(cmds->redirections);
+		printf("--- Command ---\n");
+		cmds = cmds->next;
+	}
 }

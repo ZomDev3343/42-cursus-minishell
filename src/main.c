@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 19:54:19 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 13:19:43 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 static void	parse_line(char *line)
 {
-	t_token	*tlist;
+	t_token		*tlist;
+	t_command	*cmds;
 
+	cmds = NULL;
 	tlist = tokenize(line);
 	print_token_list(tlist);
-	parse_commands(tlist);
+	parse_commands(tlist, &cmds);
+	print_commands(cmds);
 	free_token(tlist);
 }
 

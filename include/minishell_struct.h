@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 20:27:46 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/17 12:25:18 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,12 @@ typedef struct s_redirections
 	int						mode;
 	struct s_redirections	*next;
 }	t_redirections;
+
+typedef struct s_command_part
+{
+	char					*part;
+	struct s_command_part	*next;
+}	t_command_part;
 
 typedef struct s_command
 {

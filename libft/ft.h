@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/04/15 12:29:19 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/17 17:48:35 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_free(void *ptr);
 
 char	**ft_split(char const *str, char c);
 char	**free_parts(char **parts);
+void	print_parts(char **parts);
 int		get_parts_size(char **parts);
 
 int		ft_isdigit(int c);

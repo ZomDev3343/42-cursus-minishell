@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 13:35:48 by tohma             #+#    #+#             */
-/*   Updated: 2024/02/19 13:55:28 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:03:22 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,15 @@ int	get_parts_size(char **parts)
 	while (parts[i])
 		i++;
 	return (i);
+}
+
+void	print_parts(char **parts)
+{
+	int	i;
+
+	i = -1;
+	if (!parts)
+		return ;
+	while (parts[++i])
+		printf("%s\n", parts[i]);
 }

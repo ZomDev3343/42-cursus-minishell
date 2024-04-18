@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:42:07 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 19:55:23 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/18 14:03:32 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ char	get_redirection_char(int mode)
 
 void	print_redirections(t_redirections *redirections)
 {
+	if (!redirections)
+		return ;
 	printf("--- Redirections ---\n");
 	while (redirections)
 	{
