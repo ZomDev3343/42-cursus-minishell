@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/16 14:13:38 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/19 11:59:55 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_strchr_i(char *str, char c)
 	while (str[++i])
 		if (str[i] == c)
 			return (i);
-	return (-1);
+	return (i);
 }
 
 /* Searches the lowest index that is not the given character */

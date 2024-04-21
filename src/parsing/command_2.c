@@ -6,48 +6,20 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:47:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/18 14:27:43 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:18:32 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	free_cmd_parts(t_command_part *parts)
-{
-	if (!parts)
-		return ;
-	if (parts->next)
-		free_cmd_parts(parts->next);
-	free(parts->part);
-	free(parts);
-}
-
-void	push_command_part(t_command_part **cmd_parts, char *part)
-{
-	t_command_part	*cmd_part;
-	t_command_part	*tmp;
-
-	if (!cmd_parts)
-		return ;
-	cmd_part = ft_calloc(1, sizeof(t_command_part));
-	if (!cmd_part)
-		return ;
-	cmd_part->part = part;
-	if (!*cmd_parts)
-		*cmd_parts = cmd_part;
-	else
-	{
-		tmp = *cmd_parts;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = cmd_part;
-	}
-}
-
-char	**build_parts(t_command_part *cmd_parts)
+/**
+ * @brief Takes string parts and builds an array containing every part
+ * (frees the original linked list)
+*/
+char	**build_parts(t_string_part *cmd_parts)
 {
 	char			**res;
-	t_command_part	*tmp;
+	t_string_part	*tmp;
 	int				len;
 	int				i;
 
@@ -68,7 +40,7 @@ char	**build_parts(t_command_part *cmd_parts)
 		res[i] = ft_strcpy(tmp->part);
 		tmp = tmp->next;
 	}
-	return (free_cmd_parts(cmd_parts), res);
+	return (free_str_parts(cmd_parts), res);
 }
 
 void	free_command(t_command *cmd)

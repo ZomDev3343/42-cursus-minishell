@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/18 14:21:21 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/21 15:31:50 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ typedef struct s_redirections
 	struct s_redirections	*next;
 }	t_redirections;
 
-typedef struct s_command_part
+typedef struct s_string_part
 {
 	char					*part;
-	struct s_command_part	*next;
-}	t_command_part;
+	struct s_string_part	*next;
+}	t_string_part;
 
 typedef struct s_command
 {
@@ -49,5 +49,12 @@ typedef struct s_command
 	t_redirections		*redirections;
 	struct s_command	*next;
 }	t_command;
+
+typedef struct s_env
+{
+	char			*name;
+	char			*content;
+	struct s_env	*next;
+}	t_env;
 
 #endif

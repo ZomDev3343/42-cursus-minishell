@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 16:46:05 by truello           #+#    #+#             */
-/*   Updated: 2024/04/19 12:16:04 by tohma            ###   ########.fr       */
+/*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
+/*   Updated: 2024/04/21 23:37:44 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "../../include/minishell.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*get_env_variable(t_env *env, char *var_name)
 {
-	char		*res;
-	size_t		s1_len;
-	size_t		s2_len;
-	size_t		i;
-
-	i = 0;
-	s1_len = ft_strlen(s1);
-	s2_len = ft_strlen(s2);
-	res = (char *) ft_calloc(s1_len + s2_len + 1, 1);
-	if (!res)
-		return (NULL);
-	while (i < s1_len)
+	// TODO
+	while (env)
 	{
-		res[i] = s1[i];
-		i++;
+		if (ft_strcmp(env->name, var_name) == 0)
+			return (ft_strcpy());
+		env = env->next;
 	}
-	while (i - s1_len < s2_len)
-	{
-		res[i] = s2[i - s1_len];
-		i++;
-	}
-	return (res);
+	return (NULL);
 }

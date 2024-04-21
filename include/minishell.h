@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/18 14:25:16 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/21 20:18:54 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 
 # include "minishell_struct.h"
 # include "../libft/ft.h"
+
+/* --- Environment --- */
+
+t_env			*newenv(char *name, char *content);
+void			free_env(t_env *env);
+void			push_env(t_env **env, t_env *env_var);
+t_env			*make_env(char **envp);
+int				remove_env_var(t_env **env, char *var_name);
+
+/* --- Environment --- */
 
 /* --- Parsing --- */
 
@@ -45,11 +55,16 @@ void			free_redirections(t_redirections *redirections);
 /* Commands */
 
 void			parse_commands(t_token *tlist, t_command **cmds);
-void			free_cmd_parts(t_command_part *parts);
-void			push_command_part(t_command_part **cmd_parts, char *part);
-char			**build_parts(t_command_part *cmd_parts);
+void			free_str_parts(t_string_part *parts);
+void			push_str_part(t_string_part **cmd_parts, char *part);
+char			**build_parts(t_string_part *cmd_parts);
 void			print_commands(t_command *cmds);
 void			free_command(t_command *cmd);
+
+/* String Utils */
+
+char			*build_str(t_string_part *parts);
+int				is_quote_closed(char *str);
 
 /* --- Parsing --- */
 

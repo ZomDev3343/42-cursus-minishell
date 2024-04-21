@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/18 14:29:28 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/21 19:58:51 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ static void	parse_line(char *line)
 	free_token(tlist);
 }
 
-int	main(void)
+int	main(int ac, char **av, char **envp)
 {
 	char	*line;
+	t_env	*env;
 
+	env = make_env(envp);
 	line = readline("minishell > ");
 	while (line && line[0] != '\0')
 	{
@@ -39,5 +41,6 @@ int	main(void)
 	}
 	if (line)
 		free(line);
+	free_env(env);
 	return (0);
 }
