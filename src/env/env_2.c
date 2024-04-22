@@ -3,23 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/21 23:37:44 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 17:42:02 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
+/**
+ * @brief Expects a string starting with '$' and gives the name after it
+ *
+ * @param var_name String containing the variable name
+ * @return (char*) Ex: $PATH -> PATH
+ */
+static char	*parse_var_name(char *var_name)
+{
+	int		i;
+
+	i = 1;
+	if (!ft_isalphanum_c(var_name[i]))
+		return (NULL);
+	while (var_name[i] && ft_isalphanum_c(var_name[i]))
+		i++;
+	return (ft_strncpy(var_name + 1, i - 1));
+}
+
 char	*get_env_variable(t_env *env, char *var_name)
 {
-	// TODO
-	while (env)
+	char	*correct_var_name;
+
+	correct_var_name = parse_var_name(var_name);
+	printf("var : %s\n", correct_var_name);
+	while (env && correct_var_name)
 	{
-		if (ft_strcmp(env->name, var_name) == 0)
-			return (ft_strcpy());
+		if (ft_strcmp(env->name, correct_var_name) == 0)
+		{
+			printf("%s\n", env->content);
+			return (ft_strcpy(env->content));
+		}
 		env = env->next;
 	}
+	ft_free(correct_var_name);
 	return (NULL);
+}
+
+void	print_env(t_env *env)
+{
+	while (env)
+	{
+		printf("%s -> %s\n", env->name, env->content);
+		env = env->next;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/21 19:58:51 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 17:19:06 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,20 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_env	*env;
 
+	ac = ac + 1 - 1;
+	*av = *av;
 	env = make_env(envp);
 	line = readline("minishell > ");
 	while (line && line[0] != '\0')
 	{
+		char *test_quotes = rem_quotes(line, env);
+		printf("%s\n", test_quotes);
+		free(test_quotes);
 		parse_line(line);
 		free(line);
 		line = readline("minishell > ");
 	}
-	if (line)
-		free(line);
+	ft_free(line);
 	free_env(env);
 	return (0);
 }

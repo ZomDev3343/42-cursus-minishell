@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/04/19 12:16:04 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 16:47:57 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int		get_parts_size(char **parts);
 
 int		ft_isdigit(int c);
 int		ft_isnum(char *str);
+int		ft_isalpha(char c);
+int		ft_isalphanum(char *str);
+int		ft_isalphanum_c(char c);
 
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(char *s1, char *s2, int n);
@@ -40,10 +43,14 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strncpy(char *to_copy, size_t n);
 char	*ft_strcpy(char *to_copy);
 char	*ft_strcpy_wsp(char *line, int *index);
+char	*ft_strcpy_until_quote(char *str);
 void	ft_strrepl(char *str, char bef, char aft);
 int		ft_strchr_i(char *str, char c);
 int		ft_nstrchr_i(char *str, char c);
 int		ft_strchr_i_nquotes(char *str, char c);
+int		ft_strchr_nalphanum(char *str);
+int		ft_strchr_quotes(char *str);
+
 char	*ft_strdup(char *str);
 
 int		ft_atoi(const char *str);

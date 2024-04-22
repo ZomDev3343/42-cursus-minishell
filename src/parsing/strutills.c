@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strutills.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:48:33 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/21 20:24:08 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 17:11:58 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	push_str_part(t_string_part **str_parts, char *part)
 	t_string_part	*str_part;
 	t_string_part	*tmp;
 
-	if (!str_parts)
-		return ;
 	str_part = ft_calloc(1, sizeof(t_string_part));
 	if (!str_part)
 		return ;
@@ -54,6 +52,7 @@ char	*build_str(t_string_part *parts)
 	char			*tmp_str;
 	t_string_part	*tmp;
 
+	res = NULL;
 	if (!parts)
 		return (NULL);
 	tmp = parts;
@@ -63,7 +62,7 @@ char	*build_str(t_string_part *parts)
 			res = ft_strcpy(parts->part);
 		else
 		{
-			tmp_str = ft_strjoin(res, parts->part);
+			tmp_str = ft_strjoin(res, tmp->part);
 			free(res);
 			res = tmp_str;
 		}
@@ -71,4 +70,15 @@ char	*build_str(t_string_part *parts)
 	}
 	free_str_parts(parts);
 	return (res);
+}
+
+void	print_str_parts(t_string_part *parts)
+{
+	if (!parts)
+		return ;
+	while (parts)
+	{
+		printf("%s\n", parts->part);
+		parts = parts->next;
+	}
 }

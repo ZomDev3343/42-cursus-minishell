@@ -1,7 +1,7 @@
 SRC=$(shell find ./src -name \*.c -type f -print)
 OBJ=$(patsubst ./src/%.c,./obj/%.o,$(SRC))
 NAME=minishell
-FLAGS=-Wall -Werror -Wextra
+FLAGS=-Wall -Werror -Wextra -fsanitize=address
 LIBS=./libft/libft.a -I./libft -lreadline
 
 all:

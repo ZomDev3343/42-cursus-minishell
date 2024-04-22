@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/19 11:59:55 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 16:47:37 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,26 @@ int	ft_strchr_i_nquotes(char *str, char c)
 			return (i);
 	}
 	return (-1);
+}
+
+int	ft_strchr_nalphanum(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (!ft_isalphanum_c(str[i]))
+			return (i);
+	return (-1);
+}
+
+int	ft_strchr_quotes(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '\'' || str[i] == '\"')
+			break ;
+	return (i);
 }

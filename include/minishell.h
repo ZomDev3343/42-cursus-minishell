@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/21 20:18:54 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 17:16:18 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			free_env(t_env *env);
 void			push_env(t_env **env, t_env *env_var);
 t_env			*make_env(char **envp);
 int				remove_env_var(t_env **env, char *var_name);
+char			*get_env_variable(t_env *env, char *var_name);
+void			print_env(t_env *env);
 
 /* --- Environment --- */
 
@@ -65,6 +67,8 @@ void			free_command(t_command *cmd);
 
 char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
+char			*rem_quotes(char *str, t_env *env);
+void			print_str_parts(t_string_part *parts);
 
 /* --- Parsing --- */
 

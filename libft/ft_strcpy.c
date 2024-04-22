@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/04/16 14:13:56 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/22 16:41:50 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,15 @@ char	*ft_strcpy_wsp(char *line, int *index)
 		}
 	}
 	return (*index += i, ft_strcpy(line));
+}
+
+char	*ft_strcpy_until_quote(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] == '\'' || str[i] == '\"')
+			break;
+	return (ft_strncpy(str, i));
 }

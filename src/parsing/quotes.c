@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/21 20:28:13 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/22 17:43:58 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@
 */
 int	is_quote_closed(char *str)
 {
-	int		closed;
 	char	quote;
 	int		i;
 
-	closed = 0;
 	quote = *str;
 	i = 0;
 	while (str[++i])
@@ -31,25 +29,71 @@ int	is_quote_closed(char *str)
 	return (0);
 }
 
-char	*rem_double_quotes(char *str, t_env *env)
+static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 {
-	
+	int	end_quote;
+	int	i;
+	int	last_cpy_index;
+
+	end_quote = is_quote_closed(str);
+	if (!end_quote)
+		return (-1);
+	i = 0;
+	last_cpy_index = 1;
+	while (++i < end_quote)
+	{
+		// TODO Fix le probleme du content qui s'affiche pas en entier
+		if (str[i] == '$' && i + 1 < end_quote)
+		{
+			push_str_part(parts,
+				ft_strncpy(str + last_cpy_index, i - last_cpy_index));
+			push_str_part(parts, get_env_variable(env, str + i));
+			i += ft_strchr_nalphanum(str + i + 1);
+			last_cpy_index = i;
+		}
+	}
+	if (i - last_cpy_index > 0)
+		push_str_part(parts,
+			ft_strncpy(str + last_cpy_index, i - last_cpy_index));
+	return (end_quote);
 }
 
-char	*rem_single_quotes(char *str)
+static int	rem_single_quotes(t_string_part **parts, char *str)
 {
-	
+	int	end_quote;
+
+	end_quote = is_quote_closed(str);
+	if (end_quote <= 1)
+		return (-1);
+	push_str_part(parts, ft_strncpy(str + 1, end_quote - 1));
+	return (end_quote);
 }
 
 char	*rem_quotes(char *str, t_env *env)
 {
 	t_string_part	*parts;
+	char			*res;
 	int				i;
+	int				quote_end;
 
+	parts = NULL;
 	i = -1;
 	while (str[++i])
 	{
-		
+		quote_end = 0;
+		if (str[i] == '\'')
+			quote_end = rem_single_quotes(&parts, str + i);
+		else if (str[i] == '"')
+			quote_end = rem_double_quotes(&parts, str + i, env);
+		else
+		{
+			push_str_part(&parts, ft_strcpy_until_quote(str + i));
+			i += ft_strchr_quotes(str + i);
+		}
+		if (quote_end == -1)
+			break ;
+		i += quote_end;
 	}
-	
+	print_str_parts(parts);
+	return (res = build_str(parts), res);
 }
