@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/22 17:16:18 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:01:07 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			print_env(t_env *env);
 
 t_token			*newtoken(char *data, int cmd_id);
 void			print_token_list(t_token *toklist);
-t_token			*tokenize(char *line);
+t_token			*tokenize(char *line, t_env *env);
 void			free_token(t_token *token);
 
 /* Redirections */

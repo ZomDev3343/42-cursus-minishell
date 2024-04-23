@@ -6,19 +6,19 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 13:07:18 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:41:08 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	parse_line(char *line)
+static void	parse_line(char *line, t_env *env)
 {
 	t_token		*tlist;
 	t_command	*cmds;
 
 	cmds = NULL;
-	tlist = tokenize(line);
+	tlist = tokenize(line, env);
 	print_token_list(tlist);
 	parse_commands(tlist, &cmds);
 	print_commands(cmds);
@@ -37,10 +37,7 @@ int	main(int ac, char **av, char **envp)
 	line = readline("minishell > ");
 	while (line && line[0] != '\0')
 	{
-		char *test_quotes = rem_quotes(line, env);
-		printf("%s\n", test_quotes);
-		free(test_quotes);
-		parse_line(line);
+		parse_line(line, env);
 		free(line);
 		line = readline("minishell > ");
 	}

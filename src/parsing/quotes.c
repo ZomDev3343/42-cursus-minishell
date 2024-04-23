@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 13:06:50 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 14:25:38 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*rem_quotes(char *str, t_env *env)
 		quote_end = 0;
 		if (str[i] == '\'')
 			quote_end = rem_single_quotes(&parts, str + i);
-		else if (str[i] == '"')
+		else if (str[i] == '\"')
 			quote_end = rem_double_quotes(&parts, str + i, env);
 		else
 		{

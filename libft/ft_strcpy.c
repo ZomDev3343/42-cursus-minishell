@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/04/22 16:41:50 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:54:07 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_strcpy_wsp(char *line, int *index)
 	i = -1;
 	while (line[++i])
 	{
-		if (line[i] == '\"')
+		if (line[i] == '"')
 			quotes ^= 0b1;
 		else if (line[i] == '\'')
 			quotes ^= 0b10;
