@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/22 17:42:02 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:07:26 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static char	*parse_var_name(char *var_name)
 {
 	int		i;
 
-	i = 1;
+	i = var_name[0] == '$';
 	if (!ft_isalphanum_c(var_name[i]))
 		return (NULL);
 	while (var_name[i] && ft_isalphanum_c(var_name[i]))
 		i++;
-	return (ft_strncpy(var_name + 1, i - 1));
+	return (ft_strncpy(var_name + (var_name[0] == '$'), i - (var_name[0] == '$')));
 }
 
 char	*get_env_variable(t_env *env, char *var_name)
@@ -35,14 +35,10 @@ char	*get_env_variable(t_env *env, char *var_name)
 	char	*correct_var_name;
 
 	correct_var_name = parse_var_name(var_name);
-	printf("var : %s\n", correct_var_name);
 	while (env && correct_var_name)
 	{
-		if (ft_strcmp(env->name, correct_var_name) == 0)
-		{
-			printf("%s\n", env->content);
-			return (ft_strcpy(env->content));
-		}
+		if (ft_strcmp(env->name, correct_var_name))
+			return (ft_free(correct_var_name), ft_strcpy(env->content));
 		env = env->next;
 	}
 	ft_free(correct_var_name);

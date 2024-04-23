@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/22 17:43:58 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 13:06:50 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 	last_cpy_index = 1;
 	while (++i < end_quote)
 	{
-		// TODO Fix le probleme du content qui s'affiche pas en entier
 		if (str[i] == '$' && i + 1 < end_quote)
 		{
 			push_str_part(parts,
 				ft_strncpy(str + last_cpy_index, i - last_cpy_index));
 			push_str_part(parts, get_env_variable(env, str + i));
 			i += ft_strchr_nalphanum(str + i + 1);
-			last_cpy_index = i;
+			last_cpy_index = i + 1;
 		}
 	}
 	if (i - last_cpy_index > 0)
@@ -94,6 +93,5 @@ char	*rem_quotes(char *str, t_env *env)
 			break ;
 		i += quote_end;
 	}
-	print_str_parts(parts);
 	return (res = build_str(parts), res);
 }
