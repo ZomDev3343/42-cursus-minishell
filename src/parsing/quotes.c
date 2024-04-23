@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 14:25:38 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 18:05:58 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*rem_quotes(char *str, t_env *env)
 		}
 		if (quote_end == -1)
 			break ;
-		i += quote_end;
+		i += quote_end - 1;
 	}
 	return (res = build_str(parts), res);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 13:07:26 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 18:14:22 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ static char	*parse_var_name(char *var_name)
 	while (var_name[i] && ft_isalphanum_c(var_name[i]))
 		i++;
 	return (ft_strncpy(var_name + (var_name[0] == '$'), i - (var_name[0] == '$')));
+}
+
+int	has_env_variable(t_env *env, char *name)
+{
+	char	*correct_name;
+
+	correct_name = parse_var_name(name);
+	while (env && correct_name)
+	{
+		if (ft_strcmp(env->name, correct_name))
+			return (ft_free(correct_name), TRUE);
+		env = env->next;
+	}
+	ft_free(correct_name);
+	return (FALSE);
 }
 
 char	*get_env_variable(t_env *env, char *var_name)

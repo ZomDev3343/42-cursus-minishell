@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 14:23:52 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/23 18:18:39 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_token	*newtoken(char *data, int cmd_id)
 {
 	t_token	*token;
 
+	if (!data)
+		return (NULL);
 	token = ft_calloc(1, sizeof(t_token));
 	if (!token)
 		return (NULL);
@@ -76,10 +78,14 @@ t_token	*tokenize(char *line, t_env *env)
 		i = ft_nstrchr_i(cmds_part[parts_index], ' ');
 		while (i < ft_strlen(cmds_part[parts_index]))
 		{
-			env->name = env->name;
 			token_part = ft_strcpy_wsp(cmds_part[parts_index] + i, &i);
-			push_token(&token, newtoken(rem_quotes(token_part, env),
-					parts_index));
+			if (has_env_variable(env, token_part))
+				push_token(&token, newtoken(get_env_variable(env, token_part),
+						parts_index));
+			else
+				push_token(&token, newtoken(rem_quotes(token_part, env),
+						parts_index));
+			free(token_part);
 		}
 	}
 	return (free_parts(cmds_part), token);
