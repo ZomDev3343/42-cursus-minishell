@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 18:14:22 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/23 18:20:39 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static char	*parse_var_name(char *var_name)
 		return (NULL);
 	while (var_name[i] && ft_isalphanum_c(var_name[i]))
 		i++;
-	return (ft_strncpy(var_name + (var_name[0] == '$'), i - (var_name[0] == '$')));
+	return (ft_strncpy(var_name + (var_name[0] == '$'),
+			i - (var_name[0] == '$')));
 }
 
 int	has_env_variable(t_env *env, char *name)
