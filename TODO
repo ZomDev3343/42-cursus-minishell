@@ -1,4 +1,4 @@
-- Remplacer les string avec variables d'environnements
+- Remplacer dans les tokens sans guillemets les variables d environnement
 - Supprimer le premier 'cran' de quotes
 
 * Liste des tests apres Parsing *

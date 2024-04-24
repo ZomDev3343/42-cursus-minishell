@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/22 16:47:37 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/24 12:55:06 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_strchr_nalphanum(char *str)
 	while (str[++i])
 		if (!ft_isalphanum_c(str[i]))
 			return (i);
-	return (-1);
+	return (i);
 }
 
 int	ft_strchr_quotes(char *str)

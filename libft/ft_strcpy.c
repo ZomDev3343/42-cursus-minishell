@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 13:54:07 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/24 12:53:12 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ char	*ft_strcpy_until_quote(char *str)
 	i = -1;
 	while (str[++i])
 		if (str[i] == '\'' || str[i] == '\"')
-			break;
+			break ;
 	return (ft_strncpy(str, i));
 }

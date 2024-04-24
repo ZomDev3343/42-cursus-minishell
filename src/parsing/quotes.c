@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 18:05:58 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/24 12:55:44 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,32 @@ static int	rem_single_quotes(t_string_part **parts, char *str)
 	return (end_quote);
 }
 
+static void	parse_word(t_string_part **parts, char *str, t_env *env)
+{
+	char	*to_put;
+	int		last_cpy_index;
+	int		i;
+
+	i = -1;
+	last_cpy_index = 0;
+	to_put = ft_strcpy_until_quote(str);
+	while (to_put[++i])
+	{
+		if (to_put[i] == '$' && to_put[i + 1])
+		{
+			push_str_part(parts,
+				ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
+			push_str_part(parts, get_env_variable(env, to_put + i));
+			i += ft_strchr_nalphanum(to_put + i + 1);
+			last_cpy_index = i + 1;
+		}
+	}
+	if (i - last_cpy_index > 0)
+		push_str_part(parts,
+			ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
+	free(to_put);
+}
+
 char	*rem_quotes(char *str, t_env *env)
 {
 	t_string_part	*parts;
@@ -86,7 +112,7 @@ char	*rem_quotes(char *str, t_env *env)
 			quote_end = rem_double_quotes(&parts, str + i, env);
 		else
 		{
-			push_str_part(&parts, ft_strcpy_until_quote(str + i));
+			parse_word(&parts, str + i, env);
 			i += ft_strchr_quotes(str + i);
 		}
 		if (quote_end == -1)

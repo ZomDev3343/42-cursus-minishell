@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 18:18:39 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/23 20:40:50 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,8 @@ t_token	*tokenize(char *line, t_env *env)
 		while (i < ft_strlen(cmds_part[parts_index]))
 		{
 			token_part = ft_strcpy_wsp(cmds_part[parts_index] + i, &i);
-			if (has_env_variable(env, token_part))
-				push_token(&token, newtoken(get_env_variable(env, token_part),
-						parts_index));
-			else
-				push_token(&token, newtoken(rem_quotes(token_part, env),
-						parts_index));
+			push_token(&token, newtoken(rem_quotes(token_part, env),
+					parts_index));
 			free(token_part);
 		}
 	}
