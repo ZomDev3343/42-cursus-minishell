@@ -1,4 +1,4 @@
-- Remplacer dans les tokens sans guillemets les variables d environnement
+- Fixer le segfault quand une variable d environnement n existe pas
 - Supprimer le premier 'cran' de quotes
 
 * Liste des tests apres Parsing *

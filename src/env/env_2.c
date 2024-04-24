@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/24 12:52:50 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/24 18:47:19 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*parse_var_name(char *var_name)
 	int		i;
 
 	i = var_name[0] == '$';
-	if (!ft_isalphanum_c(var_name[i]))
+	if (!var_name || !ft_isalphanum_c(var_name[i]))
 		return (NULL);
 	while (var_name[i] && ft_isalphanum_c(var_name[i]))
 		i++;
