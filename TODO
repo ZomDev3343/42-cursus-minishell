@@ -1,6 +1,3 @@
-- Fixer le segfault quand une variable d environnement n existe pas
-- Supprimer le premier 'cran' de quotes
-
 * Liste des tests apres Parsing *
 
 - Si une redirection contient un chevron, error syntax
