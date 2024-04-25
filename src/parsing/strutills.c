@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strutills.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:48:33 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 17:33:24 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/25 10:43:56 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	push_str_part(t_string_part **str_parts, char *part)
 	t_string_part	*tmp;
 
 	str_part = ft_calloc(1, sizeof(t_string_part));
-	if (!str_part)
+	if (!str_part || !part)
 		return ;
 	str_part->part = part;
 	if (!*str_parts)
