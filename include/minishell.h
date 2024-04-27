@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 18:13:18 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/27 13:01:57 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <signal.h>
 
 # include "minishell_struct.h"
 # include "../libft/ft.h"
@@ -72,5 +73,12 @@ char			*rem_quotes(char *str, t_env *env);
 void			print_str_parts(t_string_part *parts);
 
 /* --- Parsing --- */
+
+/* --- Signals --- */
+
+void			sig_on_interrupt(int code);
+void			setup_signal_handler(void);
+
+/* --- Signals --- */
 
 #endif

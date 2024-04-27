@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/24 18:46:10 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/27 12:21:25 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	is_quote_closed(char *str)
 			return (i);
 	return (0);
 }
+
 static void	parse_word(t_string_part **parts, char *str, t_env *env)
 {
 	char	*to_put;
@@ -75,7 +76,6 @@ static int	rem_single_quotes(t_string_part **parts, char *str)
 	push_str_part(parts, ft_strncpy(str + 1, end_quote - 1));
 	return (end_quote);
 }
-
 
 char	*rem_quotes(char *str, t_env *env)
 {
