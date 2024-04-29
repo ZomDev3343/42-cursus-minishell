@@ -1,3 +1,6 @@
+* Corrections pour le parsing *
+-- Ne pas ajouter les chevrons dans les parties d'une commande
+
 * Liste des tests apres Parsing *
 
 - Si une redirection contient un chevron, error syntax

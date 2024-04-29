@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:43:06 by truello           #+#    #+#             */
-/*   Updated: 2024/04/17 12:58:12 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/29 15:41:03 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static int	get_redirection_mode(char *s)
 {
 	if (*s == '<')
 	{
-		if (ft_strncmp(s, "<<", 2) == 0)
+		if (ft_strncmp(s, "<<", 2))
 			return (REDIR_HD);
 		return (REDIR_IN);
 	}
 	else if (*s == '>')
 	{
-		if (ft_strncmp(s, ">>", 2) == 0)
+		if (ft_strncmp(s, ">>", 2))
 			return (REDIR_APP);
 		return (REDIR_OUT);
 	}
