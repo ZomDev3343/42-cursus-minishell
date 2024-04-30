@@ -1,7 +1,4 @@
-* Liste des tests apres Parsing *
+* Liste des tests pour l'executeur *
 
-- Si une redirection contient un chevron, error syntax
-- Si une partie d'une commande contient des chevrons non entoures par des guillemets -> syntax error
-- Si une commande contient seulement une partie vide, on relance le prompt
 - Si une commande est introuvable, erreur d'execution avant le premier pipe
 - Si un argument est invalide, erreur d'execution pendant le pipe
