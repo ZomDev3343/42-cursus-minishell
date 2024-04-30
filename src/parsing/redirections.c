@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:43:06 by truello           #+#    #+#             */
-/*   Updated: 2024/04/29 15:41:03 by truello          ###   ########.fr       */
+/*   Updated: 2024/04/30 19:12:35 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static int	get_redirection_mode(char *s)
 	return (NO_REDIR);
 }
 
-// A tester imperativement
 t_redirections	*get_redirection(t_token *token, int mode)
 {
 	t_redirections	*res;
@@ -51,7 +50,8 @@ t_redirections	*get_redirection(t_token *token, int mode)
 	res = ft_calloc(1, sizeof(t_redirections));
 	if (!res)
 		return (NULL);
-	path_index = ft_nstrchr_i(token->data, get_redirection_char(mode));
+	path_index = ft_strchr_i(token->data, get_redirection_char(mode)) + 1
+		+ (mode == REDIR_APP || mode == REDIR_HD);
 	if (token->data[path_index] != '\0')
 	{
 		token->used = 1;

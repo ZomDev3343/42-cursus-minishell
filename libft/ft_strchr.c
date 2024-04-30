@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 17:59:35 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/24 12:55:06 by tohma            ###   ########.fr       */
+/*   Updated: 2024/04/30 18:51:48 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_strchr_i_nquotes(char *str, char c)
 			quotes ^= 0b1;
 		else if (str[i] == '\"')
 			quotes ^= 0b10;
-		if (str[i] == c && !(quotes & 0b1 || quotes & 0b10))
+		if (str[i] == c && !quotes)
 			return (i);
 	}
 	return (-1);
