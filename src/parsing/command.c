@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:16:31 by truello           #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:56 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/02 11:33:44 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	print_commands(t_command *cmds)
 {
 	while (cmds)
 	{
-		printf("--- Command ---\n");
+		printf("\n--- Command START ---\n");
 		print_parts(cmds->parts);
 		print_redirections(cmds->redirections);
-		printf("--- Command ---\n");
+		printf("\n--- Command END ---\n");
 		cmds = cmds->next;
 	}
 }

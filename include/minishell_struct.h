@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/27 12:50:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/02 13:17:13 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,13 @@ typedef struct s_env
 	char			*content;
 	struct s_env	*next;
 }	t_env;
+
+typedef struct s_exec
+{
+	char			**args;
+	int				fd_in;
+	int				fd_out;
+	int				redir_type;
+}	t_exec;
 
 #endif
