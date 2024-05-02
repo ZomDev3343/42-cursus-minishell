@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/02 15:54:14 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:06:38 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	handle_redirections(t_redirections *redir)
 	int	flag;
 
 	if (redir == NULL)
-		return ;
+		return (1);
 	else if (redir->mode == REDIR_IN)
 		flag = handle_input_redirection(redir->path);
 	else if (redir->mode == REDIR_OUT)
 		flag = handle_output_redirection(redir->path);
 	else if (redir->mode == REDIR_APP)
 		flag = handle_append_redirection(redir->path);
-	else if (redir->mode == REDIR_HD)
-		flag = handle_here_doc_redirection(redir->path);
+	/*else if (redir->mode == REDIR_HD)
+		flag = handle_here_doc_redirection(redir->path);*/
 	if (flag == 0)
 	{
 		perror("ERROR : while handling redirections.\n");
