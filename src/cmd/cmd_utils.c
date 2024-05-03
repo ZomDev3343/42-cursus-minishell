@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 01:00:55 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:14:26 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+t_exec	*make_exec_structure(void)
+{
+	t_exec	*exec;
+
+	exec = malloc(sizeof(t_exec));
+	if (!exec)
+	{
+		perror("ERROR : allocating exec structure\n");
+		exit(EXIT_FAILURE);
+	}
+	exec->fd_stdin = dup(STDIN_FILENO);
+	exec->fd_stdout = dup(STDOUT_FILENO);
+	return (exec);
+}
 
 int	get_nb_of_commands(t_command *cmd)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/03 02:23:56 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:33:41 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,12 @@ void			choose_exec_path(t_command *cmd, t_env *env);
 
 int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
+t_exec			*make_exec_structure(void);
+
+/* process */
+
+void			enter_child_process(t_command *cmd, t_env *env);
+void			enter_parent_process(t_exec *exec);
 
 /* path */
 

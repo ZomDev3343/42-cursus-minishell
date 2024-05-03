@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/05/02 13:17:13 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:08:57 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ typedef struct s_env
 
 typedef struct s_exec
 {
-	char			**args;
-	int				fd_in;
-	int				fd_out;
-	int				redir_type;
+	int				fd_stdin;
+	int				fd_stdout;
 }	t_exec;
 
 #endif

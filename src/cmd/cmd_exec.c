@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 02:43:18 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 18:32:43 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	single_execution(t_command *cmd, t_env *env)
 {
-	int	pid;
+	t_exec	*exec;
+	int		pid;
 
+	exec = make_exec_structure();
 	if (handle_redirections(cmd->redirections) == 1)
 	{
 		perror("ERROR : during redirection process\n");
@@ -27,14 +29,10 @@ void	single_execution(t_command *cmd, t_env *env)
 		perror("ERROR : during fork creation\n");
 		exit(EXIT_FAILURE);
 	}
-	else if (pid == 0)
-	{
-		execve(found_path(cmd->parts[0], env), cmd->parts, NULL);
-		perror("ERROR : execve failed\n");
-		exit(EXIT_FAILURE);
-	}
+	if (pid == 0)
+		enter_child_process(cmd, env);
 	else
-		wait(NULL);
+		enter_parent_process(exec);
 }
 
 void	choose_exec_path(t_command *cmd, t_env *env)
