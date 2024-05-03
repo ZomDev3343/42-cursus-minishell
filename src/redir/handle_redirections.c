@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirections.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 02:39:58 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:17:04 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	handle_redirections(t_redirections *redir)
 {
 	int	flag;
 
+	flag = 0;
 	if (redir == NULL)
 		return (0);
 	else if (redir->mode == REDIR_IN)
