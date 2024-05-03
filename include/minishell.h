@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/02 16:04:34 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 02:23:56 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <readline/readline.h>
 # include <unistd.h>
 # include <signal.h>
+# include <sys/wait.h>
 
 # include "minishell_struct.h"
 # include "../libft/ft.h"
@@ -87,6 +88,21 @@ int				check_commands(t_command *cmds);
 void			sig_on_interrupt(int code);
 void			setup_signal_handler(void);
 
-/* --- Signals --- */
+/* --- Command execution --- */
+
+/* execution */
+
+void			single_execution(t_command *cmd, t_env *env);
+void			choose_exec_path(t_command *cmd, t_env *env);
+
+/* command utils */
+
+int				get_nb_of_commands(t_command *cmd);
+void			ft_free_array(char **str);
+
+/* path */
+
+char			**extract_path_from_env(t_env *env);
+char			*found_path(char *cmd, t_env *env);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirections.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/02 16:06:38 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/03 02:39:58 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	handle_redirections(t_redirections *redir)
 	int	flag;
 
 	if (redir == NULL)
-		return (1);
+		return (0);
 	else if (redir->mode == REDIR_IN)
 		flag = handle_input_redirection(redir->path);
 	else if (redir->mode == REDIR_OUT)
@@ -26,12 +26,12 @@ int	handle_redirections(t_redirections *redir)
 		flag = handle_append_redirection(redir->path);
 	/*else if (redir->mode == REDIR_HD)
 		flag = handle_here_doc_redirection(redir->path);*/
-	if (flag == 0)
+	if (flag == 1)
 	{
 		perror("ERROR : while handling redirections.\n");
-		return (0);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
 
 int	handle_input_redirection(char *path)
@@ -42,16 +42,16 @@ int	handle_input_redirection(char *path)
 	if (fd == -1)
 	{
 		perror("ERROR : while opening file.\n");
-		return (0);
+		return (1);
 	}
 	if (dup2(fd, STDIN_FILENO) == -1)
 	{
 		perror("ERROR : dup2 input.\n");
 		close(fd);
-		return (0);
+		return (1);
 	}
 	close (fd);
-	return (1);
+	return (0);
 }
 
 int	handle_output_redirection(char *path)
@@ -62,16 +62,16 @@ int	handle_output_redirection(char *path)
 	if (fd == -1)
 	{
 		perror("ERROR : while opening file.\n");
-		return (0);
+		return (1);
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
 		perror("ERROR : dup2 output.\n");
 		close(fd);
-		return (0);
+		return (1);
 	}
 	close (fd);
-	return (1);
+	return (0);
 }
 
 int	handle_append_redirection(char *path)
@@ -82,14 +82,14 @@ int	handle_append_redirection(char *path)
 	if (fd == -1)
 	{
 		perror("ERROR : while opening file.\n");
-		return (0);
+		return (1);
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
 		perror("ERROR : dup2 output.\n");
 		close(fd);
-		return (0);
+		return (1);
 	}
 	close (fd);
-	return (1);
+	return (0);
 }

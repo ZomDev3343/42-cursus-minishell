@@ -1,0 +1,8 @@
+Ceci est un test
+[?2004hminishell > 
+[?2004l[?2004hminishell > 
+[?2004l[?2004hminishell > 
+[?2004l[?2004hminishell > 
+.DS_Store   .gitignore  TODO        input.txt   minishell   output.txt
+.git/       Makefile    include/    libft/      obj/        src/
+minishell > [?2004l
