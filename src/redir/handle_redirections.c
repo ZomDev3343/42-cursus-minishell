@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/06 12:51:27 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:16:48 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	handle_redirections(t_redirections *redir, t_exec *exec)
 			flag = handle_output_redirection(redir->path, exec);
 		else if (redir->mode == REDIR_APP)
 			flag = handle_append_redirection(redir->path);
-		/*else if (redir->mode == REDIR_HD)
-			flag = handle_here_doc_redirection(redir->path);*/
+		else if (redir->mode == REDIR_HD)
+			flag = handle_here_doc_redirection(redir->path, exec);
 		redir = redir->next;
 	}
 	if (flag == 1)
@@ -49,7 +49,7 @@ int	handle_input_redirection(char *path)
 	}
 	if (dup2(fd, STDIN_FILENO) == -1)
 	{
-		perror("ERROR : no such file in directory\n");
+		perror("ERROR : using dup2 for STDIN\n");
 		close(fd);
 		return (1);
 	}
@@ -69,7 +69,7 @@ int	handle_output_redirection(char *path, t_exec *exec)
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
-		perror("ERROR : no such file in directory\n");
+		perror("ERROR : using dup2 for STDOUT\n");
 		close(fd);
 		return (1);
 	}
@@ -91,10 +91,38 @@ int	handle_append_redirection(char *path)
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
-		perror("ERROR : dup2 output.\n");
+		perror("ERROR : using dup2 for APPEND\n");
 		close(fd);
 		return (1);
 	}
 	close (fd);
+	return (0);
+}
+
+int	handle_here_doc_redirection(char *path, t_exec *exec)
+{
+	char	*line;
+
+	exec->input_fd = open("here_doc.txt", O_RDWR | O_CREAT | O_TRUNC, 0600);
+	if (exec->input_fd == -1)
+	{
+		perror("ERROR : can't access here_doc\n");
+		return (1);
+	}
+	while (1)
+	{
+		line = get_next_line(STDIN_FILENO);
+		if (hd_strncmp(line, path, ft_strlen(path)) == 0)
+		{
+			free(line);
+			break ;
+		}
+		ft_putstr_fd(line, exec->input_fd);
+		free(line);
+	}
+	close(exec->input_fd);
+	exec->input_fd = open("here_doc.txt", O_RDONLY);
+	dup2(exec->input_fd, STDIN_FILENO);
+	close(exec->input_fd);
 	return (0);
 }

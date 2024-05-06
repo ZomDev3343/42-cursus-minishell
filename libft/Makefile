@@ -19,6 +19,9 @@ SRC=ft_split.c \
 	ft_strrepl.c \
 	ft_min.c \
 	ft_max.c \
+	ft_putstr_fd.c \
+	get_next_line_bonus_utils.c \
+	get_next_line_bonus.c \
 	$(PRINTF) \
 	$(GNL)
 OBJ= $(SRC:.c=.o)

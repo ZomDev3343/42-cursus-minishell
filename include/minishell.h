@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/06 09:39:32 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 17:40:22 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int				handle_redirections(t_redirections *redir, t_exec *exec);
 int				handle_input_redirection(char *path);
 int				handle_output_redirection(char *path, t_exec *exec);
 int				handle_append_redirection(char *path);
+int				handle_here_doc_redirection(char *path, t_exec *exec);
 
 /* Commands */
 
