@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/06 18:16:48 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:33:04 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ int	handle_here_doc_redirection(char *path, t_exec *exec)
 	exec->input_fd = open("here_doc.txt", O_RDONLY);
 	dup2(exec->input_fd, STDIN_FILENO);
 	close(exec->input_fd);
+	unlink("here_doc.txt");
 	return (0);
 }
