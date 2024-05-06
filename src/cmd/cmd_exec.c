@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 18:32:43 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 12:49:04 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,13 @@ void	single_execution(t_command *cmd, t_env *env)
 	int		pid;
 
 	exec = make_exec_structure();
-	if (handle_redirections(cmd->redirections) == 1)
-	{
-		perror("ERROR : during redirection process\n");
-		exit(EXIT_FAILURE);
-	}
+	if (handle_redirections(cmd->redirections, exec) == 1)
+		return ;
 	pid = fork();
 	if (pid == -1)
 	{
 		perror("ERROR : during fork creation\n");
-		exit(EXIT_FAILURE);
+		return ;
 	}
 	if (pid == 0)
 		enter_child_process(cmd, env);

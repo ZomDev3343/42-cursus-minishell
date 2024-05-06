@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/05/03 18:08:57 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 09:33:11 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_exec
 {
 	int				fd_stdin;
 	int				fd_stdout;
+	int				output_fd;
+	int				input_fd;
 }	t_exec;
 
 #endif

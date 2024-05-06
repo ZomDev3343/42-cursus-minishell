@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 18:36:18 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:45:11 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ void	enter_parent_process(t_exec *exec)
 {
 	wait(NULL);
 	dup2(exec->fd_stdout, STDOUT_FILENO);
+	dup2(exec->fd_stdin, STDIN_FILENO);
 	close(exec->fd_stdout);
 }

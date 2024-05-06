@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/03 18:33:41 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/06 09:39:32 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ int				parse_redirection(t_redirections **redirections,
 void			print_redirections(t_redirections *redirections);
 char			get_redirection_char(int mode);
 void			free_redirections(t_redirections *redirections);
-int				handle_redirections(t_redirections *redir);
+int				handle_redirections(t_redirections *redir, t_exec *exec);
 int				handle_input_redirection(char *path);
-int				handle_output_redirection(char *path);
+int				handle_output_redirection(char *path, t_exec *exec);
 int				handle_append_redirection(char *path);
 
 /* Commands */
