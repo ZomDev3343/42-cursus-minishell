@@ -6,11 +6,51 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/03 18:14:26 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/12 13:49:04 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+int	**create_pipes(int pipe_nb, int **pipes)
+{
+	int	i;
+
+	i = 0;
+	pipes = (int **)malloc(pipe_nb * sizeof(int *));
+	while (i < pipe_nb)
+	{
+		pipes[i] = (int *)malloc(2 * sizeof(int));
+		if (pipe(pipes[i]) < 0)
+		{
+			perror("ERROR : while creating a pipe.\n");
+			/* free_pipes */
+			return ;
+		}
+		i++;
+	}
+	return (pipes);
+}
+
+void	cleanup_pipes(int **pipes, int pipe_nb)
+{
+	int	i;
+
+	i = 0;
+	while (i < pipe_nb)
+	{
+		close(pipes[i][0]);
+		close(pipes[i][1]);
+		i++;
+	}
+	i = 0;
+	while (i < pipe_nb)
+	{
+		free(pipes[i]);
+		i++;
+	}
+	free(pipes);
+}
 
 t_exec	*make_exec_structure(void)
 {

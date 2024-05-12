@@ -1,0 +1,1783 @@
+
+
+
+
+
+"bash: syntax error near
+unexpected token `newline'
+"
+"bash: syntax error near
+unexpected token `newline'
+"
+"bash: syntax error near
+unexpected token `newline'
+"
+"bash: syntax error near
+unexpected token `newline'
+"
+"bash: syntax error near
+unexpected token `newline'
+"
+"bash: syntax error near
+unexpected token `>>'
+"
+"bash: syntax error near
+unexpected token `>>'
+"
+"bash: syntax error near
+unexpected token `<<'
+"
+"bash: syntax error near
+unexpected token `<<'
+"
+"bash: syntax error near
+unexpected token `>'
+"
+"bash: syntax error near
+unexpected token `>>'
+"
+"bash: syntax error near
+unexpected token `>>'
+"
+"bash: /: Is a directory
+"
+"bash: //: Is a directory
+"
+"bash: /.: Is a directory
+"
+"bash: /./../../../../..: Is a directory
+"
+"bash: ///////: Is a directory
+"
+bash: \: command not found
+bash: \\: command not found
+bash: \\\\: command not found
+"bash: -: command not found
+"
+"bash: syntax error near
+unexpected token `|'
+"
+"bash: syntax error near
+unexpected token `|'
+"
+"bash: syntax error near
+unexpected token `|'
+"
+"bash: syntax error near
+unexpected token `||'
+"
+"bash: syntax error near
+unexpected token `||'
+"
+"bash: syntax error near
+unexpected token `||'
+"
+"bash: syntax error near
+unexpected token `|'
+"
+"bash: syntax error near
+unexpected token `&&'
+"
+"bash: syntax error near
+unexpected token `&&'
+"
+"bash: syntax error near
+unexpected token `&&'
+"
+"bash: syntax error near
+unexpected token `;;'
+"
+"bash: syntax error near
+unexpected token `;;'
+"
+"bash: syntax error near
+unexpected token `;;'
+"
+"bash: syntax error near
+unexpected token `)'
+"
+"bash: syntax error near
+unexpected token `)'
+"
+"bash: syntax error near
+unexpected token `)'
+"
+"bash: : command not found
+"
+"bash: hola: command not found
+"
+"bash: hola: command not found
+"
+"bash: : command not found
+"
+"bash: crashtest.c: command not found
+"
+"bash: Docs/attest.cation: command not found
+"
+bash: */*: No such file or directory
+"bash: .: filename argument required
+"
+"bash: ..: command not found
+"
+"bash: /home/vietdu91: Is a directory
+"
+
+"bash: 4ABC=hola: command not found
+"
+"bash: hola: command not found
+"
+"bash: hola: command not found
+"
+"bash: Makefile: command not found
+"
+"
+"
+
+"Hola
+"
+"bash: echoHola: command not found
+"
+"bash: echo-nHola: command not found
+"
+Hola
+Hola
+"-nHola
+"
+"Hola -n
+"
+"Hola Que Tal
+"
+"Hola
+"
+"Hola Que Tal
+"
+"n hola
+"
+"         $
+"
+"$
+"
+"hola que tal
+"
+
+Hola Que
+"-p
+"
+
+
+"-n-nnn -nnnn
+"
+hola -nnnn
+-nnn-nnnn
+"--------n
+"
+--------n
+-----nn---nnnn
+--------nnnn
+"$
+"
+"0
+"
+"0$
+"
+"0
+"
+"$:$=$
+"
+" $ $
+"
+" $ $
+"
+"/home/vietdu91
+"
+"$HOME
+"
+"my shit terminal is [xterm-256color]
+"
+"my shit terminal is [
+"
+"my shit terminal is []
+"
+"1000
+"
+"
+"
+"HOME
+"
+"/home/vietdu91%
+"
+"1000/home/vietdu91%
+"
+"Le path de mon HOME est /home/vietdu91
+"
+"vietdu91$USERvietdu91$USERtestvietdu91
+"
+"
+"
+
+"bash: syntax error near unexpected token `<'
+"
+"bash: syntax error near unexpected token `|'
+"
+"bash: EechoE: command not found
+"
+"bash: .echo.: command not found
+"
+"bash: syntax error near unexpected token `newline'
+"
+"bash: syntax error near unexpected token `newline'
+"
+"bash: syntax error near unexpected token `newline'
+"
+"bash: syntax error near unexpected token `|'
+"
+"bash: syntax error near unexpected token `|'
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"*
+"
+"Docs Dockers Drawings
+"
+"*Z
+"
+"crashtest.c test.c hola
+"
+"crashtest.c test.c
+"
+"
+"
+"hola*hola crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"/home/vietdu91
+"
+"
+"
+"$
+"
+"$
+"
+"HOME
+"
+"HOME
+"
+"HOME
+"
+"ME
+"
+"$HOME
+"
+"ME
+"
+"$HOME
+"
+"''ME'
+"
+"/home/vietdu91
+"
+" /home/vietdu91
+"
+"/home/vietdu91
+"
+" /home/vietdu91
+"
+"HOME
+"
+"HOME
+"
+"HOME
+"
+"$HOME
+"
+"$=HOME
+"
+"HOLA
+"
+"HOLA
+"
+"Hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"'h'o'la''
+"
+"hola'
+"
+"bash: echo'hola': command not found
+"
+"'hola'
+"
+""hola"
+"
+"ho"l"a
+"
+"hola
+"
+"hola''''''''''
+"
+"hola
+"
+"hola""""""""""
+"
+"bash: echo hola: command not found
+"
+"bash: echo hola: command not found
+"
+"hola     $
+"
+"hola
+"
+" hola
+"
+" hola
+"
+"hola
+"
+" hola
+"
+"holabonjour
+"
+"bonjour
+"
+"bash: e'c'ho 'b'onjo'u'r: command not found
+"
+"Makefile
+"
+"Makefile
+"
+" Makefile
+"
+"bash: 0: command not found
+"
+"bash: 00: command not found
+"
+"bash: ?/home/vietdu91: command not found
+"
+"bash: $: command not found
+"
+"bash: /home/vietdu91: Is a directory
+"
+
+"bash: : command not found
+"
+"bash: $HOMEsddfddfssfdfs: command not found
+"
+
+"bash: -R: command not found
+"
+" ^C
+"
+" hola^C
+"
+"
+
+
+^C
+"
+"
+
+
+^C
+"
+" exit
+~/minishell "
+ hola
+
+ hola
+"
+
+
+^\Quit (core dumped)
+"
+
+"^C
+"
+
+"^\Quit (core dumped)
+"
+"...
+PATH=...
+"
+"env: ʻhola’: No such file or directory
+"
+"env: ʻhola’: No such file or directory
+"
+"...
+PATH=...
+"
+"...
+PATH=...
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"env: ‘./Makefile’: Permission denied
+"
+"...
+HOLA=bonjour
+"
+"...
+HOLA=bonjour
+"
+"...
+export PATH="..."
+"
+"...
+export HOME="/home/vietdu91"
+export Hola
+export PATH="..."
+"
+"...
+export HOME="/home/vietdu91"
+export Hola9hey
+export PATH="..."
+"
+"...
+export HOME="/home/vietdu91"
+export PATH="..."
+"
+"export HOME="/home/vietdu91"
+"
+"bash: export: `': not a valid identifier
+"
+"bash: export: ʻ=': not a valid identifier
+"
+"bash: export: ʻ%': not a valid identifier
+"
+"bash: export: `0': not a valid identifier
+"
+"bash: export: ʻ?=2': not a valid identifier
+"
+"bash: export: ʻ9HOLA=': not a valid identifier
+"
+"...
+HOLA9=bonjour
+"
+"...
+_HOLA=bonjour
+"
+"...
+___HOLA=bonjour
+"
+"...
+_HO_LA_=bonjour
+"
+"bash: export: ʻHOL@=bonjour’: not a valid identifier
+"
+"bash: export: `HOL~A=bonjour': not a valid identifier
+"
+bash: export: -H: invalid option
+bash: export: --: invalid option
+"bash: export: `HOLA-=bonjour': not a valid identifier
+"
+"bash: export: `HO-LA=bonjour': not a valid identifier
+"
+"bash: export: `HOL.A=bonjour': not a valid identifier
+"
+"bash: export: `HOL\$A=bonjour': not a valid identifier
+"
+"bash: export: `HO\\LA=bonjour': not a valid identifier
+"
+"bash: export: `HOL}A=bonjour': not a valid identifier
+"
+"bash: export: `HOL{A=bonjour': not a valid identifier
+"
+"bash: export: `HO*LA=bonjour': not a valid identifier
+"
+"bash: export: `HO#LA=bonjour': not a valid identifier
+"
+"bash: export: `HO@LA=bonjour': not a valid identifier
+"
+bash: !LA=bonjour: event not found
+"...
+HO0LA=bonjour
+"
+"bash: export: `+HOLA=bonjour': not a valid identifier
+"
+"bash: export: `HOL+A=bonjour': not a valid identifier
+"
+"...
+HOLA=bonjour
+"
+"...
+HOLA=bonjourbonjour
+"
+"...
+PATH=...
+"
+"bash: export: ʻ=bonjour’: not a valid identifier
+"
+"bash: export: ʻ=': not a valid identifier
+"
+"...
+HOLA=bon
+"
+"...
+HOLA=
+"
+"...
+HOLA=bonjour
+"
+"...
+HOLA=/home/vietdu91
+"
+"...
+HOLA=bonjour/home/vietdu91
+"
+"...
+HOLA=
+"
+"...
+HOLA=bon
+"
+"...
+HOLA=bonjour
+"
+"...
+HOLA=bon\jour
+"
+"bash: syntax error near
+unexpected token `('
+"
+"bash: syntax error near
+unexpected token `('
+"
+"bash: jour: command not found
+"
+" env
+...
+HOLA=bon@jour
+"
+"bash: jour: command not found
+ env
+...
+HOLA=bon
+"
+"bash: !jour: event not found
+"
+"...
+HOLA=bonjour
+PATH=...
+"
+"...
+HOLAvietdu91=bonjour
+PATH=...
+"
+"HOLA=bonjour=casse-toi
+"
+"HOLA=bonjour=casse-toi
+"
+"bonjour et casse-toi
+"
+"bonjour et casse-toi
+"
+"...
+bonjour=bonjour
+PATH=...
+"
+"bonjour$
+"
+bonjour
+"bonjour /
+"
+" " $
+"
+"[cela affiche le Makefile]
+"
+"bash: export: `": not a valid identifier
+ env
+...
+HOLA=bonjour
+"
+"cat Makefile | grep NAME
+"
+"heyheyhey=heyhey
+"
+"bonjour hey$
+"
+"   bonjour    hey    $
+"
+"wesh   bonjour    hey    $
+"
+"wesh bonjour hey .
+"
+"weshHOLA.
+"
+"weshHOLA HOLA.
+"
+"hola et bonjour
+"
+"hola et $HOLA
+"
+"hola et bonjourbonjour
+"
+"ls -l - a
+"
+"total 16
+drwx------  2 vietdu91 [...] .
+drwxrwxewt 51 root     [...] ..
+-rwxr-xr-x  8 vietdu91 [...] crashtest.c
+[...]
+ "
+"bash: ls -la: command not found
+"
+"bash: l$HOLA: command not found
+"
+
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"...
+HOL=A=bonjour
+"
+"bash: $HOLAs: command not found
+"
+"...
+HOL=A=
+"
+"bash: export: `TE+S=T': not a valid identifier
+"
+"bash: export: `=': not a valid identifier
+"
+"bash: export: `=': not a valid identifier
+"
+"bash: export: `===': not a valid identifier
+"
+"bash: export: `===': not a valid identifier
+"
+"bash: pBYEd: command not found
+"
+"bash: p$BYEd: command not found
+"
+/home/vietdu91/42_works/minishell
+"bash: HOLABYEd: command not found
+"
+"bash: HOLABYEd: command not found
+"
+"bash: echo -n: command not found
+"
+"1'2$C"$D5"$F'7'8
+"
+"...
+PATH=...
+"
+"...
+PATH=...
+"
+"
+"
+bash: ls: No such file or directory
+"bash: unset: `': not a valid identifier
+"
+
+"
+
+/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+
+
+
+/home/vietdu91"
+"
+"
+"bash: unset: `9HOLA': not a valid identifier
+"
+
+"bash: unset: `HOL?A': not a valid identifier
+"
+"bash: unset: `HOL?A': not a valid identifier
+"
+"bash: unset: `HOL?A': not a valid identifier
+"
+"bash: unset: `HOL?A': not a valid identifier
+bash: unset: `HOL.A': not a valid identifier
+"
+"bash: unset: `HOLA=': not a valid identifier
+"
+bash: unset: `HOL\\A': not a valid identifier
+bash: A: command not found
+bash: unset: `HOL.A': not a valid identifier
+bash: unset: `HOL+A': not a valid identifier
+bash: unset: `HOL=A': not a valid identifier
+bash: unset: `HOL{A': not a valid identifier
+bash: unset: `HOL}A': not a valid identifier
+bash: unset: `HOL-A': not a valid identifier
+bash: unset: -H: invalid option
+
+
+
+bash: unset: `HOL*A': not a valid identifier
+bash: unset: `HOL#A': not a valid identifier
+
+bash: unset: `/home/vietdu91/42_works/minishell': not a valid identifier
+bash: unset: `HOL@': not a valid identifier
+bash: !A: event not found
+bash: unset: `HOL^A': not a valid identifier
+
+bash: unset: `HOL~': not a valid identifier
+"bash: unset: `': not a valid identifier
+
+"
+"
+"
+"bash: cat: No such file or directory
+"
+bash: unset: `=': not a valid identifier
+bash: unset: `======': not a valid identifier
+bash: unset: `++++++': not a valid identifier
+
+
+
+
+
+
+
+"0
+"
+"
+"
+"Hola Que Tal
+"
+"...
+PATH=...
+"
+bash: /bin/cd: No such file or directory
+"...
+  558 echo $?
+  559 clear
+  560 history
+"
+ clear
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"bash: pwd: -p: invalid option
+"
+"bash: pwd: --: invalid option
+"
+"bash: pwd: --: invalid option
+"
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+
+
+
+
+
+
+
+
+
+
+
+"bash: cd: too many arguments
+"
+
+
+
+
+
+"bash: cd: sr: No such file or directory
+"
+"bash: cd: Makefile: Not a directory
+"
+
+
+"bash: cd: .././../.././../bin/ls: No such file or directory
+"
+
+
+"//
+"
+"//
+"
+"/
+"
+"/
+"
+"/
+"
+"bash: cd: /minishell: No such file or directory
+"
+
+"bash: cd: _: No such file or directory
+"
+"/home/vietdu91/42_works/minishell
+"
+
+"bash: cd: --: invalid option
+"
+
+"bash: cd: too many arguments
+"
+
+
+"bash: cd: $PWD/srcs: No such file or directory
+"
+"bash: cd: HOME not set
+"
+
+"bash: cd: HOME not set
+"
+"bash: cd: too many arguments
+"
+"0
+"
+
+
+"0
+"
+
+"bash: cd: minishell: No such file or directory
+"
+"bash: cd: too many arguments
+"
+"chdir: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+"
+"pwd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory
+"
+"/home/vietdu91/42_works/minishell/a/b
+
+/home/vietdu91/42_works/minishell
+"
+"/home
+
+/home/vietdu91/42_works/minishell/a/b
+"
+"../../../home/vietdu91/42_works/minishell/a
+
+../../../home/vietdu91/42_works/minishell
+"
+
+"/home/vietdu91
+"
+
+
+"bash: ./minishell : Permission denied
+"
+"ls: cannot access 'hola': No such file or directory
+"
+"bash: ./Makefile: Permission denied
+"
+
+
+"bash: ./hola: Permission denied
+"
+"66
+"
+"bash: wc -l: command not found
+"
+"2
+"
+"0
+"
+"PWD=/mnt/nfs/homes/emtran/Desktop/42_minishell
+SHLVL=1
+_=/usr/bin/env
+"
+"export OLDPWD
+export PWD="/mnt/nfs/homes/emtran/Desktop/42_minishell"
+export SHLVL="1"
+"
+"bash: cd: HOME not set
+"
+
+"exit
+~/minishell "
+"exit
+bash: exit: exit: numeric argument required
+~/minishell "
+"exit
+bash: exit: hola: numeric argument required
+~/minishell "
+"exit
+bash: exit: hola: numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: too many arguments
+"
+"exit
+bash: exit: too many arguments
+"
+"exit
+bash: exit: hola: numeric argument required
+~/minishell "
+"exit
+bash: exit: too many arguments
+"
+"exit
+bash: exit: too many arguments"
+"exit
+bash: exit: hola: numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: too many arguments
+"
+"exit
+bash: exit: --666: numeric argument required
+~/minishell "
+"exit
+bash: exit: ++++666: numeric argument required
+~/minishell "
+"exit
+bash: exit: ++++++0: numeric argument required
+~/minishell "
+"exit
+bash: exit: ------0: numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: ----666: numeric argument required
+~/minishell "
+"exit
+bash: exit: ++++666: numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: '666': numeric argument required
+~/minishell "
+"exit
+bash: exit: "666": numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: 9223372036854775808: numeric argument required
+~/minishell "
+"exit
+~/minishell "
+"exit
+bash: exit: -9223372036854775809: numeric argument required
+~/minishell "
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+
+
+
+"
+
+
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"hola$
+"
+
+"
+"
+"que tal
+"
+"hola
+"
+"hola
+"
+"oui$
+"
+
+
+"hola
+"
+"hola$$$
+"
+"hola
+"
+"hola
+"
+"/home/vietdu91/42_works/minishell
+"
+"docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+   ether 02:42:27:cf:95:49  txqueuelen 0  (Ethernet)
+[...]
+"
+
+"vietdu91
+"
+"vietdu91
+"
+"vietdu91$$
+"
+"ls: /usr/bin/ls /usr/share/man/man1/ls.1posix.gz /usr/share/man/man1/ls.1.gz$$
+"
+"bash: hola: command not found
+"
+"ls: cannot access 'hola': No such file or directory
+"
+"bash: hola: command not found
+"
+"bash: hola: command not found
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"bash: hola: command not found
+"
+"aloh
+"
+"total 16
+drwx------  2 vietdu91 [...] .
+drwxrwxewt 51 root     [...] ..
+-rwxr-xr-x  8 vietdu91 [...] crashtest.c
+[...]
+ "
+
+"test.c$$$$$$$$$$$
+"
+"crashtest.c Docs Dockers Drawings Makefile minishell philosophers srcs test.c
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"bash: syntax error near
+unexpected token `|'
+"
+"bash: ech: command not found
+bash: o: command not found
+"
+"[...]
+$$
+.PHONY:    all clean fclean re$$
+"
+"objs/%.o:                srcs/%.c$
+                        @norminette srcs/*$
+"
+"objs/%.o:                srcs/%.c$
+                        @norminette srcs/*$
+"
+"bash: cd: file_not_exist: No such file or directory
+"
+"bash: hello: command not found
+"
+
+
+"hola
+
+"
+"hola
+"
+
+"real	0m3.002s
+user	0m0.003s
+sys	0m0.001s
+"
+
+
+
+"/home/vietdu91/42_works/minishell
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"/home/vietdu91/42_works/minishell
+"
+"hola
+"
+"hola
+bonjour
+"
+"bonjour
+"
+"bonjour
+hola
+"
+bonjourhola
+"/home/vietdu91/42_works/minishell
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+hola
+"
+"/home/vietdu91/42_works/minishell
+hola
+"
+"/home/vietdu91/42_works/minishell
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"/home/vietdu91/42_works/minishell
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"bash: export: `': not a valid identifier
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+bash: export: `': not a valid identifier
+"
+"bash: export: `': not a valid identifier
+"
+"bash: syntax error near
+unexpected token `;'
+"
+"bash: syntax error near
+unexpected token `;'
+"
+"bash: syntax error near
+unexpected token `;'
+"
+"bash: syntax error near
+unexpected token `;'
+"
+"bash: syntax error near unexpected token `newline'
+"
+"bash: syntax error near unexpected token `newline'
+"
+"
+
+"
+"
+
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+
+
+"
+bash: export: `': not a valid identifier
+
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"bash: syntax error near unexpected token `)'
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+/home/vietdu91/42_works/minishell
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+/home/vietdu91/42_works/minishell
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+/home/vietdu91/42_works/minishell
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  srcs  test.c
+/home/vietdu91/42_works/minishell
+"
+"crashtest.c
+Docs
+Dockers
+Drawings
+Makefile
+minishell
+philosophers
+srcs
+test.c
+/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"bash: syntax error near unexpected token `('
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+"
+
+"bash: pwd: No such file or directory
+"
+"/home/vietdu91/42_works/minishell
+"
+"bash: syntax error near unexpected token `)'
+"
+"bash: syntax error near unexpected token `('
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+"
+"bash: lss: command not found
+/home/vietdu91/42_works/minishell
+bash: lss: command not found
+/home/vietdu91/42_works/minishell
+"
+"bash: lss: command not found
+"
+"crashtest.c
+Docs
+Dockers
+Drawings
+Makefile
+minishell
+philosophers
+srcs
+test.c
+      1       1      34
+"
+"crashtest.c
+Docs
+Dockers
+Drawings
+Makefile
+minishell
+philosophers
+srcs
+test.c
+      1       1      34
+"
+"hey
+
+crashtest.c
+Docs
+[...]
+srcs
+test.c
+      1       1      34
+crashtest.c
+Docs
+[...]
+srcs
+test.c
+      1       1      34
+"
+"      1       1      34
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+      1       1      34
+"
+"ls: invalid option -- 'z'
+      1       1      34
+"
+"      1       1      34
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+      1       1      34
+"
+"ls: invalid option -- 'z'
+      1       1      34
+"
+"ls: invalid option -- 'z'
+/home/vietdu91/42_works/minishell
+crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  pwd  srcs  test.c
+      1       1      34
+"
+"ls: invalid option -- 'z'
+"
+"/home/vietdu91/42_works/minishell
+
+crashtest.c
+Docs
+[...]
+srcs
+test.c
+"
+"/home/vietdu91/42_works/minishell
+
+crashtest.c
+Docs
+[...]
+srcs
+test.c
+"
+"/home/vietdu91/
+/home/vietdu91/
+"
+"/home/vietdu91/
+/home/vietdu91/42_works/minishell
+"
+"ls: invalid option -- 'z'
+/home/vietdu91
+
+/home/vietdu91
+"
+"ls: invalid option -- 'z'
+/home/vietdu91
+
+/home/vietdu91/42_works/minishell
+"
+"hola
+"
+"hola
+que tal
+"
+"
+
+hola
+que tal
+"
+"que tal
+"
+"hola que tal
+"
+"hola que tal$
+"
+"
+hola
+"
+"grep: /usr/bin/grep /usr/share/man/man1/grep.1.gz /usr/share/man/man1/grep.1posix.gz /usr/share/info/grep.info.gz
+"
+"total 16
+drwx------  2 vietdu91 [...] .
+drwxrwxewt 51 root     [...] ..
+-rwxr-xr-x  8 vietdu91 [...] crashtest.c
+[...]
+ "
+"/home/vietdu91/42_works/minishell
+"
+"/home/vietdu91/42_works/minishell
+"
+"bash: syntax error near unexpected token `>'
+"
+"bash: syntax error near unexpected token `<'
+"
+"bash: syntax error near unexpected token `>'
+"
+"hola
+"
+"hola
+
+"
+"bash: prout: command not found
+
+bonjour [...]"
+"
+hello
+
+hola
+"
+"hola
+hola
+"
+"hola
+"
+"hola
+hola
+"
+"hola
+"
+"hola
+hola
+hola
+"
+"
+"
+"
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+
+"
+"hola
+hola
+
+hey
+"
+"bonjour hola
+"
+"
+
+hey hola
+"
+"hola1  hola2  [...]
+
+
+hello
+2
+"
+"hola1  hola2  [...]
+
+bonjour
+
+2
+"
+"pwd
+"
+"bash: pwd: No such file or directory
+"
+".: not enough arguments
+"
+"bash: pwd: No such file or directory
+"
+"bash: srcs/pwd: No such file or directory
+"
+"bash: ../pwd: No such file or directory
+"
+"bash: syntax error near unexpected token `newline'
+"
+"bash: syntax error near unexpected token `>'
+"
+"bash: syntax error near unexpected token `<<'
+"
+"bash: syntax error near unexpected token `>'
+"
+"bash: ls: No such file or directory
+"
+"bash: ls: No such file or directory
+"
+"bash: ls2: No such file or directory
+
+ls1  [...]
+"
+
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+"
+"hola
+que tal
+"
+"que tal
+"
+"hola
+"
+"bonjour 1' [...]
+
+hola
+"
+"bonjour [...]
+
+hola hey
+
+cat: hey: No such file or directory
+"
+"bash: prout: No such file or directory
+
+"
+"bash: prout: No such file or directory
+
+bonjour  hello
+
+"
+"bash: prout: No such file or directory
+
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+"
+"bash: prout: No such file or directory
+
+"
+"bash: prout: No such file or directory
+
+bonjour  hello
+
+"
+"bash: prout: No such file or directory
+
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+"
+"bash: prout: No such file or directory
+
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+hey
+"
+"bash: prout: No such file or directory
+
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+hey
+"
+"bash: prout: No such file or directory
+
+bonjour
+
+hey
+"
+"hola
+
+>>"
+"bash: prout: No such file or directory
+
+
+"
+"bash: prout: No such file or directory
+
+
+"
+"bash: prout: No such file or directory
+
+
+hey
+"
+"bash: prout: No such file or directory
+
+"
+"      0       0       0
+"
+ls: cannot access 'bonjour': No such file or directory
+"'bonjour hello' [...]
+"
+"'bonjour hello' [...]
+"
+"HOLA [...]
+"
+"'bonjour hello' hey [...]
+"
+"'bonjour hello' hey [...]
+"
+"'bonjour hello' hey [...]
+"
+"
+
+
+HolaQue Tal
+"
+"Prout
+"
+"
+
+
+Amour Tu es Horrible
+0123456789
+Prout
+"
+"
+
+
+Prout
+
+crashtest.c
+Docs
+[...]
+test.c
+ "
+"
+
+
+Prout
+
+crashtest.c
+Docs
+[...]
+test.c
+"
+"
+
+hola
+"
+"total 16
+drwx------  2 vietdu91 [...] .
+drwxrwxewt 51 root     [...] ..
+[...]
+ "
+"Amour Tu es Horrible
+"
+"
+Amour
+
+Amour
+"
+"Amour Tu Es Horrible
+
+[...] a b hey d"
+"> $HOME
+> hola
+/home/vietdu91
+ "
+"> $HOME
+> hola
+$HOME
+"
+"> $HOME
+> hola
+$HOME
+"
+"> $HOME
+> hola
+$HOME
+"
+"> prout
+> /home/vietdu91
+> $HO
+> $HOME
+"
+"> prout
+> croutte
+> antoine pue
+> hola
+
+prout
+croutte
+antoine pue"
+"> prout
+> croutte
+> antoine pue
+> hola
+tuorp
+ettuorc
+eup eniotna
+"
+"> chola
+> holache
+>      hola
+> "hola"
+> 'hola'
+> hola
+"
+">
+>
+> hola
+"
+"bash: syntax error near unexpected token `newline'
+"
+"> prout
+> lol
+> koala
+"
+"> prout
+> lol
+> cat
+> koala
+bash: prout: command not found"
+"> $hola
+"
+"> holab
+"
+"> $hola$$b
+"
+"> hola$a$$b
+> ho$la$a$$nb
+"
+"hola
+"
+"bash: syntax error near unexpected token `<'
+"
+"bash: syntax error near unexpected token `<<'
+"
+"crashtest.c  Docs  Dockers  Drawings  Makefile  minishell  philosophers  test.c
+
+Docs:
+identite.pdf  loyer.pdf
+srcs:
+main.c  utils.c  sort.c
+"
+"crashtest.c  test.c
+"
+"ls: cannot access '*.hola' : No such file or directory
+"
+"[affiche le Makefile]
+"
+cat: 'M*ee': No such file or directory
+"[affiche le Makefile]
+"
