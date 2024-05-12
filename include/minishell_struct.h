@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/05/06 09:33:11 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/12 21:05:56 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_exec
 	int				fd_stdout;
 	int				output_fd;
 	int				input_fd;
+	int				cmd_nb;
+	int				**pipes;
 }	t_exec;
 
 #endif

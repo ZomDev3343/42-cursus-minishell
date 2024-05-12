@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/06 17:40:22 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/12 21:12:19 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int				handle_input_redirection(char *path);
 int				handle_output_redirection(char *path, t_exec *exec);
 int				handle_append_redirection(char *path);
 int				handle_here_doc_redirection(char *path, t_exec *exec);
+int				**create_pipes(int pipe_nb);
 
 /* Commands */
 
@@ -93,7 +94,8 @@ void			setup_signal_handler(void);
 
 /* execution */
 
-void			single_execution(t_command *cmd, t_env *env);
+void			exec_single_cmd(t_command *cmd, t_env *env);
+void			exec_multiple_cmd(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			choose_exec_path(t_command *cmd, t_env *env);
 
 /* command utils */
@@ -106,6 +108,7 @@ t_exec			*make_exec_structure(void);
 
 void			enter_child_process(t_command *cmd, t_env *env);
 void			enter_parent_process(t_exec *exec);
+void			manage_process(int i, int pid, t_exec *exec, t_command *cmd, t_env *env);
 
 /* path */
 

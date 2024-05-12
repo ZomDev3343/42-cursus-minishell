@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/11 18:22:44 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/12 21:20:51 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,30 @@ void	enter_parent_process(t_exec *exec)
 	close(exec->fd_stdout);
 }
 
-void	enter_child_process_b(int **pipes, int i, int pipe_nb, t_command *cmd)
+void	manage_process(int i, int pid, t_exec *exec, t_command *cmd, t_env *env)
 {
-	t_exec	*exec;
-
-	exec = make_exec_structure();
-	if (i != 0)
-		dup2(pipes[i - 1][0], STDIN_FILENO);
-	if (cmd->next)
-		dup2(pipes[i][1], STDOUT_FILENO);
-	cleanup_pipes(pipes, pipe_nb);
-	handle_redirections(cmd->redirections, exec);
-	execve(cmd->parts[0], cmd->parts, NULL);
+	if (pid == 0)
+	{
+		if (i > 0) // Handle input from the previous pipe if it's not the first command.
+		{
+			dup2(exec->pipes[i - 1][0], STDIN_FILENO);
+			close(exec->pipes[i - 1][1]);
+		}
+		if (i < exec->cmd_nb - 1) // Handle output for the next pipe if it's not the last command.
+		{
+			dup2(exec->pipes[i][1], STDOUT_FILENO);
+			close(exec->pipes[i][0]);
+		}
+		if (handle_redirections(cmd->redirections, exec) == 1)
+			return ;
+		enter_child_process(cmd, env);
+	}
+	else
+	{
+		if (i > 0) // close pipe end.
+			close(exec->pipes[i - 1][0]);
+		if (i < exec->cmd_nb - 1) // close read end.
+			close(exec->pipes[i][1]);
+		enter_parent_process(exec);
+	}
 }
