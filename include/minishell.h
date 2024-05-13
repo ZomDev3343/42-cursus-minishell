@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/04/30 19:03:44 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/13 16:22:40 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int				remove_env_var(t_env **env, char *var_name);
 char			*get_env_variable(t_env *env, char *var_name);
 void			print_env(t_env *env);
 int				has_env_variable(t_env *env, char *name);
+char			**build_env(t_env *env);
 
 /* --- Environment --- */
 

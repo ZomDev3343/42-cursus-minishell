@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/13 15:21:45 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/13 16:22:16 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	**build_env(t_env *env)
 	char	*tmp_joined;
 
 	len = 0;
+	i = 0;
 	tmp = env;
 	while (tmp)
 		len++;
