@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/12 21:12:19 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/13 10:26:11 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,8 @@ void			setup_signal_handler(void);
 
 /* execution */
 
-void			exec_single_cmd(t_command *cmd, t_env *env);
-void			exec_multiple_cmd(int i, t_exec *exec, t_command *cmd, t_env *env);
-void			choose_exec_path(t_command *cmd, t_env *env);
+void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
+void			handle_execution(t_command *cmd, t_env *env);
 
 /* command utils */
 
@@ -106,9 +105,8 @@ t_exec			*make_exec_structure(void);
 
 /* process */
 
-void			enter_child_process(t_command *cmd, t_env *env);
-void			enter_parent_process(t_exec *exec);
-void			manage_process(int i, int pid, t_exec *exec, t_command *cmd, t_env *env);
+void			parent_process(int i, t_exec *exec);
+void			child_process(int i, t_exec *exec, t_command *cmd, t_env *env);
 
 /* path */
 
