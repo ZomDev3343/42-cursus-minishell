@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/04/24 12:53:12 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/13 11:36:17 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ char	*ft_strcpy_wsp(char *line, int *index)
 	return (*index += i, ft_strcpy(line));
 }
 
-char	*ft_strcpy_until_quote(char *str)
+char	*ft_strcpy_until_quote(char *str, char quote)
 {
 	int	i;
 
 	i = -1;
 	while (str[++i])
-		if (str[i] == '\'' || str[i] == '\"')
+		if (str[i] == quote)
 			break ;
 	return (ft_strncpy(str, i));
 }

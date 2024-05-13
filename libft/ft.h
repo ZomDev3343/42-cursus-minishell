@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/04/22 16:47:57 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/13 11:37:11 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strncpy(char *to_copy, size_t n);
 char	*ft_strcpy(char *to_copy);
 char	*ft_strcpy_wsp(char *line, int *index);
-char	*ft_strcpy_until_quote(char *str);
+char	*ft_strcpy_until_quote(char *str, char quote);
 void	ft_strrepl(char *str, char bef, char aft);
 int		ft_strchr_i(char *str, char c);
 int		ft_nstrchr_i(char *str, char c);
