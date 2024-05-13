@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 10:26:11 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/13 10:34:39 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void			handle_execution(t_command *cmd, t_env *env);
 int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
 t_exec			*make_exec_structure(void);
+void			free_pipes(int **pipes, int pipe_nb);
 
 /* process */
 

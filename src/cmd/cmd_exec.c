@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 10:26:53 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/13 10:35:12 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,7 @@ void	handle_execution(t_command *cmd, t_env *env)
 	exec->cmd_nb = get_nb_of_commands(cmd);
 	exec->pipes = create_pipes(exec->cmd_nb - 1);
 	exec_command(0, exec, cmd, env);
+	if (exec->pipes)
+		free_pipes(exec->pipes, exec->cmd_nb - 1);
+	free(exec);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/12 14:21:08 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/13 10:34:16 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,17 @@ void	ft_free_array(char **str)
 		i++;
 	}
 	free(str);
+}
+
+void	free_pipes(int **pipes, int pipe_nb)
+{
+	int	i;
+
+	i = 0;
+	while (i < pipe_nb)
+	{
+		free(pipes[i]);
+		i++;
+	}
+	free(pipes);
 }
