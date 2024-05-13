@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/27 12:21:25 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/13 11:38:03 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	parse_word(t_string_part **parts, char *str, t_env *env)
 
 	i = -1;
 	last_cpy_index = 0;
-	to_put = ft_strcpy_until_quote(str);
+	to_put = ft_strcpy_until_quote(str, *(str - 1));
 	while (to_put[++i])
 	{
 		if (to_put[i] == '$' && to_put[i + 1])
