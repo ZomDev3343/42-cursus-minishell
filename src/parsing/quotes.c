@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/13 11:38:03 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/13 15:10:22 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	parse_word(t_string_part **parts, char *str, t_env *env)
 	if (i - last_cpy_index > 0)
 		push_str_part(parts,
 			ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
-	free(to_put);
+	ft_free(to_put);
 }
 
 static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
@@ -62,7 +62,8 @@ static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 	end_quote = is_quote_closed(str);
 	if (!end_quote)
 		return (-1);
-	parse_word(parts, str + 1, env);
+	if (end_quote > 1)
+		parse_word(parts, str + 1, env);
 	return (end_quote);
 }
 
@@ -91,7 +92,7 @@ char	*rem_quotes(char *str, t_env *env)
 		quote_end = 0;
 		if (str[i] == '\'')
 			quote_end = rem_single_quotes(&parts, str + i);
-		else if (str[i] == '\"')
+		else if (str[i] == '"')
 			quote_end = rem_double_quotes(&parts, str + i, env);
 		else
 		{
