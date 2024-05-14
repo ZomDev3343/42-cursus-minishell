@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 17:28:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:07:39 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 	/*if (cmd->builtin_flag > 0)
 		choose_builtin_path();
 	else*/
-	execve(found_path(cmd->parts[0], env), cmd->parts, NULL);
+	execve(found_path(cmd->parts[0], env), cmd->parts, build_env(env));
 	perror("ERROR : execve failed.\n");
 	exit(EXIT_FAILURE);
 }
