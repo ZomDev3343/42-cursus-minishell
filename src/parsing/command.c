@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:16:31 by truello           #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:56 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:46:13 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_command	*newcmd(char **cmd_parts, t_redirections *redirections)
 	if (!cmd)
 		return (NULL);
 	cmd->parts = cmd_parts;
+	set_builtin_flag(cmd);
 	cmd->redirections = redirections;
 	cmd->next = NULL;
 	return (cmd);
@@ -77,6 +78,7 @@ void	print_commands(t_command *cmds)
 		printf("--- Command ---\n");
 		print_parts(cmds->parts);
 		print_redirections(cmds->redirections);
+		printf("Builtin Flag : %d\n", cmds->builtin_flag);
 		printf("--- Command ---\n");
 		cmds = cmds->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/04/27 12:50:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:42:49 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ enum e_redirection_type
 	REDIR_APP,
 	REDIR_HD,
 	NO_REDIR
+};
+
+enum e_builtin_flag
+{
+	NOT_A_BUILTIN,
+	BUILTIN_ECHO,
+	BUILTIN_CD,
+	BUILTIN_PWD,
+	BUILTIN_EXPORT,
+	BUILTIN_UNSET,
+	BUILTIN_ENV,
+	BUILTIN_EXIT
 };
 
 typedef struct s_token
@@ -47,6 +59,7 @@ typedef struct s_command
 {
 	char				**parts;
 	t_redirections		*redirections;
+	int					builtin_flag;
 	struct s_command	*next;
 }	t_command;
 

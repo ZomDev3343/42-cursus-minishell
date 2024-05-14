@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 15:22:20 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:45:00 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void			push_str_part(t_string_part **cmd_parts, char *part);
 char			**build_parts(t_string_part *cmd_parts);
 void			print_commands(t_command *cmds);
 void			free_command(t_command *cmd);
+void			set_builtin_flag(t_command *cmd);
 
 /* String Utils */
 
