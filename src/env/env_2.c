@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/14 16:54:22 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/14 17:04:29 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	**build_env(t_env *env)
 		len++;
 		tmp = tmp->next;
 	}
-	res = (char **) ft_calloc(len, sizeof(char *));
+	res = (char **) ft_calloc(len + 1, sizeof(char *));
 	if (!res)
 		return (NULL);
 	while (++i < len)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 16:25:55 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/14 17:01:54 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_env	*env;
 
-	ac = ac + 1 - 1;
-	*av = *av;
+	(void)ac;
+	(void)av;
 	env = make_env(envp);
 	setup_signal_handler();
 	line = readline("minishell > ");
