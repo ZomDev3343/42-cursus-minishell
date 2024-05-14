@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 16:22:40 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:22:20 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
 char			*rem_quotes(char *str, t_env *env);
 void			print_str_parts(t_string_part *parts);
+void			parse_word(t_string_part **parts, char *str, t_env *env);
+void			parse_word_nquotes(t_string_part **parts,
+					char *str, t_env *env);
 
 /* Verification */
 
