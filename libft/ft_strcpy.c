@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:36:40 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 15:09:36 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/13 17:17:01 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,21 @@ char	*ft_strcpy_until_quote(char *str, char quote)
 	int	i;
 
 	i = -1;
+
 	while (str[++i])
 		if (str[i] == quote)
+			break ;
+	return (ft_strncpy(str, i));
+}
+
+char	*ft_strcpy_until_quotes(char *str)
+{
+	int	i;
+
+	i = -1;
+
+	while (str[++i])
+		if (str[i] == '\'' || str[i] == '\"')
 			break ;
 	return (ft_strncpy(str, i));
 }

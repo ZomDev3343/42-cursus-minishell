@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:47:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:32 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/13 16:30:36 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	**build_parts(t_string_part *cmd_parts)
 
 void	free_command(t_command *cmd)
 {
+	if (!cmd)
+		return ;
 	if (cmd->next)
 		free_command(cmd->next);
 	free_parts(cmd->parts);
