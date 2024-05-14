@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:47:40 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/21 15:18:32 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/14 15:45:03 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,28 @@ char	**build_parts(t_string_part *cmd_parts)
 	return (free_str_parts(cmd_parts), res);
 }
 
+void	set_builtin_flag(t_command *cmd)
+{
+	if (ft_strcmp(cmd->parts[0], "echo"))
+		cmd->builtin_flag = BUILTIN_ECHO;
+	else if (ft_strcmp(cmd->parts[0], "cd"))
+		cmd->builtin_flag = BUILTIN_CD;
+	else if (ft_strcmp(cmd->parts[0], "pwd"))
+		cmd->builtin_flag = BUILTIN_PWD;
+	else if (ft_strcmp(cmd->parts[0], "export"))
+		cmd->builtin_flag = BUILTIN_EXPORT;
+	else if (ft_strcmp(cmd->parts[0], "unset"))
+		cmd->builtin_flag = BUILTIN_UNSET;
+	else if (ft_strcmp(cmd->parts[0], "env"))
+		cmd->builtin_flag = BUILTIN_ENV;
+	else if (ft_strcmp(cmd->parts[0], "exit"))
+		cmd->builtin_flag = BUILTIN_EXIT;
+}
+
 void	free_command(t_command *cmd)
 {
+	if (!cmd)
+		return ;
 	if (cmd->next)
 		free_command(cmd->next);
 	free_parts(cmd->parts);

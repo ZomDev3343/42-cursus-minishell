@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quotes.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/13 11:38:03 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/14 15:23:09 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,6 @@ int	is_quote_closed(char *str)
 	return (0);
 }
 
-static void	parse_word(t_string_part **parts, char *str, t_env *env)
-{
-	char	*to_put;
-	int		last_cpy_index;
-	int		i;
-
-	i = -1;
-	last_cpy_index = 0;
-	to_put = ft_strcpy_until_quote(str, *(str - 1));
-	while (to_put[++i])
-	{
-		if (to_put[i] == '$' && to_put[i + 1])
-		{
-			push_str_part(parts,
-				ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
-			push_str_part(parts, get_env_variable(env, to_put + i));
-			i += ft_strchr_nalphanum(to_put + i + 1);
-			last_cpy_index = i + 1;
-		}
-	}
-	if (i - last_cpy_index > 0)
-		push_str_part(parts,
-			ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
-	free(to_put);
-}
-
 static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 {
 	int	end_quote;
@@ -62,8 +36,9 @@ static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 	end_quote = is_quote_closed(str);
 	if (!end_quote)
 		return (-1);
-	parse_word(parts, str + 1, env);
-	return (end_quote);
+	if (end_quote > 1)
+		parse_word(parts, str + 1, env);
+	return (end_quote + (end_quote == 1));
 }
 
 static int	rem_single_quotes(t_string_part **parts, char *str)
@@ -71,10 +46,11 @@ static int	rem_single_quotes(t_string_part **parts, char *str)
 	int	end_quote;
 
 	end_quote = is_quote_closed(str);
-	if (end_quote <= 1)
+	if (!end_quote)
 		return (-1);
-	push_str_part(parts, ft_strncpy(str + 1, end_quote - 1));
-	return (end_quote);
+	if (end_quote > 1)
+		push_str_part(parts, ft_strncpy(str + 1, end_quote - 1));
+	return (end_quote + (end_quote == 1));
 }
 
 char	*rem_quotes(char *str, t_env *env)
@@ -86,7 +62,7 @@ char	*rem_quotes(char *str, t_env *env)
 
 	parts = NULL;
 	i = -1;
-	while (str[++i])
+	while (str && str[++i])
 	{
 		quote_end = 0;
 		if (str[i] == '\'')
@@ -95,12 +71,13 @@ char	*rem_quotes(char *str, t_env *env)
 			quote_end = rem_double_quotes(&parts, str + i, env);
 		else
 		{
-			parse_word(&parts, str + i, env);
-			i += ft_strchr_quotes(str + i);
+			parse_word_nquotes(&parts, str + i, env);
+			i += ft_strchr_quotes(str + i) - 1;
 		}
 		if (quote_end == -1)
 			break ;
-		i += quote_end - 1;
+		if (quote_end > 0)
+			i += quote_end - 1;
 	}
 	return (res = build_str(parts), res);
 }

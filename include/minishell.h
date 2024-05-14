@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 15:20:19 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:10:28 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int				remove_env_var(t_env **env, char *var_name);
 char			*get_env_variable(t_env *env, char *var_name);
 void			print_env(t_env *env);
 int				has_env_variable(t_env *env, char *name);
+char			**build_env(t_env *env);
 
 /* --- Environment --- */
 
@@ -71,6 +72,7 @@ void			push_str_part(t_string_part **cmd_parts, char *part);
 char			**build_parts(t_string_part *cmd_parts);
 void			print_commands(t_command *cmds);
 void			free_command(t_command *cmd);
+void			set_builtin_flag(t_command *cmd);
 
 /* String Utils */
 
@@ -78,6 +80,9 @@ char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
 char			*rem_quotes(char *str, t_env *env);
 void			print_str_parts(t_string_part *parts);
+void			parse_word(t_string_part **parts, char *str, t_env *env);
+void			parse_word_nquotes(t_string_part **parts,
+					char *str, t_env *env);
 
 /* Verification */
 

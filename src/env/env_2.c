@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/24 18:47:19 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/13 16:22:16 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,30 @@ void	print_env(t_env *env)
 		printf("%s -> %s\n", env->name, env->content);
 		env = env->next;
 	}
+}
+
+char	**build_env(t_env *env)
+{
+	int		len;
+	t_env	*tmp;
+	char	**res;
+	int		i;
+	char	*tmp_joined;
+
+	len = 0;
+	i = 0;
+	tmp = env;
+	while (tmp)
+		len++;
+	res = (char **) ft_calloc(len, sizeof(char *));
+	if (!res)
+		return (NULL);
+	while (++i < len)
+	{
+		tmp_joined = ft_strjoin(env->name, "=");
+		res[i] = ft_strjoin(tmp_joined, env->content);
+		free(tmp_joined);
+		env = env->next;
+	}
+	return (res);
 }

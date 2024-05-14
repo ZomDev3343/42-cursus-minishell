@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:16:31 by truello           #+#    #+#             */
-/*   Updated: 2024/05/02 11:33:44 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:11:46 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_command	*newcmd(char **cmd_parts, t_redirections *redirections)
 	if (!cmd)
 		return (NULL);
 	cmd->parts = cmd_parts;
+	set_builtin_flag(cmd);
 	cmd->redirections = redirections;
 	cmd->next = NULL;
 	return (cmd);
@@ -77,7 +78,8 @@ void	print_commands(t_command *cmds)
 		printf("\n--- Command START ---\n");
 		print_parts(cmds->parts);
 		print_redirections(cmds->redirections);
-		printf("\n--- Command END ---\n");
+		printf("Builtin Flag : %d\n", cmds->builtin_flag);
+		printf("--- Command ---\n");
 		cmds = cmds->next;
 	}
 }

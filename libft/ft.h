@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 14:52:17 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:10:47 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char		*ft_strncpy(char *to_copy, size_t n);
 char		*ft_strcpy(char *to_copy);
 char		*ft_strcpy_wsp(char *line, int *index);
 char		*ft_strcpy_until_quote(char *str, char quote);
+char	*ft_strcpy_until_quotes(char *str);
 void		ft_strrepl(char *str, char bef, char aft);
 int			ft_strchr_i(char *str, char c);
 int			ft_nstrchr_i(char *str, char c);
