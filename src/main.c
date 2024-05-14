@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 16:11:23 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:10:18 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int ac, char **av, char **envp)
 	char	*line;
 	t_env	*env;
 
-	ac = ac + 1 - 1;
-	*av = *av;
+	(void)ac;
+	(void)av;
 	env = make_env(envp);
 	setup_signal_handler();
 	line = readline("minishell > ");
