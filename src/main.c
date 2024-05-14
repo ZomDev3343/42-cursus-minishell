@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 10:26:30 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:22:53 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	parse_line(char *line, t_env *env)
 	cmds = NULL;
 	tlist = tokenize(line, env);
 	parse_commands(tlist, &cmds);
-	print_commands(cmds);
+	//print_commands(cmds);
+	//print_env(env);
 	handle_execution(cmds, env);
 	if (!check_commands(cmds))
 		return (free_command(cmds), free_token(tlist), (void) 0);

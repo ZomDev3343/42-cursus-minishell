@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/13 10:34:39 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:20:19 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,23 @@ void			setup_signal_handler(void);
 
 /* --- Command execution --- */
 
+/* builtin */
+
+//void			choose_builtin_path(t_command *cmd);
+void			ft_cd(t_command *cmd);
+void			ft_echo(t_command *cmd);
+void			ft_env(t_env *env);
+void			ft_exit(t_command *cmd);
+void			ft_pwd(t_env *env);
+
 /* execution */
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			handle_execution(t_command *cmd, t_env *env);
+
+/* builtin */
+
+int				check_for_builtin(char *cmd);
 
 /* command utils */
 

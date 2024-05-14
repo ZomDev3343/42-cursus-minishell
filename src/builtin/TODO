@@ -1,0 +1,13 @@
+echo (1) OK
+
+cd (2) OK - check if path validation is needed and for "unset home" case.
+
+pwd (3) OK - check the env_name.
+
+export (4) NN - waiting for test.
+
+unset (5) NN - waiting for test.
+
+env (6) OK - check if NAME needs "=".
+
+exit (7) OK - free everything before quitting ?
