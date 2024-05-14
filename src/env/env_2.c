@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/13 16:22:16 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/14 16:54:22 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ char	**build_env(t_env *env)
 	i = 0;
 	tmp = env;
 	while (tmp)
+	{
 		len++;
+		tmp = tmp->next;
+	}
 	res = (char **) ft_calloc(len, sizeof(char *));
 	if (!res)
 		return (NULL);
