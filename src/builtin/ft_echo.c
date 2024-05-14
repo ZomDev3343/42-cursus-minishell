@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 17:05:11 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/14 17:46:38 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	ft_echo(t_command *cmd)
 	int	i;
 
 	newline_flag = 1;
-	i = 2;
+	i = 1;
 	if (ft_strncmp(cmd->parts[1], "-n", 2))
 	{
 		newline_flag = 0;
-		i = 3;
+		i = 2;
 	}
 	while (cmd->parts[i])
 	{
