@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 11:48:14 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:24:11 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,24 @@ t_env	*make_env(char **envp)
 
 int	remove_env_var(t_env **env, char *var_name)
 {
-	t_env	*tmp;
-	t_env	*tmp_2;
+	t_env	*current_env;
+	t_env	*previous;
 
-	if (!*env || !var_name)
-		return (FALSE);
-	tmp = *env;
-	if (ft_strcmp(tmp->name, var_name) == 0)
-		return (*env = tmp->next, tmp->next = NULL, free_env(tmp), TRUE);
-	while (tmp)
+	current_env = *env;
+	previous = NULL;
+	while (current_env)
 	{
-		if (ft_strcmp(tmp->next->name, var_name) == 0)
-			return (tmp_2 = tmp->next, tmp->next = tmp_2->next,
-				tmp_2->next = NULL, free_env(tmp_2), TRUE);
-		tmp = tmp->next;
+		if (ft_strncmp(current_env->name, var_name, ft_strlen(var_name)) == 1)
+		{
+			if (previous == NULL)
+				*env = current_env->next;
+			else
+				previous->next = current_env->next;
+			free_env(current_env);
+			return (TRUE);
+		}
+		previous = current_env;
+		current_env = current_env->next;
 	}
 	return (FALSE);
 }

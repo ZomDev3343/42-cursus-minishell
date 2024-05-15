@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/14 17:44:30 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/15 15:10:02 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		return ;
 	if (cmd->builtin_flag > NOT_A_BUILTIN)
-		choose_builtin_path(cmd);
-	else
 	{
-		execve(found_path(cmd->parts[0], env), cmd->parts, build_env(env));
-		perror("ERROR : execve failed.\n");
-		exit(EXIT_FAILURE);
+		choose_builtin_path(cmd, env);
+		exit(EXIT_SUCCESS);
 	}
+	else
+		execve(found_path(cmd->parts[0], env), cmd->parts, build_env(env));
 }
 
 void	parent_process(int i, t_exec *exec)

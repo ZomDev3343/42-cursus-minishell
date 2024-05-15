@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 17:43:32 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/15 21:14:24 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ void			setup_signal_handler(void);
 
 /* builtin */
 
-void			choose_builtin_path(t_command *cmd);
-void			ft_cd(t_command *cmd);
+void			choose_builtin_path(t_command *cmd, t_env *env);
+void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
 void			ft_env(t_env *env);
 void			ft_exit(t_command *cmd);
@@ -110,10 +110,6 @@ void			ft_pwd(t_env *env);
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			handle_execution(t_command *cmd, t_env *env);
-
-/* builtin */
-
-int				check_for_builtin(char *cmd);
 
 /* command utils */
 

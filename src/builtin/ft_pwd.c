@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:05:02 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 17:24:44 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/15 10:30:55 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_pwd(t_env *env)
 	current_env = env;
 	while (current_env)
 	{
-		if (ft_strncmp(current_env->name, "PATH", 4))
+		if (ft_strncmp(current_env->name, "PWD", 3))
 		{
 			printf("%s\n", current_env->content);
 			return ;
