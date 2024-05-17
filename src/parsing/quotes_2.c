@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 15:20:25 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/14 16:27:49 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/17 14:53:43 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	parse_word(t_string_part **parts, char *str, t_env *env)
 			push_str_part(parts,
 				ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
 			push_str_part(parts, get_env_variable(env, to_put + i));
-			i += ft_strchr_nalphanum(to_put + i + 1);
+			i += ft_strchr_nalphanum(to_put + i + 1) + (str[i + 1] == '?');
 			last_cpy_index = i + 1;
 		}
 	}
@@ -54,7 +54,7 @@ void	parse_word_nquotes(t_string_part **parts, char *str, t_env *env)
 			push_str_part(parts,
 				ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
 			push_str_part(parts, get_env_variable(env, to_put + i));
-			i += ft_strchr_nalphanum(to_put + i + 1);
+			i += ft_strchr_nalphanum(to_put + i + 1) + (str[i + 1] == '?');
 			last_cpy_index = i + 1;
 		}
 	}

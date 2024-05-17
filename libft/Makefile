@@ -16,6 +16,7 @@ SRC=ft_split.c \
 	ft_swap.c \
 	ft_array.c \
 	ft_fd.c \
+	ft_itoa.c \
 	ft_strrepl.c \
 	ft_min.c \
 	ft_max.c \

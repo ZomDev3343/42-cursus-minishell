@@ -10,10 +10,10 @@ all:
 	make $(NAME)
 
 obj/%.o: src/%.c
-	gcc -c $(FLAGS) -g -o $@ $<
+	cc -c $(FLAGS) -g -o $@ $<
 
 $(NAME): $(OBJ)
-	gcc $(FLAGS) $(OBJ) $(LIBS) -g -o $@
+	cc $(FLAGS) $(OBJ) $(LIBS) -g -o $@
 
 clean:
 	make clean -C libft

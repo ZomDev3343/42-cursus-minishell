@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/14 17:15:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/15 16:57:01 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*get_env_variable(t_env *env, char *var_name)
 {
 	char	*correct_var_name;
 
+	if (var_name[1] == '?')
+		return (get_last_status_code());
 	correct_var_name = parse_var_name(var_name);
 	while (env && correct_var_name)
 	{
