@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/04/23 11:48:14 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/17 19:18:45 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ t_env	*newenv(char *name, char *content)
 
 void	free_env(t_env *env)
 {
+	if (!env)
+		return ;
 	if (env->next)
 		free_env(env->next);
 	free(env->name);

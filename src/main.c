@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 17:01:54 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/17 19:17:47 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	(void)av;
 	env = make_env(envp);
+	print_env(env);
 	setup_signal_handler();
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
