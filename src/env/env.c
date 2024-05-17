@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/15 21:24:11 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:46:03 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_env	*newenv(char *name, char *content)
 	var = ft_calloc(1, sizeof(t_env));
 	if (!var)
 		return (NULL);
-	var->name = name;
-	var->content = content;
+	var->name = ft_strdup(name);
+	var->content = ft_strdup(content);
 	return (var);
 }
 
@@ -66,28 +66,4 @@ t_env	*make_env(char **envp)
 		envp++;
 	}
 	return (env);
-}
-
-int	remove_env_var(t_env **env, char *var_name)
-{
-	t_env	*current_env;
-	t_env	*previous;
-
-	current_env = *env;
-	previous = NULL;
-	while (current_env)
-	{
-		if (ft_strncmp(current_env->name, var_name, ft_strlen(var_name)) == 1)
-		{
-			if (previous == NULL)
-				*env = current_env->next;
-			else
-				previous->next = current_env->next;
-			free_env(current_env);
-			return (TRUE);
-		}
-		previous = current_env;
-		current_env = current_env->next;
-	}
-	return (FALSE);
 }

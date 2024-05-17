@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/15 21:14:24 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:47:10 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ t_env			*newenv(char *name, char *content);
 void			free_env(t_env *env);
 void			push_env(t_env **env, t_env *env_var);
 t_env			*make_env(char **envp);
-int				remove_env_var(t_env **env, char *var_name);
+int				remove_env_var(t_env *env, char *var_name);
 char			*get_env_variable(t_env *env, char *var_name);
 void			print_env(t_env *env);
 int				has_env_variable(t_env *env, char *name);
 char			**build_env(t_env *env);
-
-/* --- Environment --- */
 
 /* --- Parsing --- */
 
@@ -88,28 +86,34 @@ void			parse_word_nquotes(t_string_part **parts,
 
 int				check_commands(t_command *cmds);
 
-/* --- Parsing --- */
-
 /* --- Signals --- */
 
 void			sig_on_interrupt(int code);
 void			setup_signal_handler(void);
 
-/* --- Command execution --- */
+/* --- builtins --- */
 
 /* builtin */
 
-void			choose_builtin_path(t_command *cmd, t_env *env);
 void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
 void			ft_env(t_env *env);
 void			ft_exit(t_command *cmd);
 void			ft_pwd(t_env *env);
 
+/* builtin utils */
+
+void			choose_builtin_path(t_command *cmd, t_env *env);
+char			*get_current_working_directory(void);
+void			update_env(char *content, char *name, t_env *env);
+void			add_env_variable(t_env *env, t_env *env_var);
+
 /* execution */
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			handle_execution(t_command *cmd, t_env *env);
+
+/* --- Command execution --- */
 
 /* command utils */
 

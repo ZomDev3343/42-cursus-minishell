@@ -3,44 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/15 21:42:39 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:49:03 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*get_current_pwd(t_env *env)
-{
-	t_env	*current_env;
-
-	current_env = env;
-	while (current_env)
-	{
-		if (ft_strncmp(current_env->name, "PWD", 3))
-			return (current_env->content);
-		current_env = current_env->next;
-	}
-	return (NULL);
-}
-
 void	ft_cd(t_command *cmd, t_env *env)
 {
-	/*remove_env_var(&env, "OLDPWD");
-	push_env(&env, newenv("OLDPWD", get_current_pwd(env)));
-	print_env(env);*/
-	if (cmd->parts[1] == NULL)
-		chdir(getenv("HOME"));
-	else if (ft_strncmp(cmd->parts[1], "..", 2))
-		chdir(getenv("OLDPWD"));
+	char	*old_pwd;
+
+	old_pwd = get_current_working_directory();
+	if (cmd->parts[1])
+	{
+		if (chdir(cmd->parts[1]) == 0)
+		{
+			update_env(old_pwd, "OLDPWD", env);
+			update_env(get_current_working_directory(), "PWD", env);
+		}
+		else
+			printf("cd: %s: No such file or directory\n", cmd->parts[1]);
+	}
 	else
 	{
-		if (!chdir(cmd->parts[1]))
-		{
-			printf("cd : %s: No such file or directory\n", cmd->parts[1]);
-			return ;
-		}
+		chdir(getenv("HOME"));
+		update_env(get_current_working_directory(), "PWD", env);
+		update_env(old_pwd, "OLDPWD", env);
 	}
+	printf("\n---- ENV AFTER CD ----\n");
+	print_env(env);
 }

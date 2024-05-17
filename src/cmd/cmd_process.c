@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/15 15:10:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/17 14:48:57 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
+	printf("\n---- ENV BEFORE PROCESS ----\n");
+	print_env(env);
+	//update_env(get_current_working_directory(), "PWD", env);
 	if (i > 0)
 	{
 		dup2(exec->pipes[i - 1][0], STDIN_FILENO);
