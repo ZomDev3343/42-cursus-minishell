@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/17 14:48:57 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:14:19 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,12 @@
 
 void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
-	printf("\n---- ENV BEFORE PROCESS ----\n");
-	print_env(env);
-	//update_env(get_current_working_directory(), "PWD", env);
-	if (i > 0)
-	{
-		dup2(exec->pipes[i - 1][0], STDIN_FILENO);
-		close(exec->pipes[i - 1][1]);
-	}
-	if (i < exec->cmd_nb - 1)
-	{
-		dup2(exec->pipes[i][1], STDOUT_FILENO);
-		close(exec->pipes[i][0]);
-	}
+	handle_redir_entering_exec(i, exec);
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		return ;
-	if (cmd->builtin_flag > NOT_A_BUILTIN)
+	if (check_builtin_path(cmd) == 0)
 	{
-		choose_builtin_path(cmd, env);
+		builtin_in_child(cmd, env);
 		exit(EXIT_SUCCESS);
 	}
 	else

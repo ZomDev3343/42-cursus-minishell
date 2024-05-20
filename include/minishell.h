@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/17 14:47:10 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/20 16:13:56 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int				handle_output_redirection(char *path, t_exec *exec);
 int				handle_append_redirection(char *path);
 int				handle_here_doc_redirection(char *path, t_exec *exec);
 int				**create_pipes(int pipe_nb);
+void			handle_redir_leaving_exec(int i, t_exec *exec);
+void			handle_redir_entering_exec(int i, t_exec *exec);
 
 /* Commands */
 
@@ -95,15 +97,17 @@ void			setup_signal_handler(void);
 
 /* builtin */
 
+int				check_builtin_path(t_command *cmd);
+void			builtin_in_child(t_command *cmd, t_env *env);
+void			builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
 void			ft_env(t_env *env);
 void			ft_exit(t_command *cmd);
-void			ft_pwd(t_env *env);
+void			ft_pwd(void);
 
 /* builtin utils */
 
-void			choose_builtin_path(t_command *cmd, t_env *env);
 char			*get_current_working_directory(void);
 void			update_env(char *content, char *name, t_env *env);
 void			add_env_variable(t_env *env, t_env *env_var);

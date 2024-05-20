@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_struct.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:12 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 16:10:15 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:04:22 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ enum e_builtin_flag
 {
 	NOT_A_BUILTIN,
 	BUILTIN_ECHO,
-	BUILTIN_CD,
 	BUILTIN_PWD,
+	BUILTIN_CD,
 	BUILTIN_EXPORT,
 	BUILTIN_UNSET,
 	BUILTIN_ENV,

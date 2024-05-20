@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 10:35:12 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:53:37 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,24 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 
 	if (!cmd)
 		return ;
-	pid = fork();
-	if (pid == -1)
-	{
-		perror("ERROR : during fork creation\n");
-		return ;
-	}
-	if (pid == 0)
-		child_process(i, exec, cmd, env);
+	if (check_builtin_path(cmd) == 1)
+		builtin_out_child(i, exec, cmd, env);
 	else
-		parent_process(i, exec);
+	{
+		pid = fork();
+		if (pid == -1)
+		{
+			perror("ERROR : during fork creation\n");
+			return ;
+		}
+		else
+		{
+			if (pid == 0)
+				child_process(i, exec, cmd, env);
+			else
+				parent_process(i, exec);
+		}
+	}
 	exec_command(i + 1, exec, cmd->next, env);
 }
 

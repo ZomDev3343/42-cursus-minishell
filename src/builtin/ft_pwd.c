@@ -6,24 +6,13 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:05:02 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/15 10:30:55 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:08:01 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_pwd(t_env *env)
+void	ft_pwd(void)
 {
-	t_env	*current_env;
-
-	current_env = env;
-	while (current_env)
-	{
-		if (ft_strncmp(current_env->name, "PWD", 3))
-		{
-			printf("%s\n", current_env->content);
-			return ;
-		}
-		current_env = current_env->next;
-	}
+	printf("%s\n", get_current_working_directory());
 }
