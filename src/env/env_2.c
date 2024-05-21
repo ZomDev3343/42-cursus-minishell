@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/14 17:15:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/21 10:13:37 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	print_env(t_env *env)
 {
 	while (env)
 	{
-		printf("%s -> %s\n", env->name, env->content);
+		printf("%s=%s\n", env->name, env->content);
 		env = env->next;
 	}
 }
