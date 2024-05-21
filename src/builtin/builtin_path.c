@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_path.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/21 13:51:24 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 22:04:01 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	builtin_in_child(t_command *cmd, t_env *env)
 	else if (cmd->builtin_flag == BUILTIN_PWD)
 		ft_pwd();
 	else if (cmd->builtin_flag == BUILTIN_ENV)
-		ft_env(env);
+		ft_env(cmd, env);
 }
 
 void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
@@ -35,7 +35,7 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (cmd->builtin_flag == BUILTIN_UNSET)
 		ft_unset(cmd, env);
 	if (cmd->builtin_flag == BUILTIN_EXIT)
-		ft_exit(cmd, env);
+		ft_exit(exec, cmd, env);
 	handle_redir_leaving_exec(i, exec);
 }
 

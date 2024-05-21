@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/13 10:34:16 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:11:23 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_exec	*make_exec_structure(void)
+t_exec	*make_exec_structure(char *line)
 {
 	t_exec	*exec;
 
@@ -24,6 +24,7 @@ t_exec	*make_exec_structure(void)
 	}
 	exec->fd_stdin = dup(STDIN_FILENO);
 	exec->fd_stdout = dup(STDOUT_FILENO);
+	exec->line = line;
 	return (exec);
 }
 

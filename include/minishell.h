@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 13:51:08 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:08:24 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,8 @@ void			builtin_out_child(int i, t_exec *exec, t_command *cmd,
 					t_env *env);
 void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
-void			ft_env(t_env *env);
-void			ft_exit(t_command *cmd, t_env *env);
+void			ft_env(t_command *command, t_env *env);
+void			ft_exit(t_exec *exec, t_command *cmd, t_env *env);
 void			ft_pwd(void);
 void			ft_export(t_command *cmd, t_env *env);
 void			ft_unset(t_command *cmd, t_env *env);
@@ -118,7 +118,7 @@ void			add_env_variable(t_env *env, t_env *env_var);
 /* execution */
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
-void			handle_execution(t_command *cmd, t_env *env);
+void			handle_execution(char *line, t_command *cmd, t_env *env);
 
 /* --- Command execution --- */
 
@@ -126,8 +126,8 @@ void			handle_execution(t_command *cmd, t_env *env);
 
 int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
-t_exec			*make_exec_structure(void);
-void			free_pipes(int **pipes, int pipe_nb);
+t_exec			*make_exec_structure(char *line);
+void			free_pipes(t_exec *exec, int pipe_nb);
 
 /* process */
 

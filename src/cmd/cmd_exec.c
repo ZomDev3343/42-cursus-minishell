@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/20 15:53:37 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 23:12:41 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,18 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 	exec_command(i + 1, exec, cmd->next, env);
 }
 
-void	handle_execution(t_command *cmd, t_env *env)
+void	handle_execution(char *line, t_command *cmd, t_env *env)
 {
 	t_exec	*exec;
 
-	exec = make_exec_structure();
+	exec = make_exec_structure(line);
 	exec->cmd_nb = get_nb_of_commands(cmd);
 	exec->pipes = create_pipes(exec->cmd_nb - 1);
+	if (!exec->pipes)
+	{
+		free(exec);
+		return ;
+	}
 	exec_command(0, exec, cmd, env);
 	if (exec->pipes)
 		free_pipes(exec->pipes, exec->cmd_nb - 1);
