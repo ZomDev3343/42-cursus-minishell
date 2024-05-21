@@ -6,13 +6,13 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/17 13:53:50 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 12:06:16 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	parse_line(char *line, t_env *env)
+static void	parse_and_execute_line(char *line, t_env *env)
 {
 	t_token		*tlist;
 	t_command	*cmds;
@@ -41,9 +41,9 @@ int	main(int ac, char **av, char **envp)
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
-	while (line && !ft_strcmp(line, "exit"))
+	while (line)
 	{
-		parse_line(line, env);
+		parse_and_execute_line(line, env);
 		free(line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')

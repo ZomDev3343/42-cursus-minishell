@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/21 11:56:51 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 12:02:36 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 		ft_export(cmd, env);
 	if (cmd->builtin_flag == BUILTIN_UNSET)
 		ft_unset(cmd, env);
-/*	if (cmd->builtin_flag == BUILTIN_EXIT)
-		ft_exit(); */
+	if (cmd->builtin_flag == BUILTIN_EXIT)
+		ft_exit(cmd);
 	handle_redir_leaving_exec(i, exec);
 }
 

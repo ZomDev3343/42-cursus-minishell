@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 11:54:34 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 12:06:25 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void			setup_signal_handler(void);
 
 int				check_builtin_path(t_command *cmd);
 void			builtin_in_child(t_command *cmd, t_env *env);
-void			builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env);
+void			builtin_out_child(int i, t_exec *exec, t_command *cmd,
+					t_env *env);
 void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
 void			ft_env(t_env *env);
