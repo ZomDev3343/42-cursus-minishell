@@ -6,25 +6,11 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:52 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/21 10:16:22 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 10:18:10 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
-
-int	found_env_name(char *name, t_env *env)
-{
-	t_env	*current;
-
-	current = env;
-	while (current)
-	{
-		if (current->name == name)
-			return (1);
-		current = current->next;
-	}
-	return (0);
-}
 
 void	ft_env(int flag, t_command *cmd, t_env *env)
 {
