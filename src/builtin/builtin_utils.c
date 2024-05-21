@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:36 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/20 11:37:49 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:57:52 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	remove_env_var(t_env *env, char *var_name)
 				env = current_env->next;
 			else
 				previous->next = current_env->next;
+			free(current_env->name);
 			free(current_env->content);
 			free(current_env);
 			return (TRUE);

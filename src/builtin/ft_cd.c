@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/20 15:44:52 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 13:46:47 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void	ft_cd(t_command *cmd, t_env *env)
 		update_env(get_current_working_directory(), "PWD", env);
 		update_env(old_pwd, "OLDPWD", env);
 	}
+	free(old_pwd);
 }

@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/17 14:46:03 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:05:06 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_env	*newenv(char *name, char *content)
 	var = ft_calloc(1, sizeof(t_env));
 	if (!var)
 		return (NULL);
-	var->name = ft_strdup(name);
-	var->content = ft_strdup(content);
+	var->name = name;
+	var->content = content;
 	return (var);
 }
 

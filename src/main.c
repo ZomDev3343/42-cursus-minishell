@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 12:06:16 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:56:02 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int	main(int ac, char **av, char **envp)
 		if (line && line[0] != '\0')
 			add_history(line);
 	}
+	printf("test");
 	return (ft_free(line), free_env(env), 0);
 }
