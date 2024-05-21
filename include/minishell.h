@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 10:01:10 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/21 11:04:46 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,10 @@ void			builtin_in_child(t_command *cmd, t_env *env);
 void			builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			ft_cd(t_command *cmd, t_env *env);
 void			ft_echo(t_command *cmd);
-void			ft_env(int flag, t_command *cmd, t_env *env);
+void			ft_env(t_env *env);
 void			ft_exit(t_command *cmd);
 void			ft_pwd(void);
+void			ft_export(t_command *cmd, t_env *env);
 
 /* builtin utils */
 
