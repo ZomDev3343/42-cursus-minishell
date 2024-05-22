@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/21 23:11:52 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:56:24 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 	free_pipes(exec->pipes, exec->cmd_nb - 1);
 	free(exec->line);
 	free(exec);
+	rl_clear_history();
 	exit(status);
 }

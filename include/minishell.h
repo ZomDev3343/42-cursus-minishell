@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 23:08:24 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:55:48 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void			handle_execution(char *line, t_command *cmd, t_env *env);
 int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
 t_exec			*make_exec_structure(char *line);
-void			free_pipes(t_exec *exec, int pipe_nb);
+void			free_pipes(int **pipes, int pipe_nb);
 
 /* process */
 

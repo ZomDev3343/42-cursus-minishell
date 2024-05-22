@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/21 21:54:16 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/22 11:59:11 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static void	parse_and_execute_line(char *line, t_env *env)
 	cmds = NULL;
 	tlist = tokenize(line, env);
 	parse_commands(tlist, &cmds);
+	free_token(tlist);
 	handle_execution(line, cmds, env);
 	if (!check_commands(cmds))
 		return (free_command(cmds), free_token(tlist), (void) 0);
 	free_command(cmds);
-	free_token(tlist);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -49,6 +49,6 @@ int	main(int ac, char **av, char **envp)
 		if (line && line[0] != '\0')
 			add_history(line);
 	}
-	printf("test");
+	rl_clear_history();
 	return (ft_free(line), free_env(env), 0);
 }
