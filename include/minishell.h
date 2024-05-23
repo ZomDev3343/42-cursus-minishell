@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/22 11:55:48 by truello          ###   ########.fr       */
+/*   Updated: 2024/05/23 16:31:17 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char			**build_parts(t_string_part *cmd_parts);
 void			print_commands(t_command *cmds);
 void			free_command(t_command *cmd);
 void			set_builtin_flag(t_command *cmd);
+int				check_cmd_path(char *cmd, t_env *env);
+int				is_command_valid(t_command *cmds, t_env *env);
 
 /* String Utils */
 
