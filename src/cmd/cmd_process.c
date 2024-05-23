@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/20 16:14:19 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:41:02 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,20 @@ void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
 	handle_redir_entering_exec(i, exec);
 	if (handle_redirections(cmd->redirections, exec) == 1)
-		return ;
+		return;
 	if (check_builtin_path(cmd) == 0)
 	{
 		builtin_in_child(cmd, env);
 		exit(EXIT_SUCCESS);
 	}
 	else
-		execve(found_path(cmd->parts[0], env), cmd->parts, build_env(env));
+	{
+		if (execve(found_path(cmd->parts[0], env), cmd->parts, build_env(env)) == -1)
+		{
+			printf("-minishell: %s: No such file or directory\n", cmd->parts[0]);
+			exit(EXIT_FAILURE);
+		}
+	}
 }
 
 void	parent_process(int i, t_exec *exec)
