@@ -6,11 +6,28 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/14 17:46:38 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/23 18:11:36 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+int	check_for_n_arg(char *arg)
+{
+	int	i;
+
+	i = 1;
+	if (arg[0] == '-')
+	{
+		while (arg[i] == 'n')
+			i++;
+		if (i == ft_strlen(arg))
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
+}
 
 void	ft_echo(t_command *cmd)
 {
@@ -19,7 +36,7 @@ void	ft_echo(t_command *cmd)
 
 	newline_flag = 1;
 	i = 1;
-	if (ft_strncmp(cmd->parts[1], "-n", 2))
+	if (check_for_n_arg(cmd->parts[1]) == 1)
 	{
 		newline_flag = 0;
 		i = 2;
