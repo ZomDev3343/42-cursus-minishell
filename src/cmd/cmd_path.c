@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:58:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 16:28:10 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/23 17:09:36 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ char	**extract_path_from_env(t_env *env)
 	return (NULL);
 }
 
+int	is_absolute_path(char *cmd)
+{
+	if (cmd[0] == '/' && cmd[1])
+		return (1);
+	return (0);
+}
+
 char	*found_path(char *cmd, t_env *env)
 {
 	char	*each_path;
@@ -31,12 +38,11 @@ char	*found_path(char *cmd, t_env *env)
 	int		i;
 
 	i = 0;
+	if (is_absolute_path(cmd))
+		return (cmd);
 	paths = extract_path_from_env(env);
 	if (!paths)
-	{
-		perror("ERROR : PATH not found in the environnement\n");
 		exit(EXIT_FAILURE);
-	}
 	while (paths[i])
 	{
 		each_path = ft_strjoin(paths[i], "/");
@@ -48,7 +54,6 @@ char	*found_path(char *cmd, t_env *env)
 		i++;
 	}
 	ft_free_array(paths);
-	perror("ERROR : executable not found\n");
 	return (NULL);
 }
 
@@ -60,6 +65,8 @@ int	check_cmd_path(char *cmd, t_env *env)
 	int		i;
 
 	i = 0;
+	if (is_absolute_path(cmd))
+		return (1);
 	paths = extract_path_from_env(env);
 	if (!paths)
 		exit(EXIT_FAILURE);
