@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 17:36:25 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:53:03 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
-	int		pid;
+	int	pid;
 
 	if (!cmd)
 		return ;
