@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/23 16:31:17 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:16:00 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char			*get_env_variable(t_env *env, char *var_name);
 void			print_env(t_env *env);
 int				has_env_variable(t_env *env, char *name);
 char			**build_env(t_env *env);
+char			*get_last_status_code(void);
 
 /* --- Parsing --- */
 
@@ -82,9 +83,6 @@ char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
 char			*rem_quotes(char *str, t_env *env);
 void			print_str_parts(t_string_part *parts);
-void			parse_word(t_string_part **parts, char *str, t_env *env);
-void			parse_word_nquotes(t_string_part **parts,
-					char *str, t_env *env);
 
 /* Verification */
 

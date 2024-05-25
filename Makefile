@@ -11,10 +11,10 @@ all:
 	make $(NAME)
 
 obj/%.o: src/%.c
-	gcc -c $(FLAGS) $(INCLUDES) -g -o $@ $<  # Use the flags and include directories
+	cc -c $(FLAGS) $(INCLUDES) -g -o $@ $<  # Use the flags and include directories
 
 $(NAME): $(OBJ)
-	gcc $(OBJ) $(LIBS) $(FLAGS) $(INCLUDES) -g -o $@  # Link with the correct library paths
+	cc $(OBJ) $(LIBS) $(FLAGS) $(INCLUDES) -g -o $@  # Link with the correct library paths
 
 clean:
 	make -C libft clean

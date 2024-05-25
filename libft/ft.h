@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:02:43 by truello           #+#    #+#             */
-/*   Updated: 2024/05/14 16:10:47 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:15:42 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ char		*ft_strdup(char *str);
 int			ft_atoi(const char *str);
 long		ft_atol(const char *str);
 int			ft_strlen(const char *str);
+char	*ft_itoa(int n);
 
 void		ft_error(const char *str);
 
