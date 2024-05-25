@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/24 11:38:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/25 13:02:06 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		return ;
 	else if (cmd->builtin_flag == BUILTIN_CD)
-	{
 		ft_cd(cmd, env);
-		print_env(env);
-	}
 	else if (cmd->builtin_flag == BUILTIN_EXPORT)
 		ft_export(cmd, env);
 	else if (cmd->builtin_flag == BUILTIN_UNSET)
