@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/04/23 20:40:50 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/27 00:08:01 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_token	*tokenize(char *line, t_env *env)
 	int		parts_index;
 
 	token = NULL;
-	cmds_part = ft_split(line, '|');
+	cmds_part = minishell_split(line, '|');
 	parts_index = -1;
 	while (++parts_index < get_parts_size(cmds_part))
 	{

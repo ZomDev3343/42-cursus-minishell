@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/25 13:16:00 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/27 00:07:50 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
 char			*rem_quotes(char *str, t_env *env);
 void			print_str_parts(t_string_part *parts);
+char			**minishell_split(char *s, char delimiter);
 
 /* Verification */
 
