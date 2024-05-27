@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:43:06 by truello           #+#    #+#             */
-/*   Updated: 2024/04/30 19:12:35 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/27 10:49:26 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	parse_redirection(t_redirections **redirections, t_token *token)
 	int				redir_mode;
 	t_redirections	*newredir;
 
-	if (!redirections)
+	if (!redirections || token->is_text)
 		return (FALSE);
 	redir_mode = get_redirection_mode(token->data);
 	if (redir_mode == NO_REDIR || token->used)

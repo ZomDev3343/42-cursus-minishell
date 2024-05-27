@@ -6,13 +6,13 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/05/27 00:08:01 by tohma            ###   ########.fr       */
+/*   Updated: 2024/05/27 11:03:39 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_token	*newtoken(char *data, int cmd_id)
+t_token	*newtoken(char *data, int cmd_id, int is_text)
 {
 	t_token	*token;
 
@@ -22,6 +22,7 @@ t_token	*newtoken(char *data, int cmd_id)
 	if (!token)
 		return (NULL);
 	token->data = data;
+	token->is_text = is_text;
 	token->cmd_id = cmd_id;
 	return (token);
 }
@@ -80,7 +81,8 @@ t_token	*tokenize(char *line, t_env *env)
 		{
 			token_part = ft_strcpy_wsp(cmds_part[parts_index] + i, &i);
 			push_token(&token, newtoken(rem_quotes(token_part, env),
-					parts_index));
+					parts_index, (token_part[0] == '\'')
+					|| (token_part[0] == '\"')));
 			free(token_part);
 		}
 	}

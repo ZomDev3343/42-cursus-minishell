@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/25 14:28:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/27 11:11:14 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ static void	parse_and_execute_line(char *line, t_env *env)
 	tlist = tokenize(line, env);
 	parse_commands(tlist, &cmds);
 	free_token(tlist);
+	if (!check_commands(cmds))
+		return (free_command(cmds), (void) 0);
 	if (is_command_valid(cmds, env) == 1)
 		handle_execution(line, cmds, env);
-	if (!check_commands(cmds))
-		return (free_command(cmds), free_token(tlist), (void) 0);
 	free_command(cmds);
 }
 
