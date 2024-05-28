@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_redirections.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/27 12:28:26 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/28 23:13:48 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,11 @@ int	handle_input_redirection(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("ERROR : no such file in directory\n");
+		perror(" ");
 		return (1);
 	}
 	if (dup2(fd, STDIN_FILENO) == -1)
 	{
-		perror("ERROR : using dup2 for STDIN\n");
 		close(fd);
 		return (1);
 	}
@@ -64,12 +63,11 @@ int	handle_output_redirection(char *path, t_exec *exec)
 	fd = open(path, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 	{
-		perror("ERROR : no such file in directory\n");
+		perror(" ");
 		return (1);
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
-		perror("ERROR : using dup2 for STDOUT\n");
 		close(fd);
 		return (1);
 	}
@@ -86,12 +84,11 @@ int	handle_append_redirection(char *path)
 	fd = open(path, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (fd == -1)
 	{
-		perror("ERROR : while opening file.\n");
+		perror(" ");
 		return (1);
 	}
 	if (dup2(fd, STDOUT_FILENO) == -1)
 	{
-		perror("ERROR : using dup2 for APPEND\n");
 		close(fd);
 		return (1);
 	}
@@ -106,7 +103,7 @@ int	handle_here_doc_redirection(char *path, t_exec *exec)
 	exec->input_fd = open("here_doc.txt", O_RDWR | O_CREAT | O_TRUNC, 0600);
 	if (exec->input_fd == -1)
 	{
-		perror("ERROR : can't access here_doc\n");
+		perror(" ");
 		return (1);
 	}
 	while (1)

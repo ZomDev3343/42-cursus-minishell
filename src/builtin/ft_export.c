@@ -3,27 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/28 16:48:30 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/29 00:02:19 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	check_export_arg(char *str, char c)
+void	search_for_equal(char *str, char c)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == c && i >= 1)
-			return (0);
+		if (str[i] == c)
+		{
+			if (str[i - 1] == '-')
+			{
+				errno = 1;
+				perror("");
+				exit(1);
+			}
+			else
+				return ;
+		}
 		i++;
 	}
-	return (1);
+	errno = 0;
+	perror("");
+	exit(0);
 }
 
 void	ft_export(t_command *cmd, t_env *env)
@@ -31,8 +42,7 @@ void	ft_export(t_command *cmd, t_env *env)
 	t_env	*current_env;
 	char	**new_var;
 
-	if (check_export_arg(cmd->parts[1], '=') == 1)
-		return ;
+	search_for_equal(cmd->parts[1], '=');
 	new_var = ft_split(cmd->parts[1], '=');
 	current_env = env;
 	while (current_env)
