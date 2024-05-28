@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/24 10:53:03 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/28 17:06:36 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 
 	if (!cmd)
 		return ;
-	if (check_builtin_path(cmd) == 1)
+	if (exec->pipes == NULL && check_builtin_path(cmd) == 1)
 		builtin_out_child(i, exec, cmd, env);
 	else
 	{
@@ -46,11 +46,6 @@ void	handle_execution(char *line, t_command *cmd, t_env *env)
 	exec = make_exec_structure(line);
 	exec->cmd_nb = get_nb_of_commands(cmd);
 	exec->pipes = create_pipes(exec->cmd_nb - 1);
-	if (!exec->pipes)
-	{
-		free(exec);
-		return ;
-	}
 	exec_command(0, exec, cmd, env);
 	if (exec->pipes)
 		free_pipes(exec->pipes, exec->cmd_nb - 1);

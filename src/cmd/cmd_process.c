@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 17:41:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/28 16:49:52 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 	handle_redir_entering_exec(i, exec);
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		return;
-	if (check_builtin_path(cmd) == 0)
+	if (cmd->builtin_flag > 0)
 	{
-		builtin_in_child(cmd, env);
+		builtin_in_child(cmd, env, exec);
 		exit(EXIT_SUCCESS);
 	}
 	else
