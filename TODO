@@ -1,7 +1,0 @@
-* A ne pas oublier *
-- Ajouter le $?
-
-* Liste des tests pour l'executeur *
-
-- Si une commande est introuvable, erreur d'execution avant le premier pipe
-- Si un argument est invalide, erreur d'execution pendant le pipe
