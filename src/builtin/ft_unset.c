@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:55 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/21 11:55:38 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:23:37 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_unset(t_command *cmd, t_env *env)
 {
 	t_env	*current_env;
 
+	if (!cmd->parts[1])
+		exit (0);
 	current_env = env;
 	while (current_env)
 	{

@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/24 11:52:51 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:25:09 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	ft_cd(t_command *cmd, t_env *env)
 			update_env(get_current_working_directory(), ft_strdup("PWD"), env);
 		}
 		else
-			printf("cd: %s: No such file or directory\n", cmd->parts[1]);
+		{
+			perror(" No such file or directory\n");
+			exit (1);
+		}
 	}
 	else
 	{
