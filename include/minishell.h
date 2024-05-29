@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/28 17:06:39 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/30 01:36:35 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,8 @@ void			ft_unset(t_command *cmd, t_env *env);
 char			*get_current_working_directory(void);
 void			update_env(char *content, char *name, t_env *env);
 void			add_env_variable(t_env *env, t_env *env_var);
+int				is_only_digit(char *str);
+int				get_args_nb(t_command *cmd);
 
 /* execution */
 

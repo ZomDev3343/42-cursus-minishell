@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:36 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/29 23:16:26 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/30 01:43:58 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,8 @@ void	add_env_variable(t_env *env, t_env *env_var)
 	}
 }
 
-/*t_env	*newenv_cd(char *name, char *content)
-{
-	t_env	*var;
-
-	if (!name || !content)
-		return (NULL);
-	var = ft_calloc(1, sizeof(t_env));
-	if (!var)
-		return (NULL);
-	var->name = ft_strdup(name);
-	var->content = ft_strdup(content);
-	return (var);
-}*/
-
 void	update_env(char *content, char *name, t_env *env)
 {
-	//fprintf(stderr, "name : %s content : %s\n", name, content);
 	remove_env_var(env, name);
 	add_env_variable(env, newenv(name, content));
 }
@@ -88,4 +73,14 @@ int	remove_env_var(t_env *env, char *var_name)
 		current_env = current_env->next;
 	}
 	return (FALSE);
+}
+
+int	get_args_nb(t_command *cmd)
+{
+	int	i;
+
+	i = 1;
+	while (cmd->parts[i])
+		i++;
+	return (i - 1);
 }
