@@ -6,13 +6,13 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/05/28 22:50:33 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/30 23:26:58 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
 
-static void	parse_and_execute_line(char *line, t_env *env)
+static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 {
 	t_token		*tlist;
 	t_command	*cmds;
@@ -26,13 +26,14 @@ static void	parse_and_execute_line(char *line, t_env *env)
 	if (!check_commands(cmds))
 		return (free_command(cmds), (void) 0);
 	if (is_command_valid(cmds, env) == 1)
-		handle_execution(line, cmds, env);
+		handle_execution(line, cmds, env, exec);
 	free_command(cmds);
 }
 
 int	main(int ac, char **av, char **envp)
 {
 	char	*line;
+	t_exec	*exec;
 	t_env	*env;
 
 	(void)ac;
@@ -42,9 +43,10 @@ int	main(int ac, char **av, char **envp)
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
+	exec = make_exec_structure();
 	while (line)
 	{
-		parse_and_execute_line(line, env);
+		parse_and_execute_line(line, env, exec);
 		free(line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')

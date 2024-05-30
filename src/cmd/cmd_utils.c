@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 16:30:49 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/31 00:25:33 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_exec	*make_exec_structure(char *line)
+t_exec	*make_exec_structure(void)
 {
 	t_exec	*exec;
 
@@ -22,9 +22,7 @@ t_exec	*make_exec_structure(char *line)
 		perror("ERROR : allocating exec structure\n");
 		exit(EXIT_FAILURE);
 	}
-	exec->fd_stdin = dup(STDIN_FILENO);
-	exec->fd_stdout = dup(STDOUT_FILENO);
-	exec->line = line;
+	exec->exit_status = -1;
 	return (exec);
 }
 

@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/30 01:36:35 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/30 23:27:38 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,12 @@ int				check_builtin_path(t_command *cmd);
 void			builtin_in_child(t_command *cmd, t_env *env, t_exec *exec);
 void			builtin_out_child(int i, t_exec *exec, t_command *cmd,
 					t_env *env);
-void			ft_cd(t_command *cmd, t_env *env);
+void			ft_cd(t_command *cmd, t_env *env, t_exec *exec);
 void			ft_echo(t_command *cmd);
-void			ft_env(t_command *command, t_env *env);
+void			ft_env(t_command *command, t_env *env, t_exec *exec);
 void			ft_exit(t_exec *exec, t_command *cmd, t_env *env);
 void			ft_pwd(void);
-void			ft_export(t_command *cmd, t_env *env);
+int				ft_export(t_command *cmd, t_env *env, t_exec *exec);
 void			ft_unset(t_command *cmd, t_env *env);
 
 /* builtin utils */
@@ -121,7 +121,7 @@ int				get_args_nb(t_command *cmd);
 /* execution */
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
-void			handle_execution(char *line, t_command *cmd, t_env *env);
+void			handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec);
 
 /* --- Command execution --- */
 
@@ -129,7 +129,7 @@ void			handle_execution(char *line, t_command *cmd, t_env *env);
 
 int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
-t_exec			*make_exec_structure(char *line);
+t_exec			*make_exec_structure(void);
 void			free_pipes(int **pipes, int pipe_nb);
 
 /* process */

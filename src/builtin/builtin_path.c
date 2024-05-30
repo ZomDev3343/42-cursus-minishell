@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/28 23:05:16 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/30 23:27:20 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	builtin_in_child(t_command *cmd, t_env *env, t_exec *exec)
 	else if (cmd->builtin_flag == BUILTIN_PWD)
 		ft_pwd();
 	else if (cmd->builtin_flag == BUILTIN_ENV)
-		ft_env(cmd, env);
+		ft_env(cmd, env, exec);
 	else if (cmd->builtin_flag == BUILTIN_CD)
-		ft_cd(cmd, env);
+		ft_cd(cmd, env, exec);
 	else if (cmd->builtin_flag == BUILTIN_EXPORT)
-		ft_export(cmd, env);
+		ft_export(cmd, env, exec);
 	else if (cmd->builtin_flag == BUILTIN_UNSET)
 		ft_unset(cmd, env);
 	else if (cmd->builtin_flag == BUILTIN_EXIT)
@@ -36,9 +36,9 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		return ;
 	if (cmd->builtin_flag == BUILTIN_CD)
-		ft_cd(cmd, env);
+		ft_cd(cmd, env, exec);
 	else if (cmd->builtin_flag == BUILTIN_EXPORT)
-		ft_export(cmd, env);
+		ft_export(cmd, env, exec);
 	else if (cmd->builtin_flag == BUILTIN_UNSET)
 		ft_unset(cmd, env);
 	else if (cmd->builtin_flag == BUILTIN_EXIT)

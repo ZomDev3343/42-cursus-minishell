@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/30 01:47:16 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/31 00:00:11 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_only_alpha(char *str)
 	return (TRUE);
 }
 
-void	check_exit_arg(t_command *cmd)
+void	check_exit_arg(t_exec *exec, t_command *cmd, t_env *env)
 {
 	int	arg_nb;
 
@@ -39,12 +39,14 @@ void	check_exit_arg(t_command *cmd)
 	if (arg_nb > 1)
 	{
 		perror(" too many arguments\n");
-		exit(1);
+		exec->exit_status = 1;
+		ft_exit(exec, cmd, env);
 	}
 	if (arg_nb == 1 && is_only_alpha(cmd->parts[1]) == TRUE)
 	{
 		perror(" numeric arguments required\n");
-		exit(2);
+		exec->exit_status = 2;
+		ft_exit(exec, cmd, env);
 	}
 }
 
@@ -52,14 +54,23 @@ void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 {
 	int	status;
 
-	check_exit_arg(cmd);
-	if (cmd->parts[1])
+	if (exec->exit_status != -1)
+		status = exec->exit_status;
+	else if (cmd->parts[1])
+	{
+		check_exit_arg(exec, cmd, env);
 		status = ft_atoi(cmd->parts[1]);
-	free_command(cmd);
-	free_env(env);
-	free_pipes(exec->pipes, exec->cmd_nb - 1);
-	free(exec->line);
-	free(exec);
+	}
+	if (cmd)
+		free_command(cmd);
+	if (env)
+		free_env(env);
+	if (exec->pipes)
+		free_pipes(exec->pipes, (exec->cmd_nb - 1));
+	if (exec->line)
+		free(exec->line);
+	if (exec)
+		free(exec);
 	rl_clear_history();
 	exit(status);
 }
