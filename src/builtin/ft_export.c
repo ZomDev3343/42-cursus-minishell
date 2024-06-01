@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/30 22:49:43 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:01:33 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_export_operator(char *str, t_exec *exec)
 		i++;
 	if (str[i - 1] == '-' || i < 1)
 	{
-		perror("not a valid identifier\n");
+		printf("-minishell: export: not a valid identifier\n");
 		exec->exit_status = 1;
 		return (1);
 	}
@@ -57,13 +57,13 @@ int	check_export_arg(t_command *cmd, t_exec *exec)
 {
 	if (!cmd->parts[1])
 	{
-		perror("not enough arguments\n");
+		printf("-minishell: export: not enough arguments\n");
 		exec->exit_status = 0;
 		return (1);
 	}
 	if (ft_strchr(cmd->parts[1], '=') == FALSE)
 	{
-		perror("not a valid identifier\n");
+		printf("-minishell: export: not a valid identifier\n");
 		if (ft_strchr(cmd->parts[1], '-') || is_only_digit(cmd->parts[1]))
 			exec->exit_status = 1;
 		else
@@ -94,6 +94,3 @@ int	ft_export(t_command *cmd, t_env *env, t_exec *exec)
 	free_parts(new_var);
 	return (0);
 }
-
-
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/31 00:14:04 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:00:18 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	check_cd_arg(t_command *cmd, t_exec *exec)
 {
 	if (cmd->parts[2])
 	{
-		perror(" too many arguments\n");
+		perror("-minishell: cd: too many arguments\n");
 		exec->exit_status = 1;
 		return (1);
 	}

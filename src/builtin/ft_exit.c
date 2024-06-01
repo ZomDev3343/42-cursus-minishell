@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/31 00:00:11 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:07:01 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,24 @@ int	is_only_alpha(char *str)
 	return (TRUE);
 }
 
-void	check_exit_arg(t_exec *exec, t_command *cmd, t_env *env)
+int	check_exit_arg(t_exec *exec, t_command *cmd)
 {
 	int	arg_nb;
 
 	arg_nb = get_args_nb(cmd);
 	if (arg_nb > 1)
 	{
-		perror(" too many arguments\n");
+		printf("-minishell: exit: too many arguments\n");
 		exec->exit_status = 1;
-		ft_exit(exec, cmd, env);
+		return (1);
 	}
 	if (arg_nb == 1 && is_only_alpha(cmd->parts[1]) == TRUE)
 	{
-		perror(" numeric arguments required\n");
+		printf("-minishell: exit: numeric arguments required\n");
 		exec->exit_status = 2;
-		ft_exit(exec, cmd, env);
+		return (1);
 	}
+	return (0);
 }
 
 void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
@@ -58,19 +59,18 @@ void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 		status = exec->exit_status;
 	else if (cmd->parts[1])
 	{
-		check_exit_arg(exec, cmd, env);
-		status = ft_atoi(cmd->parts[1]);
+		if (check_exit_arg(exec, cmd) == 0)
+			status = ft_atoi(cmd->parts[1]);
+		else
+			return ;
 	}
-	if (cmd)
-		free_command(cmd);
-	if (env)
-		free_env(env);
-	if (exec->pipes)
-		free_pipes(exec->pipes, (exec->cmd_nb - 1));
-	if (exec->line)
-		free(exec->line);
-	if (exec)
-		free(exec);
+	else
+		status = 0;
+	free_command(cmd);
+	free_env(env);
+	free_pipes(exec->pipes, (exec->cmd_nb - 1));
+	free(exec->line);
+	free(exec);
 	rl_clear_history();
 	exit(status);
 }
