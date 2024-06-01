@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_process.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/01 16:50:03 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:05:47 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
+void	child_process(t_exec *exec, t_command *cmd, t_env *env)
 {
-	handle_redir_entering_exec(i, exec);
 	if (handle_redirections(cmd->redirections, exec) == 1)
 		exit(1);
 	if (cmd->builtin_flag > 0)
@@ -34,14 +33,35 @@ void	child_process(int i, t_exec *exec, t_command *cmd, t_env *env)
 	}
 }
 
-void	parent_process(int i, t_exec *exec)
+void	close_unused_pipes(t_exec *exec, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < exec->cmd_nb - 1)
+	{
+		if (j != i - 1)
+			close(exec->pipes[j][0]);
+		if (j != i)
+			close(exec->pipes[j][1]);
+		j++;
+	}
+}
+
+void	handle_redir_leaving_exec(int i, t_exec *exec)
 {
 	if (i > 0)
 		close(exec->pipes[i - 1][0]);
 	if (i < exec->cmd_nb - 1)
 		close(exec->pipes[i][1]);
-	wait(NULL);
-	dup2(exec->fd_stdout, STDOUT_FILENO);
-	dup2(exec->fd_stdin, STDIN_FILENO);
-	close(exec->fd_stdout);
 }
+
+void	handle_redir_entering_exec(int i, t_exec *exec)
+{
+	if (i > 0)
+		dup2(exec->pipes[i - 1][0], STDIN_FILENO);
+	if (i < exec->cmd_nb - 1)
+		dup2(exec->pipes[i][1], STDOUT_FILENO);
+	close_unused_pipes(exec, i);
+}
+

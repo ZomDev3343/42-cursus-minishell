@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/05/30 23:27:38 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/01 17:59:46 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int				handle_output_redirection(char *path, t_exec *exec);
 int				handle_append_redirection(char *path);
 int				handle_here_doc_redirection(char *path, t_exec *exec);
 int				**create_pipes(int pipe_nb);
-void			handle_redir_leaving_exec(int i, t_exec *exec);
-void			handle_redir_entering_exec(int i, t_exec *exec);
 
 /* Commands */
 
@@ -94,7 +92,7 @@ int				check_commands(t_command *cmds);
 void			sig_on_interrupt(int code);
 void			setup_signal_handler(void);
 
-/* --- builtins --- */
+/* --- Command execution --- */
 
 /* builtin */
 
@@ -123,8 +121,6 @@ int				get_args_nb(t_command *cmd);
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
 void			handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec);
 
-/* --- Command execution --- */
-
 /* command utils */
 
 int				get_nb_of_commands(t_command *cmd);
@@ -134,8 +130,9 @@ void			free_pipes(int **pipes, int pipe_nb);
 
 /* process */
 
-void			parent_process(int i, t_exec *exec);
-void			child_process(int i, t_exec *exec, t_command *cmd, t_env *env);
+void			child_process(t_exec *exec, t_command *cmd, t_env *env);
+void			handle_redir_leaving_exec(int i, t_exec *exec);
+void			handle_redir_entering_exec(int i, t_exec *exec);
 
 /* path */
 
