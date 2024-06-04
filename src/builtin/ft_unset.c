@@ -6,18 +6,18 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:55 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/29 17:23:37 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:59:32 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_unset(t_command *cmd, t_env *env)
+int	ft_unset(t_command *cmd, t_env *env)
 {
 	t_env	*current_env;
 
 	if (!cmd->parts[1])
-		exit (0);
+		return (1);
 	current_env = env;
 	while (current_env)
 	{
@@ -26,4 +26,5 @@ void	ft_unset(t_command *cmd, t_env *env)
 			remove_env_var(env, cmd->parts[1]);
 		current_env = current_env->next;
 	}
+	return (0);
 }

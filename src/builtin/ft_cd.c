@@ -6,29 +6,28 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/31 14:00:18 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:55:54 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	check_cd_arg(t_command *cmd, t_exec *exec)
+int	check_cd_arg(t_command *cmd)
 {
 	if (cmd->parts[2])
 	{
 		perror("-minishell: cd: too many arguments\n");
-		exec->exit_status = 1;
 		return (1);
 	}
 	return (0);
 }
 
-void	ft_cd(t_command *cmd, t_env *env, t_exec *exec)
+int	ft_cd(t_command *cmd, t_env *env)
 {
 	char	*old_pwd;
 
-	if (check_cd_arg(cmd, exec) == 1)
-		return ;
+	if (check_cd_arg(cmd) == 1)
+		return (1);
 	old_pwd = get_current_working_directory();
 	if (cmd->parts[1])
 	{
@@ -38,10 +37,7 @@ void	ft_cd(t_command *cmd, t_env *env, t_exec *exec)
 			update_env(get_current_working_directory(), ft_strdup("PWD"), env);
 		}
 		else
-		{
-			perror("");
-			exec->exit_status = 1;
-		}
+			return (1);
 	}
 	else
 	{
@@ -50,4 +46,5 @@ void	ft_cd(t_command *cmd, t_env *env, t_exec *exec)
 		update_env(ft_strdup(old_pwd), ft_strdup("OLDPWD"), env);
 	}
 	free(old_pwd);
+	return (0);
 }

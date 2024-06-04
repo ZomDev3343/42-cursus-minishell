@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:05:02 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/20 15:08:01 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:00:35 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-void	ft_pwd(void)
+int	ft_pwd(void)
 {
 	printf("%s\n", get_current_working_directory());
+	return (0);
 }

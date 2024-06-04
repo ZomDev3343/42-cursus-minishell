@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 18:11:36 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:54:26 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_for_n_arg(char *arg)
 	return (0);
 }
 
-void	ft_echo(t_command *cmd)
+int	ft_echo(t_command *cmd)
 {
 	int	newline_flag;
 	int	i;
@@ -50,4 +50,5 @@ void	ft_echo(t_command *cmd)
 	}
 	if (newline_flag == 1)
 		printf("\n");
+	return (0);
 }

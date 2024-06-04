@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/31 14:07:01 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 12:39:40 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int	check_exit_arg(t_exec *exec, t_command *cmd)
 	if (arg_nb == 1 && is_only_alpha(cmd->parts[1]) == TRUE)
 	{
 		printf("-minishell: exit: numeric arguments required\n");
-		exec->exit_status = 2;
+		exec->exit_status = 1;
 		return (1);
 	}
 	return (0);
 }
 
-void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
+int	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 {
 	int	status;
 
@@ -62,7 +62,7 @@ void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 		if (check_exit_arg(exec, cmd) == 0)
 			status = ft_atoi(cmd->parts[1]);
 		else
-			return ;
+			return (1);
 	}
 	else
 		status = 0;
@@ -73,4 +73,5 @@ void	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 	free(exec);
 	rl_clear_history();
 	exit(status);
+	return (0);
 }

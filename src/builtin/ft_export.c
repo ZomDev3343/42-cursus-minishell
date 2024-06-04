@@ -6,13 +6,13 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/31 14:01:33 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 11:58:48 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-int	check_export_operator(char *str, t_exec *exec)
+int	check_export_operator(char *str)
 {
 	int	i;
 
@@ -22,7 +22,6 @@ int	check_export_operator(char *str, t_exec *exec)
 	if (str[i - 1] == '-' || i < 1)
 	{
 		printf("-minishell: export: not a valid identifier\n");
-		exec->exit_status = 1;
 		return (1);
 	}
 	return (0);
@@ -53,34 +52,29 @@ int	is_only_digit(char *str)
 	return (TRUE);
 }
 
-int	check_export_arg(t_command *cmd, t_exec *exec)
+int	check_export_arg(t_command *cmd)
 {
 	if (!cmd->parts[1])
 	{
 		printf("-minishell: export: not enough arguments\n");
-		exec->exit_status = 0;
 		return (1);
 	}
 	if (ft_strchr(cmd->parts[1], '=') == FALSE)
 	{
 		printf("-minishell: export: not a valid identifier\n");
-		if (ft_strchr(cmd->parts[1], '-') || is_only_digit(cmd->parts[1]))
-			exec->exit_status = 1;
-		else
-			exec->exit_status = 0;
 		return (1);
 	}
-	else if (check_export_operator(cmd->parts[1], exec) == 1)
+	else if (check_export_operator(cmd->parts[1]) == 1)
 		return (1);
 	return (0);
 }
 
-int	ft_export(t_command *cmd, t_env *env, t_exec *exec)
+int	ft_export(t_command *cmd, t_env *env)
 {
 	t_env	*current_env;
 	char	**new_var;
 
-	if (check_export_arg(cmd, exec) == 1)
+	if (check_export_arg(cmd) == 1)
 		return (1);
 	new_var = ft_split(cmd->parts[1], '=');
 	current_env = env;

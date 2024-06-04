@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:51:54 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/25 14:25:12 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/04 15:28:52 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 char	*get_last_status_code(void)
 {
 	int		status_code;
-	int		basic_status;
 
 	status_code = -256;
-	basic_status = 0;
 	if (WIFEXITED(basic_status))
 		status_code = WEXITSTATUS(basic_status);
 	if (WIFSIGNALED(basic_status))
