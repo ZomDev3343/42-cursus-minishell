@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:16:31 by truello           #+#    #+#             */
-/*   Updated: 2024/05/27 10:49:39 by tohma            ###   ########.fr       */
+/*   Updated: 2024/06/04 23:24:18 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	parse_commands(t_token *tlist, t_command **cmds)
 		if (!tlist->used && tlist->cmd_id == cur_id)
 			if (!parse_redirection(&redirections, tlist))
 				push_str_part(&cmd_parts, ft_strcpy(tlist->data));
-		if ((!tlist->used && tlist->cmd_id != cur_id) || !tlist->next)
+		if (!tlist->next
+			|| (!tlist->next->used && tlist->next->cmd_id != cur_id))
 		{
 			push_command(cmds, newcmd(build_parts(cmd_parts), redirections));
 			redirections = NULL;
