@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/04 11:58:48 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 18:19:34 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,10 @@ int	ft_export(t_command *cmd, t_env *env)
 	while (current_env)
 	{
 		if (ft_strncmp(current_env->name, new_var[0], ft_strlen(new_var[0])))
+		{
 			remove_env_var(env, current_env->name);
+			break;
+		}
 		current_env = current_env->next;
 	}
 	add_env_variable(env, newenv(ft_strcpy(new_var[0]), ft_strcpy(new_var[1])));

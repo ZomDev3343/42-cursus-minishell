@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/04 12:39:40 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:29:42 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_only_alpha(char *str)
 	return (TRUE);
 }
 
-int	check_exit_arg(t_exec *exec, t_command *cmd)
+int	check_exit_arg(t_command *cmd)
 {
 	int	arg_nb;
 
@@ -39,38 +39,49 @@ int	check_exit_arg(t_exec *exec, t_command *cmd)
 	if (arg_nb > 1)
 	{
 		printf("-minishell: exit: too many arguments\n");
-		exec->exit_status = 1;
+		basic_status = 1;
 		return (1);
 	}
 	if (arg_nb == 1 && is_only_alpha(cmd->parts[1]) == TRUE)
 	{
 		printf("-minishell: exit: numeric arguments required\n");
-		exec->exit_status = 1;
+		basic_status = 1;
 		return (1);
 	}
 	return (0);
 }
 
+void	exec_memory_liberation(t_exec *exec)
+{
+	if (exec->pipes != NULL)
+		free_pipes(exec->pipes, (exec->cmd_nb - 1));
+	if (exec->line != NULL)
+		free(exec->line);
+	if (exec->pids != NULL)
+		free(exec->pids);
+	free(exec);
+}
+
 int	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 {
 	int	status;
+	int	arg_nb;
 
-	if (exec->exit_status != -1)
-		status = exec->exit_status;
-	else if (cmd->parts[1])
+	arg_nb = get_args_nb(cmd);
+	if (arg_nb >= 1)
 	{
-		if (check_exit_arg(exec, cmd) == 0)
+		if (check_exit_arg(cmd) == 0)
 			status = ft_atoi(cmd->parts[1]);
 		else
 			return (1);
 	}
+	else if (basic_status != -1)
+		status = basic_status;
 	else
 		status = 0;
 	free_command(cmd);
 	free_env(env);
-	free_pipes(exec->pipes, (exec->cmd_nb - 1));
-	free(exec->line);
-	free(exec);
+	exec_memory_liberation(exec);
 	rl_clear_history();
 	exit(status);
 	return (0);

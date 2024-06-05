@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:36 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/30 01:43:58 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:39:03 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*get_current_working_directory(void)
 
 	if (getcwd(buffer, sizeof(buffer)))
 	{
-		cwd = ft_strdup(buffer);
+		cwd = ft_strcpy(buffer);
 		if (!cwd)
 			return (NULL);
 	}

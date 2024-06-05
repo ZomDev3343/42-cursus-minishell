@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/06/04 15:19:05 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 14:59:54 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int				check_commands(t_command *cmds);
 /* --- Signals --- */
 
 void			sig_on_interrupt(int code);
-void			setup_signal_handler(void);
+void			setup_signal_handler();
 
 /* --- Command execution --- */
 
@@ -119,6 +119,7 @@ void			update_env(char *content, char *name, t_env *env);
 void			add_env_variable(t_env *env, t_env *env_var);
 int				is_only_digit(char *str);
 int				get_args_nb(t_command *cmd);
+void			exec_memory_liberation(t_exec *exec);
 
 /* execution */
 

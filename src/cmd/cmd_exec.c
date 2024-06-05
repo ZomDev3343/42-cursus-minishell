@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/04 15:33:59 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 17:15:19 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 
 	if (!cmd)
 		return ;
+	if (handle_redirections(cmd->redirections, exec) == 1)
+		return ;
 	if (exec->pipes == NULL && check_builtin_path(cmd) == 1)
 		builtin_out_child(i, exec, cmd, env);
 	else
@@ -56,7 +58,7 @@ void	manage_exec_structure(char *line, t_exec *exec, t_command *cmd)
 	exec->fd_stdin = dup(STDIN_FILENO);
 	exec->fd_stdout = dup(STDOUT_FILENO);
 	exec->pids = malloc(sizeof(int) * exec->cmd_nb);
-	exec->exit_status = 0;
+	exec->exit_status = -1;
 }
 
 void	handle_waitpid(t_exec *exec)
@@ -68,7 +70,10 @@ void	handle_waitpid(t_exec *exec)
 	{
 		waitpid(exec->pids[i], &basic_status, 0);
 		if (basic_status != 0)
+		{
+			free(exec->pids);
 			return ;
+		}
 		i++;
 	}
 	free(exec->pids);
@@ -78,11 +83,18 @@ void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
 {
 	manage_exec_structure(line, exec, cmd);
 	exec_command(0, exec, cmd, env);
-	handle_waitpid(exec);
+	if (exec->cmd_nb > 1)
+		handle_waitpid(exec);
+	else if (exec->cmd_nb == 1)
+	{
+		wait(NULL);
+		free(exec->pids);
+	}
 	if (exec->pipes)
 		free_pipes(exec->pipes, (exec->cmd_nb - 1));
 	dup2(exec->fd_stdin, STDIN_FILENO);
 	dup2(exec->fd_stdout, STDOUT_FILENO);
 	close(exec->fd_stdin);
 	close(exec->fd_stdout);
+	free(exec);
 }

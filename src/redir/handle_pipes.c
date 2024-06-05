@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_pipes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 15:00:10 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/01 17:57:31 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 13:41:45 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	**create_pipes(int pipe_nb)
 	int	**pipes;
 
 	i = 0;
-	if (pipe_nb == 0)
+	if (pipe_nb <= 0)
 		return (NULL);
 	pipes = (int **)malloc(pipe_nb * sizeof(int *));
 	while (i < pipe_nb)

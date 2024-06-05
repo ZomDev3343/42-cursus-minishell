@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/04 23:25:03 by tohma            ###   ########.fr       */
+/*   Updated: 2024/06/05 17:54:58 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	parse_commands(tlist, &cmds);
 	free_token(tlist);
 	if (!check_commands(cmds))
+	{
+		free(exec);
 		return (free_command(cmds), (void) 0);
+	}
 	if (is_command_valid(cmds, env) == 1)
 		handle_execution(line, cmds, env, exec);
+	else
+		free(exec);
 	free_command(cmds);
 }
 
@@ -45,9 +50,9 @@ int	main(int ac, char **av, char **envp)
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
-	exec = make_exec_structure();
 	while (line)
 	{
+		exec = make_exec_structure();
 		parse_and_execute_line(line, env, exec);
 		free(line);
 		line = readline("minishell > ");

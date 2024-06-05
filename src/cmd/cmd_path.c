@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:58:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/23 17:09:36 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 13:00:59 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,11 @@ int	check_cmd_path(char *cmd, t_env *env)
 		exec_path = ft_strjoin(each_path, cmd);
 		free(each_path);
 		if (access(exec_path, X_OK) == 0)
+		{
+			ft_free_array(paths);
+			free(exec_path);
 			return (1);
+		}
 		free(exec_path);
 		i++;
 	}

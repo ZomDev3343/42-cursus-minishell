@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/04 15:26:57 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/05 15:19:04 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,15 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 
 	flag = 0;
 	handle_redir_entering_exec(i, exec);
-	if (handle_redirections(cmd->redirections, exec) == 1)
-		flag = 1 ;
-	else
-	{
-		if (cmd->builtin_flag == BUILTIN_CD)
-			flag = ft_cd(cmd, env);
-		else if (cmd->builtin_flag == BUILTIN_EXPORT)
-			flag = ft_export(cmd, env);
-		else if (cmd->builtin_flag == BUILTIN_UNSET)
-			flag = ft_unset(cmd, env);
-		else if (cmd->builtin_flag == BUILTIN_EXIT)
-			flag = ft_exit(exec, cmd, env);
-		handle_redir_leaving_exec(i, exec);
-	}
+	if (cmd->builtin_flag == BUILTIN_CD)
+		flag = ft_cd(cmd, env);
+	else if (cmd->builtin_flag == BUILTIN_EXPORT)
+		flag = ft_export(cmd, env);
+	else if (cmd->builtin_flag == BUILTIN_UNSET)
+		flag = ft_unset(cmd, env);
+	else if (cmd->builtin_flag == BUILTIN_EXIT)
+		flag = ft_exit(exec, cmd, env);
+	handle_redir_leaving_exec(i, exec);
 	if (flag == 1)
 		basic_status = 1;
 }
