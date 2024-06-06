@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:58:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 14:44:36 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:42:56 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ int	check_cmd_path(char *cmd, t_env *env)
 		return (1);
 	paths = extract_path_from_env(env);
 	if (!paths)
-		exit(EXIT_FAILURE);
+	{
+		printf("-Minishell : executable not found\n");
+		return (1);
+	}
 	if (check_cmd_path_loop(each_path, exec_path, paths, cmd) == 1)
 		return (1);
 	ft_free_array(paths);

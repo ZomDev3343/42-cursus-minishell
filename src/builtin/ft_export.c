@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 10:17:30 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:25:05 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,20 @@ int	is_only_digit(char *str)
 	return (TRUE);
 }
 
+void	print_env_for_export(t_env *env)
+{
+	t_env	*curr;
+
+	curr = env;
+	while (curr)
+	{
+		printf("declare -x %s=\"%s\"\n", curr->name, curr->content);
+		curr = curr->next;
+	}
+}
+
 int	check_export_arg(t_command *cmd)
 {
-	if (!cmd->parts[1])
-	{
-		printf("-minishell: export: not enough arguments\n");
-		return (1);
-	}
 	if (ft_strchr(cmd->parts[1], '=') == FALSE)
 	{
 		printf("-minishell: export: not a valid identifier\n");
@@ -74,6 +81,11 @@ int	ft_export(t_command *cmd, t_env *env)
 	t_env	*current_env;
 	char	**new_var;
 
+	if (!cmd->parts[1])
+	{
+		print_env_for_export(env);
+		return (0);
+	}
 	if (check_export_arg(cmd) == 1)
 		return (1);
 	new_var = ft_split(cmd->parts[1], '=');
