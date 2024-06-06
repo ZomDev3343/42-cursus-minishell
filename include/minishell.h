@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/06/06 14:46:29 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:44:09 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 /* --- Global variable --- */
 
-extern int		g_basic_status;
+//extern int		g_basic_status;
 
 /* --- Environment --- */
 
@@ -120,6 +120,7 @@ void			add_env_variable(t_env *env, t_env *env_var);
 int				is_only_digit(char *str);
 int				get_args_nb(t_command *cmd);
 void			exec_memory_liberation(t_exec *exec);
+int				check_for_n_arg(char *arg);
 
 /* execution */
 

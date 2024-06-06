@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 11:35:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 20:34:53 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int	check_exit_arg(t_command *cmd)
 	if (arg_nb > 1)
 	{
 		printf("-minishell: exit: too many arguments\n");
-		g_basic_status = 1;
 		return (1);
 	}
 	if (arg_nb == 1 && is_only_alpha(cmd->parts[1]) == TRUE)
 	{
 		printf("-minishell: exit: numeric arguments required\n");
-		g_basic_status = 1;
 		return (1);
 	}
 	return (0);
@@ -75,8 +73,8 @@ int	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 		else
 			return (1);
 	}
-	else if (g_basic_status != 0)
-		status = g_basic_status;
+	else if (exec->exit_code != 0)
+		status = exec->exit_code;
 	else
 		status = 0;
 	free_command(cmd);

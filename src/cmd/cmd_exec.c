@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 16:06:03 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 20:38:34 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	handle_pid(int i, t_exec *exec, t_command *cmd, t_env *env)
 	{
 		handle_redir_entering_exec(i, exec);
 		child_process(exec, cmd, env);
-		g_basic_status = 0;
 	}
 	else
 	{
@@ -58,24 +57,25 @@ void	handle_waitpid(t_exec *exec, t_command *cmd)
 	int	status;
 
 	i = 0;
-	status = g_basic_status;
+	status = -1;
 	while (i < exec->cmd_nb)
 	{
+		//printf("process : %d | status : %d\n", exec->pids[i], status);
 		waitpid(exec->pids[i], &status, 0);
 		if (status == 0)
 		{
 			if (search_for_exit(cmd) == 0)
-				g_basic_status = status;
+				exec->exit_code = status;
 		}
 		else
 		{
+			exec->exit_code = status;
 			free(exec->pids);
 			return ;
 		}
 		i++;
 	}
 	free(exec->pids);
-	exec->pids = NULL;
 }
 
 void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)

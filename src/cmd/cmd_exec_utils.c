@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:10:04 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 14:47:51 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 20:39:48 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	search_for_exit(t_command *cmd)
 	current = cmd;
 	while (current)
 	{
-		if (ft_strncmp(cmd->parts[0], "exit", 4) == TRUE)
+		if (cmd->builtin_flag == BUILTIN_EXIT || cmd->builtin_flag == BUILTIN_ECHO)
 			return (1);
 		current = current->next;
 	}
