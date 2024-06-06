@@ -19,7 +19,7 @@ void	manage_exec_structure(char *line, t_exec *exec, t_command *cmd)
 	exec->line = line;
 	exec->fd_stdin = dup(STDIN_FILENO);
 	exec->fd_stdout = dup(STDOUT_FILENO);
-	exec->pids = malloc(sizeof(int) * exec->cmd_nb);
+	exec->pids = ft_calloc(exec->cmd_nb, sizeof(int));
 }
 
 int	search_for_exit(t_command *cmd)

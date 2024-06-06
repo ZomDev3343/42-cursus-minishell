@@ -75,6 +75,7 @@ void	handle_waitpid(t_exec *exec, t_command *cmd)
 		i++;
 	}
 	free(exec->pids);
+	exec->pids = NULL;
 }
 
 void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
