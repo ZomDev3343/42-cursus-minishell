@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/25 13:15:03 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:35:22 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,25 @@ void push_env(t_env **env, t_env *env_var)
 	}
 }
 
-t_env *make_env(char **envp)
+static char	*get_var_content(char *var_name, char *base_content)
 {
-	t_env *env;
-	int first_equal_index;
+	int	shlvl;
+
+	if (ft_strcmp(var_name, "SHLVL"))
+	{
+		shlvl = ft_atoi(base_content) + 1;
+		ft_free(base_content);
+		return (ft_itoa(shlvl));
+	}
+	else
+		return (base_content);
+}
+
+t_env	*make_env(char **envp)
+{
+	t_env	*env;
+	int		first_equal_index;
+	char	*var_name;
 
 	env = NULL;
 	if (!envp || !*envp)
@@ -63,8 +78,9 @@ t_env *make_env(char **envp)
 	while (*envp)
 	{
 		first_equal_index = ft_strchr_i(*envp, '=');
-		push_env(&env, newenv(ft_strncpy(*envp, first_equal_index),
-							  ft_strcpy((*envp) + first_equal_index + 1)));
+		var_name = ft_strncpy(*envp, first_equal_index);
+		push_env(&env, newenv(var_name, get_var_content(var_name,
+					ft_strcpy((*envp) + first_equal_index + 1))));
 		envp++;
 	}
 	return (env);
