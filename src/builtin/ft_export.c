@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:58 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 17:25:05 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:42:33 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ int	check_export_operator(char *str)
 		return (1);
 	}
 	return (0);
-}
-
-int	ft_strchr(char *str, char c)
-{
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] == c)
-			return (TRUE);
-	return (FALSE);
 }
 
 int	is_only_digit(char *str)
