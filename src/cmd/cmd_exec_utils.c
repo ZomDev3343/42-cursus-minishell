@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 12:10:04 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 12:10:26 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:47:51 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	manage_exec_structure(char *line, t_exec *exec, t_command *cmd)
 	exec->pids = malloc(sizeof(int) * exec->cmd_nb);
 }
 
-int		search_for_exit(t_command *cmd)
+int	search_for_exit(t_command *cmd)
 {
-	t_command *current;
+	t_command	*current;
 
 	current = cmd;
 	while (current)

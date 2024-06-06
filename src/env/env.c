@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 15:32:05 by tohma             #+#    #+#             */
-/*   Updated: 2024/06/06 13:35:22 by truello          ###   ########.fr       */
+/*   Updated: 2024/06/06 14:47:32 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-t_env *newenv(char *name, char *content)
+t_env	*newenv(char *name, char *content)
 {
-	t_env *var;
+	t_env	*var;
 
 	if (!name || !content)
 		return (NULL);
@@ -26,10 +26,10 @@ t_env *newenv(char *name, char *content)
 	return (var);
 }
 
-void free_env(t_env *env)
+void	free_env(t_env *env)
 {
 	if (!env)
-		return;
+		return ;
 	if (env->next)
 		free_env(env->next);
 	free(env->name);
@@ -37,9 +37,9 @@ void free_env(t_env *env)
 	free(env);
 }
 
-void push_env(t_env **env, t_env *env_var)
+void	push_env(t_env **env, t_env *env_var)
 {
-	t_env *tmp;
+	t_env	*tmp;
 
 	if (!*env)
 		*env = env_var;

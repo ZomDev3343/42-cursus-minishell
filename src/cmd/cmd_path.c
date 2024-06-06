@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:58:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 12:16:49 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:44:36 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ char	**extract_path_from_env(t_env *env)
 
 int	is_absolute_path(char *cmd)
 {
-	if ((cmd[0] == '/' || cmd[0] == '.') && cmd[1])
+	if (cmd[0] == '/' && cmd[1])
+		return (1);
+	if (cmd[0] == '.' && cmd[1] == '/' && cmd[2])
 		return (1);
 	return (0);
 }
