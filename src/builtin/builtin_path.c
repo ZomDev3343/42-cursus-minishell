@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/05 15:19:04 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 11:36:52 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 		flag = ft_exit(exec, cmd, env);
 	handle_redir_leaving_exec(i, exec);
 	if (flag == 1)
-		basic_status = 1;
+		g_basic_status = 1;
+	else
+		g_basic_status = 0;
 }
 
 int	check_builtin_path(t_command *cmd)

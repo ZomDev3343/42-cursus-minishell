@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/06/05 14:59:54 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:10:58 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 /* --- Global variable --- */
 
-extern int basic_status;
+extern int		g_basic_status;
 
 /* --- Environment --- */
 
@@ -94,7 +94,7 @@ int				check_commands(t_command *cmds);
 /* --- Signals --- */
 
 void			sig_on_interrupt(int code);
-void			setup_signal_handler();
+void			setup_signal_handler(void);
 
 /* --- Command execution --- */
 
@@ -124,7 +124,8 @@ void			exec_memory_liberation(t_exec *exec);
 /* execution */
 
 void			exec_command(int i, t_exec *exec, t_command *cmd, t_env *env);
-void			handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec);
+void			handle_execution(char *line, t_command *cmd, t_env *env,
+					t_exec *exec);
 
 /* command utils */
 
@@ -132,6 +133,8 @@ int				get_nb_of_commands(t_command *cmd);
 void			ft_free_array(char **str);
 t_exec			*make_exec_structure(void);
 void			free_pipes(int **pipes, int pipe_nb);
+void	manage_exec_structure(char *line, t_exec *exec, t_command *cmd);
+int		search_for_exit(t_command *cmd);
 
 /* process */
 

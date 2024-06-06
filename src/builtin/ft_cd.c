@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/05 17:02:46 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:37:57 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,23 @@ int	check_cd_arg(t_command *cmd)
 	}
 }
 
+void	update_env_for_valid_path(char *old_pwd, char *curr_dir, t_env *env)
+{
+	update_env(ft_strcpy(old_pwd), ft_strcpy("OLDPWD"), env);
+	curr_dir = get_current_working_directory();
+	update_env(ft_strcpy(curr_dir), ft_strcpy("PWD"), env);
+	free(curr_dir);
+}
+
+void	update_env_for_home_path(char *old_pwd, char *curr_dir, t_env *env)
+{
+	chdir(getenv("HOME"));
+	curr_dir = get_current_working_directory();
+	update_env(ft_strcpy(curr_dir), ft_strcpy("PWD"), env);
+	update_env(ft_strcpy(old_pwd), ft_strcpy("OLDPWD"), env);
+	free(curr_dir);
+}
+
 int	ft_cd(t_command *cmd, t_env *env)
 {
 	char	*old_pwd;
@@ -40,26 +57,16 @@ int	ft_cd(t_command *cmd, t_env *env)
 	if (cmd->parts[1])
 	{
 		if (chdir(cmd->parts[1]) == 0)
-		{
-			update_env(ft_strcpy(old_pwd), ft_strcpy("OLDPWD"), env);
-			curr_dir = get_current_working_directory();
-			update_env(ft_strcpy(curr_dir), ft_strcpy("PWD"), env);
-			free(curr_dir);
-		}
+			update_env_for_valid_path(old_pwd, curr_dir, env);
 		else
 		{
+			printf("cd: The directory \"%s\" does not exist\n", cmd->parts[1]);
 			free(old_pwd);
 			return (1);
 		}
 	}
 	else
-	{
-		chdir(getenv("HOME"));
-		curr_dir = get_current_working_directory();
-		update_env(ft_strcpy(curr_dir), ft_strcpy("PWD"), env);
-		update_env(ft_strcpy(old_pwd), ft_strcpy("OLDPWD"), env);
-		free(curr_dir);
-	}
+		update_env_for_home_path(old_pwd, curr_dir, env);
 	free(old_pwd);
 	return (0);
 }
