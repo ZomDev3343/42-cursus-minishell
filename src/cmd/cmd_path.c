@@ -86,9 +86,7 @@ int	check_cmd_path(char *cmd, t_env *env)
 	char	*each_path;
 	char	*exec_path;
 	char	**paths;
-	int		i;
 
-	i = 0;
 	each_path = NULL;
 	exec_path = NULL;
 	if (is_absolute_path(cmd))

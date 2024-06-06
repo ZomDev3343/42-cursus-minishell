@@ -45,6 +45,8 @@ char	**build_parts(t_string_part *cmd_parts)
 
 void	set_builtin_flag(t_command *cmd)
 {
+	if (!cmd || !cmd->parts[0])
+		return ;
 	if (ft_strcmp(cmd->parts[0], "echo"))
 		cmd->builtin_flag = BUILTIN_ECHO;
 	else if (ft_strcmp(cmd->parts[0], "cd"))
