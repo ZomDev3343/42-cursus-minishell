@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/04 11:54:26 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:12:29 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	check_for_n_arg(char *arg)
 	int	i;
 
 	i = 1;
+	if (!arg)
+		return (0);
 	if (arg[0] == '-')
 	{
 		while (arg[i] == 'n')
