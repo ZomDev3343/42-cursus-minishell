@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 12:11:21 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:06:03 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,18 +58,19 @@ void	handle_waitpid(t_exec *exec, t_command *cmd)
 	int	status;
 
 	i = 0;
+	status = g_basic_status;
 	while (i < exec->cmd_nb)
 	{
 		waitpid(exec->pids[i], &status, 0);
-		if (status != 0)
-		{
-			free(exec->pids);
-			return ;
-		}
-		else
+		if (status == 0)
 		{
 			if (search_for_exit(cmd) == 0)
 				g_basic_status = status;
+		}
+		else
+		{
+			free(exec->pids);
+			return ;
 		}
 		i++;
 	}
