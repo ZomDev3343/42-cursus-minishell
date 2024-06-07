@@ -3,27 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   env_3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 16:51:54 by tohma             #+#    #+#             */
-/*   Updated: 2024/06/06 19:25:53 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:04:39 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-char	*get_last_status_code(void)
+char	*get_last_status_code(t_exec *exec)
 {
 	int		status_code;
-	int		base_status;
 
 	status_code = -256;
-	base_status = 0;
-	if (WIFEXITED(base_status))
-		status_code = WEXITSTATUS(base_status);
-	if (WIFSIGNALED(base_status))
+	if (WIFEXITED(exec->exit_code))
+		status_code = WEXITSTATUS(exec->exit_code);
+	if (WIFSIGNALED(exec->exit_code))
 	{
-		status_code = WTERMSIG(base_status);
+		status_code = WTERMSIG(exec->exit_code);
 		if (status_code != 131)
 			status_code += 128;
 	}

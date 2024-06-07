@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:02:09 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/25 19:29:28 by tohma            ###   ########.fr       */
+/*   Updated: 2024/06/07 12:01:22 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int	is_quote_closed(char *str)
 	return (0);
 }
 
-static void	parse_word(t_string_part **parts, char *str, t_env *env, char quote)
+static void	parse_word(t_string_part **parts, char *str,
+	t_exec *exec, char quote)
 {
 	char	*to_put;
 	int		last_cpy_index;
@@ -47,7 +48,7 @@ static void	parse_word(t_string_part **parts, char *str, t_env *env, char quote)
 		{
 			push_str_part(parts,
 				ft_strncpy(to_put + last_cpy_index, i - last_cpy_index));
-			push_str_part(parts, get_env_variable(env, to_put + i));
+			push_str_part(parts, get_env_variable(exec, to_put + i));
 			i += ft_strchr_nalphanum(to_put + i + 1) + (str[i + 1] == '?');
 			last_cpy_index = i + 1;
 		}
@@ -58,7 +59,7 @@ static void	parse_word(t_string_part **parts, char *str, t_env *env, char quote)
 	ft_free(to_put);
 }
 
-static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
+static int	rem_double_quotes(t_string_part **parts, char *str, t_exec *exec)
 {
 	int	end_quote;
 
@@ -66,7 +67,7 @@ static int	rem_double_quotes(t_string_part **parts, char *str, t_env *env)
 	if (!end_quote)
 		return (-1);
 	if (end_quote > 1)
-		parse_word(parts, str + 1, env, '\"');
+		parse_word(parts, str + 1, exec, '\"');
 	return (end_quote);
 }
 
@@ -82,7 +83,7 @@ static int	rem_single_quotes(t_string_part **parts, char *str)
 	return (end_quote);
 }
 
-char	*rem_quotes(char *str, t_env *env)
+char	*rem_quotes(char *str, t_exec *exec)
 {
 	t_string_part	*parts;
 	char			*res;
@@ -97,10 +98,10 @@ char	*rem_quotes(char *str, t_env *env)
 		if (str[i] == '\'')
 			quote_end = rem_single_quotes(&parts, str + i);
 		else if (str[i] == '\"')
-			quote_end = rem_double_quotes(&parts, str + i, env);
+			quote_end = rem_double_quotes(&parts, str + i, exec);
 		else
 		{
-			parse_word(&parts, str + i, env, '\0');
+			parse_word(&parts, str + i, exec, '\0');
 			i += ft_strchr_quotes(str + i) - 1;
 		}
 		if (quote_end == -1)

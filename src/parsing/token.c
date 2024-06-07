@@ -6,7 +6,7 @@
 /*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:48 by truello           #+#    #+#             */
-/*   Updated: 2024/05/27 11:03:39 by tohma            ###   ########.fr       */
+/*   Updated: 2024/06/07 12:00:25 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	free_token(t_token *token)
 	free(token);
 }
 
-t_token	*tokenize(char *line, t_env *env)
+t_token	*tokenize(char *line, t_exec *exec)
 {
 	t_token	*token;
 	char	*token_part;
@@ -80,7 +80,7 @@ t_token	*tokenize(char *line, t_env *env)
 		while (i < ft_strlen(cmds_part[parts_index]))
 		{
 			token_part = ft_strcpy_wsp(cmds_part[parts_index] + i, &i);
-			push_token(&token, newtoken(rem_quotes(token_part, env),
+			push_token(&token, newtoken(rem_quotes(token_part, exec),
 					parts_index, (token_part[0] == '\'')
 					|| (token_part[0] == '\"')));
 			free(token_part);

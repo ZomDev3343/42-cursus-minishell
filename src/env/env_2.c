@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 20:28:44 by tohma             #+#    #+#             */
-/*   Updated: 2024/05/25 13:15:18 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:00:01 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,14 @@ int	has_env_variable(t_env *env, char *name)
 	return (FALSE);
 }
 
-char	*get_env_variable(t_env *env, char *var_name)
+char	*get_env_variable(t_exec *exec, char *var_name)
 {
 	char	*correct_var_name;
+	t_env	*env;
 
+	env = exec->env;
 	if (var_name[1] == '?')
-		return (get_last_status_code());
+		return (get_last_status_code(exec));
 	correct_var_name = parse_var_name(var_name);
 	while (env && correct_var_name)
 	{

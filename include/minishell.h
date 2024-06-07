@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:28:11 by truello           #+#    #+#             */
-/*   Updated: 2024/06/06 19:44:09 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 11:58:58 by tohma            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void			free_env(t_env *env);
 void			push_env(t_env **env, t_env *env_var);
 t_env			*make_env(char **envp);
 int				remove_env_var(t_env *env, char *var_name);
-char			*get_env_variable(t_env *env, char *var_name);
+char			*get_env_variable(t_exec *exec, char *var_name);
 void			print_env(t_env *env);
 int				has_env_variable(t_env *env, char *name);
 char			**build_env(t_env *env);
-char			*get_last_status_code(void);
+char			*get_last_status_code(t_exec *exec);
 
 /* --- Parsing --- */
 
@@ -47,7 +47,7 @@ char			*get_last_status_code(void);
 
 t_token			*newtoken(char *data, int cmd_id, int is_text);
 void			print_token_list(t_token *toklist);
-t_token			*tokenize(char *line, t_env *env);
+t_token			*tokenize(char *line, t_exec *exec);
 void			free_token(t_token *token);
 
 /* Redirections */
@@ -83,7 +83,7 @@ int				is_command_valid(t_command *cmds, t_env *env);
 
 char			*build_str(t_string_part *parts);
 int				is_quote_closed(char *str);
-char			*rem_quotes(char *str, t_env *env);
+char			*rem_quotes(char *str, t_exec *exec);
 void			print_str_parts(t_string_part *parts);
 char			**minishell_split(char *s, char delimiter);
 
