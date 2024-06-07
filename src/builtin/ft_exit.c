@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:04:42 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 20:34:53 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:41:01 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	check_exit_arg(t_command *cmd)
 
 void	exec_memory_liberation(t_exec *exec)
 {
+	printf("--- ENTER EXEC MEMORY LIBERATION ---");
 	if (exec->pipes != NULL)
 		free_pipes(exec->pipes, (exec->cmd_nb - 1));
 	if (exec->line != NULL)
@@ -65,6 +66,7 @@ int	ft_exit(t_exec *exec, t_command *cmd, t_env *env)
 	int	status;
 	int	arg_nb;
 
+	//printf("ENTER FT_EXIT: exec->exit_code: %d\n", exec->exit_code);
 	arg_nb = get_args_nb(cmd);
 	if (arg_nb >= 1)
 	{

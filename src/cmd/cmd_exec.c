@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 20:38:34 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:24:44 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,30 +51,56 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 	exec_command(i + 1, exec, cmd->next, env);
 }
 
+static int		is_old_exit_code_needed(t_exec *exec, t_command *cmd)
+{
+	if (exec->cmd_nb == 1)
+	{
+		if (cmd->builtin_flag == BUILTIN_EXIT)
+			return (TRUE);
+		else if (cmd->builtin_flag == BUILTIN_ECHO)
+		{
+			if (check_for_n_arg(cmd->parts[1]) == 1 && ft_strncmp(cmd->parts[2], "$?", 2) == TRUE)
+				return (TRUE);
+			else if (ft_strncmp(cmd->parts[1], "$?", 2) == TRUE)
+				return (TRUE);
+		}
+	}
+	return (FALSE);
+}
+
 void	handle_waitpid(t_exec *exec, t_command *cmd)
 {
 	int	i;
 	int	status;
 
 	i = 0;
-	status = -1;
+	status = 0;
+	(void)cmd;
+	printf("\tWAITPID BEGIN: exec->exit_code: %d\n", exec->exit_code);
+	printf("\tWAITPID BEGIN: status: %d\n\n", status);
 	while (i < exec->cmd_nb)
 	{
-		//printf("process : %d | status : %d\n", exec->pids[i], status);
 		waitpid(exec->pids[i], &status, 0);
-		if (status == 0)
+		printf("\tWAITPID MID: exec->exit_code: %d\n", exec->exit_code);
+		printf("\tWAITPID MID: status: %d\n\n", status);
+		if (status != 0 && is_old_exit_code_needed(exec, cmd) == FALSE)
 		{
-			if (search_for_exit(cmd) == 0)
-				exec->exit_code = status;
-		}
-		else
-		{
+			printf("\tWAITPID STATUS != 0: exec->exit_code: %d\n\n", exec->exit_code);
 			exec->exit_code = status;
 			free(exec->pids);
 			return ;
 		}
+		else if (status == 0 && is_old_exit_code_needed(exec, cmd) == TRUE)
+		{
+			free(exec->pids);
+			return ;
+		}
+		else if (status == exec->exit_code)
+			exec->exit_code = status;
 		i++;
 	}
+	printf("\tWAITPID END: exec->exit_code: %d\n", exec->exit_code);
+	printf("\tWAITPID END: >status: %d\n", status);
 	free(exec->pids);
 }
 
@@ -90,5 +116,5 @@ void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
 	dup2(exec->fd_stdout, STDOUT_FILENO);
 	close(exec->fd_stdin);
 	close(exec->fd_stdout);
-	free(exec);
+	//printf("\tWAITPID TRUE: exec->exit_code: %d\n", exec->exit_code);
 }

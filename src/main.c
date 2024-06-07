@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tohma <tohma@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/07 12:07:25 by tohma            ###   ########.fr       */
+/*   Updated: 2024/06/07 17:44:30 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	t_token		*tlist;
 	t_command	*cmds;
 
+	printf("\tLINE BEGIN: exec->exit_code: %d\n", exec->exit_code);
 	if (line[0] == '\0')
 	{
 		free(exec);
@@ -37,6 +38,7 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 		handle_execution(line, cmds, env, exec);
 	else
 		free(exec);
+	printf("\tLINE END: exec->exit_code: %d\n", exec->exit_code);
 	free_command(cmds);
 }
 
@@ -49,16 +51,18 @@ int	main(int ac, char **av, char **envp)
 	(void)ac;
 	(void)av;
 	env = make_env(envp);
+	exec = NULL;
 	setup_signal_handler();
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
 	while (line)
 	{
-		exec = make_exec_structure();
+		if (!exec)
+			exec = make_exec_structure();
 		exec->env = env;
-		exec->exit_code = 0;
 		parse_and_execute_line(line, env, exec);
+		printf("\tWHILE LINE: exec->exit_code: %d\n", exec->exit_code);
 		free(line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')

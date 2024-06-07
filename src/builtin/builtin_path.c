@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/06 20:33:27 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:21:59 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ void	builtin_in_child(t_command *cmd, t_env *env, t_exec *exec)
 		flag = ft_unset(cmd, env);
 	else if (cmd->builtin_flag == BUILTIN_EXIT)
 		flag = ft_exit(exec, cmd, env);
+	printf("BUILTIN IN CHILD: flag: %d\n\n", flag);
 	if (flag == 1)
 		exit(EXIT_FAILURE);
+	else
+		exit(EXIT_SUCCESS);
 }
 
 void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
@@ -40,6 +43,7 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 	int	flag;
 
 	flag = 0;
+	//printf("\tENTER BUILTIN OUT_CHILD: exec->exit_code: %d\n", exec->exit_code);
 	handle_redir_entering_exec(i, exec);
 	if (cmd->builtin_flag == BUILTIN_CD)
 		flag = ft_cd(cmd, env);
@@ -53,7 +57,7 @@ void	builtin_out_child(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (flag == 1)
 	{
 		exec->exit_code = 1;
-		printf("ok\n");
+		//printf("\tEXIT BUILTIN OUT_CHILD: exec->exit_code: %d\n", exec->exit_code);
 	}
 	else
 		exec->exit_code = 0;
