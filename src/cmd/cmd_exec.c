@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/10 14:40:47 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/10 23:22:02 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	handle_pid(int i, t_exec *exec, t_command *cmd, t_env *env)
 	if (pid == 0)
 	{
 		handle_redir_entering_exec(i, exec);
+		if (handle_redirections(cmd->redirections, exec) == 1)
+		{
+			free_all_in_child(exec, cmd, env);
+			exit(EXIT_FAILURE);
+		}
 		child_process(exec, cmd, env);
 	}
 	else
@@ -38,8 +43,6 @@ int	handle_pid(int i, t_exec *exec, t_command *cmd, t_env *env)
 void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
 	if (!cmd)
-		return ;
-	if (handle_redirections(cmd->redirections, exec) == 1)
 		return ;
 	if (exec->pipes == NULL && check_builtin_path(cmd) == 1)
 		builtin_out_child(i, exec, cmd, env);
@@ -98,7 +101,7 @@ void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
 {
 	manage_exec_structure(line, exec, cmd);
 	exec_command(0, exec, cmd, env);
-	if (exec->cmd_nb >= 1)
+	//if (exec->cmd_nb >= 1)
 		handle_waitpid(exec, cmd);
 	free(exec->pids);
 	if (exec->pipes)
