@@ -6,16 +6,17 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/08 16:06:13 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:32:41 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
 
-static void	free_all_in_child(t_exec *exec, t_command *cmd, t_env *env)
+void	free_all_in_child(t_exec *exec, t_command *cmd, t_env *env)
 {
 	free_env(env);
 	free(exec->pids);
+	free(exec->env);
 	if (exec->pipes)
 		free_pipes(exec->pipes, (exec->cmd_nb - 1));
 	free(exec);

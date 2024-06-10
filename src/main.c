@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/08 16:09:59 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:16:37 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,22 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	}
 	if (is_command_valid(cmds, env) == 1)
 		handle_execution(line, cmds, env, exec);
-	else
-		free(exec);
+	/*else
+		free(exec);*/
 	free_command(cmds);
+}
+
+static void	manage_exec_error_code(int exit_code_save, t_env *env, t_exec *exec)
+{
+	exec->env = env;
+	exec->exit_code = exit_code_save;
+	exec->error_flag = 0;
 }
 
 int	main(int ac, char **av, char **envp)
 {
 	char	*line;
+	int		exit_code_save;
 	t_exec	*exec;
 	t_env	*env;
 
@@ -48,6 +56,7 @@ int	main(int ac, char **av, char **envp)
 	(void)av;
 	env = make_env(envp);
 	exec = NULL;
+	exit_code_save = 0;
 	setup_signal_handler();
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
@@ -56,9 +65,9 @@ int	main(int ac, char **av, char **envp)
 	{
 		if (!exec)
 			exec = make_exec_structure();
-		exec->env = env;
-		exec->error_flag = 0;
+		manage_exec_error_code(exit_code_save, env, exec);
 		parse_and_execute_line(line, env, exec);
+		exit_code_save = exec->exit_code;
 		free(line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')
