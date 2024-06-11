@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/10 11:08:48 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:24:57 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,13 @@ int	is_command_valid(t_command *cmds, t_env *env)
 	{
 		if (curr->builtin_flag == 0)
 		{
-			if (check_cmd_path(curr->parts[0], env) == 0)
+			if (curr->parts[0] != NULL)
 			{
-				error_flag = 1;
-				printf("-minishell: %s: command not found\n", curr->parts[0]);
+				if (check_cmd_path(curr->parts[0], env) == 0)
+				{
+					error_flag = 1;
+					printf("-minishell: %s: command not found\n", curr->parts[0]);
+				}
 			}
 		}
 		curr = curr->next;

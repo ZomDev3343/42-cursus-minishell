@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 11:37:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/10 16:26:47 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/11 12:15:14 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	builtin_in_child(t_command *cmd, t_env *env, t_exec *exec)
 		flag = ft_unset(cmd, env);
 	else if (cmd->builtin_flag == BUILTIN_EXIT)
 		flag = ft_exit(exec, cmd, env);
+	free_all_in_child(exec, cmd, env);
 	if (flag == 1)
 		exit(EXIT_FAILURE);
 	else

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/10 23:22:02 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:52:33 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
 {
 	manage_exec_structure(line, exec, cmd);
 	exec_command(0, exec, cmd, env);
-	//if (exec->cmd_nb >= 1)
+	if (exec->cmd_nb >= 1)
 		handle_waitpid(exec, cmd);
 	free(exec->pids);
 	if (exec->pipes)

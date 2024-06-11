@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/10 16:16:37 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/11 14:41:26 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	t_token		*tlist;
 	t_command	*cmds;
 
+	if (line == NULL)
+		return (free(exec));
 	if (line[0] == '\0')
-	{
-		free(exec);
 		return ;
-	}
 	cmds = NULL;
 	tlist = tokenize(line, exec);
 	parse_commands(tlist, &cmds);
+	//print_commands(cmds);
 	free_token(tlist);
 	if (!check_commands(cmds))
 	{
@@ -33,8 +33,6 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	}
 	if (is_command_valid(cmds, env) == 1)
 		handle_execution(line, cmds, env, exec);
-	/*else
-		free(exec);*/
 	free_command(cmds);
 }
 
@@ -63,11 +61,11 @@ int	main(int ac, char **av, char **envp)
 		add_history(line);
 	while (line)
 	{
-		if (!exec)
-			exec = make_exec_structure();
+		exec = make_exec_structure();
 		manage_exec_error_code(exit_code_save, env, exec);
 		parse_and_execute_line(line, env, exec);
 		exit_code_save = exec->exit_code;
+		free(exec);
 		free(line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')
