@@ -6,7 +6,7 @@
 /*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 15:27:39 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/05/28 23:13:48 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:23:45 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	handle_here_doc_redirection(char *path, t_exec *exec)
 	}
 	while (1)
 	{
-		line = get_next_line(STDIN_FILENO);
+		line = get_next_line(exec->fd_stdin);
 		if (hd_strncmp(line, path, ft_strlen(path)) == 0)
 		{
 			free(line);

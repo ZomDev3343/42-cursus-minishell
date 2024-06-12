@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_path.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:58:46 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/11 14:54:56 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:13:17 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	check_cmd_path(char *cmd, t_env *env)
 	if (!paths)
 	{
 		printf("-Minishell : executable not found\n");
-		return (1);
+		return (2);
 	}
 	if (check_cmd_path_loop(each_path, exec_path, paths, cmd) == 1)
 		return (1);

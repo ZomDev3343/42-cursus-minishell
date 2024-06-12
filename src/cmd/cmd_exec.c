@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/11 14:52:33 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/12 12:27:43 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,15 @@ static int		is_old_exit_code_needed(t_exec *exec, t_command *cmd)
 			return (TRUE);
 		else if (cmd->builtin_flag == BUILTIN_ECHO)
 		{
-			if (check_for_n_arg(cmd->parts[1]) == 1 && ft_strncmp(cmd->parts[2], "$?", 2) == TRUE)
-				return (TRUE);
-			else if (ft_strncmp(cmd->parts[1], "$?", 2) == TRUE)
-				return (TRUE);
+			if (check_for_n_arg(cmd->parts[1]) == 1)
+			{
+				if (cmd->parts[2] != NULL)
+					if (ft_strncmp(cmd->parts[2], "$?", 2) == TRUE)
+						return (TRUE);
+			}
+			else if (cmd->parts[1] != NULL)
+				if (ft_strncmp(cmd->parts[1], "$?", 2) == TRUE)
+					return (TRUE);
 		}
 	}
 	return (FALSE);
@@ -87,10 +92,7 @@ void	handle_waitpid(t_exec *exec, t_command *cmd)
 			return ;
 		}
 		else if (status == 0 && is_old_exit_code_needed(exec, cmd) == TRUE)
-		{
-			free(exec->pids);
 			return ;
-		}
 		else if (status == 0 && exec->error_flag == 0)
 			exec->exit_code = 0;
 		i++;
@@ -103,7 +105,8 @@ void	handle_execution(char *line, t_command *cmd, t_env *env, t_exec *exec)
 	exec_command(0, exec, cmd, env);
 	if (exec->cmd_nb >= 1)
 		handle_waitpid(exec, cmd);
-	free(exec->pids);
+	if (exec->pids)
+		free(exec->pids);
 	if (exec->pipes)
 		free_pipes(exec->pipes, (exec->cmd_nb - 1));
 	dup2(exec->fd_stdin, STDIN_FILENO);

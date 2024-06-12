@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:41:11 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/11 14:24:57 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/12 11:15:35 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,25 @@ int	is_command_valid(t_command *cmds, t_env *env)
 {
 	t_command	*curr;
 	int			error_flag;
+	int			path_flag;
 
 	curr = cmds;
 	error_flag = 0;
+	path_flag = 0;
 	while (curr)
 	{
 		if (curr->builtin_flag == 0)
 		{
 			if (curr->parts[0] != NULL)
 			{
-				if (check_cmd_path(curr->parts[0], env) == 0)
+				path_flag = check_cmd_path(curr->parts[0], env);
+				if (path_flag == 0)
 				{
 					error_flag = 1;
 					printf("-minishell: %s: command not found\n", curr->parts[0]);
 				}
+				else if (path_flag == 2)
+					return (0);
 			}
 		}
 		curr = curr->next;
