@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 18:26:25 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/13 14:56:08 by truello          ###   ########.fr       */
+/*   Updated: 2024/06/13 15:52:42 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	child_process(t_exec *exec, t_command *cmd, t_env *env)
 			ep = build_env(env);
 			if (execve(found_path(cmd->parts[0], env), cmd->parts, ep) == -1)
 			{
-				free_all_in_child(exec, cmd, env);
-				free_parts(ep);
 				printf("-minishell: %s: No such file or directory\n",
 					cmd->parts[0]);
+				free_all_in_child(exec, cmd, env);
+				free_parts(ep);
 				exit(EXIT_FAILURE);
 			}
 		}
