@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/13 11:35:53 by truello          ###   ########.fr       */
+/*   Updated: 2024/06/13 11:41:54 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 	exec_command(i + 1, exec, cmd->next, env);
 }
 
-static int		is_old_exit_code_needed(t_exec *exec, t_command *cmd)
+static int	is_old_exit_code_needed(t_exec *exec, t_command *cmd)
 {
 	if (exec->cmd_nb == 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/13 11:35:39 by truello          ###   ########.fr       */
+/*   Updated: 2024/06/13 11:42:56 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,20 @@ static void	manage_exec_error_code(int exit_code_save, t_env *env, t_exec *exec)
 	exec->error_flag = 0;
 }
 
-int	main(int ac, char **av, char **envp)
+static void	free_in_minishell_loop(t_exec *exec, char *line)
+{
+	free(exec);
+	free(line);
+}
+
+void	minishell_loop(t_env *env)
 {
 	char	*line;
 	int		exit_code_save;
 	t_exec	*exec;
-	t_env	*env;
 
-	(void)ac;
-	(void)av;
-	env = make_env(envp);
-	exec = NULL;
-	exit_code_save = 0;
 	setup_signal_handler();
+	exit_code_save = 0;
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
@@ -69,12 +70,21 @@ int	main(int ac, char **av, char **envp)
 		manage_exec_error_code(exit_code_save, env, exec);
 		parse_and_execute_line(line, env, exec);
 		exit_code_save = exec->exit_code;
-		free(exec);
-		free(line);
+		free_in_minishell_loop(exec, line);
 		line = readline("minishell > ");
 		if (line && line[0] != '\0')
 			add_history(line);
 	}
 	rl_clear_history();
-	return (ft_free(line), free_env(env), 0);
+}
+
+int	main(int ac, char **av, char **envp)
+{
+	t_env	*env;
+
+	(void)ac;
+	(void)av;
+	env = make_env(envp);
+	minishell_loop(env);
+	return (free_env(env), 0);
 }
