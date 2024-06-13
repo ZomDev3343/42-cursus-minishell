@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fbelotti <marvin@42perpignan.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/12 12:27:43 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:16:50 by fbelotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 	exec_command(i + 1, exec, cmd->next, env);
 }
 
-static int		is_old_exit_code_needed(t_exec *exec, t_command *cmd)
+static int	is_old_exit_code_needed(t_exec *exec, t_command *cmd)
 {
 	if (exec->cmd_nb == 1)
 	{
