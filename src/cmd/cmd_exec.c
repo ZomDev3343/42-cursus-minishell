@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_exec.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 00:44:12 by fbelotti          #+#    #+#             */
-/*   Updated: 2024/06/12 12:27:43 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:35:53 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/minishell.h"
+
+extern int	g_signals;
 
 int	handle_pid(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
@@ -44,6 +46,7 @@ void	exec_command(int i, t_exec *exec, t_command *cmd, t_env *env)
 {
 	if (!cmd)
 		return ;
+	g_signals = 1;
 	if (exec->pipes == NULL && check_builtin_path(cmd) == 1)
 		builtin_out_child(i, exec, cmd, env);
 	else

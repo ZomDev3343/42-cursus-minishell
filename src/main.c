@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbelotti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/12 15:01:27 by fbelotti         ###   ########.fr       */
+/*   Updated: 2024/06/13 11:35:39 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+int	g_signals;
 
 static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 {
@@ -25,6 +27,7 @@ static void	parse_and_execute_line(char *line, t_env *env, t_exec *exec)
 	tlist = tokenize(line, exec);
 	parse_commands(tlist, &cmds);
 	free_token(tlist);
+	g_signals = 0;
 	if (!check_commands(cmds))
 	{
 		free(exec);
