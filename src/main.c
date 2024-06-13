@@ -6,7 +6,7 @@
 /*   By: truello <truello@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:29:46 by truello           #+#    #+#             */
-/*   Updated: 2024/06/13 11:42:56 by truello          ###   ########.fr       */
+/*   Updated: 2024/06/13 15:31:40 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	minishell_loop(t_env *env)
 
 	setup_signal_handler();
 	exit_code_save = 0;
+	g_signals = 0;
 	line = readline("minishell > ");
 	if (line && line[0] != '\0')
 		add_history(line);
